@@ -1,6 +1,5 @@
 <script setup>
 // Provide auth data to all child pages
-import { navigateTo } from "#app";
 const user = ref(null);
 const loading = ref(true);
 
@@ -16,10 +15,10 @@ onMounted(async () => {
     if (res.loggedIn) {
       user.value = res.user;
     } else {
-      navigateTo("/login");
+      window.location.href = "/login";
     }
   } catch (e) {
-    navigateTo("/login");
+    window.location.href = "/login";
   }
 
   loading.value = false;
@@ -38,7 +37,7 @@ const logout = async () => {
     // Ignore errors
   }
   user.value = null;
-  navigateTo("/login");
+  window.location.href = "/login";
 };
 </script>
 
