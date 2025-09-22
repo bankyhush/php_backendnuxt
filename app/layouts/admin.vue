@@ -10,7 +10,17 @@ main::-webkit-scrollbar-thumb {
 </style>
 
 <template>
-  <div class="flex h-screen bg-[#0f172a] text-gray-100 font-sans antialiased">
+  <div
+    v-if="loading"
+    class="h-screen flex justify-center items-center bg-gray-900 text-lg text-white"
+  >
+    Loading...
+  </div>
+
+  <div
+    v-else-if="admin"
+    class="flex h-screen bg-[#0f172a] text-gray-100 font-sans antialiased"
+  >
     <!-- Sidebar -->
     <aside
       ref="sidebar"
@@ -148,12 +158,15 @@ onMounted(() => {
 });
 
 // Provide auth data to all admin pages
+import { ref, provide, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
 const user = ref(null);
 const loading = ref(true);
-
 const config = useRuntimeConfig();
+const router = useRouter();
 
-// Check authentication and admin role
+// Fetch session and check admin role
 onMounted(async () => {
   try {
     const res = await $fetch(`${config.public.apiBase}/auth/session.php`, {
@@ -163,7 +176,7 @@ onMounted(async () => {
     if (res.loggedIn) {
       user.value = res.user;
 
-      // Check if user is admin
+      // Check if user has admin role
       const roleCheck = await $fetch(
         `${config.public.apiBase}/auth/check-role.php?role=admin`,
         {
@@ -172,22 +185,25 @@ onMounted(async () => {
       );
 
       if (!roleCheck.allowed) {
-        window.location.href = "/dashboard"; // Redirect non-admins to user dashboard
+        await router.push("/dashboard"); // Redirect non-admins
+        return;
       }
     } else {
-      window.location.href = "/login";
+      await router.push("/login");
+      return;
     }
-  } catch (e) {
-    window.location.href = "/login";
+  } catch (error) {
+    await router.push("/login");
+    return;
+  } finally {
+    loading.value = false;
   }
-
-  loading.value = false;
 });
 
-// Provide user data to all child components
+// Provide user to child components
 provide("authUser", user);
 
-// Logout function
+// Logout logic
 const logout = async () => {
   try {
     await $fetch(`${config.public.apiBase}/auth/logout.php`, {
@@ -197,6 +213,6 @@ const logout = async () => {
     // Ignore errors
   }
   user.value = null;
-  window.location.href = "/login";
+  await router.push("/login");
 };
 </script>
