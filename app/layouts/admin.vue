@@ -12,9 +12,9 @@ main::-webkit-scrollbar-thumb {
 <template>
   <div
     v-if="loading"
-    class="h-screen flex justify-center items-center bg-gray-900 text-lg text-white"
+    class="h-screen flex justify-center items-center bg-white-900 text-lg text-black dark:bg-black dark:text-white"
   >
-    Loading...
+    <Icon name="line-md:loading-loop" class="text-6xl" />
   </div>
 
   <div

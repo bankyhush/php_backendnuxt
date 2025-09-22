@@ -1,14 +1,14 @@
 <template>
   <div
     v-if="loading"
-    class="h-screen flex justify-center items-center bg-gray-900 text-lg text-white"
+    class="h-screen flex justify-center items-center bg-white-900 text-lg text-black dark:bg-black dark:text-white"
   >
-    Loading...
+    <Icon name="eos-icons:bubble-loading" class="text-6xl" />
   </div>
 
   <main v-else-if="user">
     <div class="pb-[2px]">
-      <HeroHeader />
+      <UserHeader />
     </div>
 
     <section class="pt-20 bg-gray-800/60">
@@ -49,17 +49,20 @@
           <div class="flex flex-col items-center">
             <Icon
               name="material-symbols-light:swap-horizontal-circle"
-              width="24"
-              height="24"
+              width="26"
+              height="26"
             />
             <span class="text-xs mt-1">Swap</span>
           </div>
         </NuxtLink>
 
-        <NuxtLink to="/earn" :class="navItemClass('/earn')">
+        <NuxtLink
+          to="/dashboard/profile"
+          :class="navItemClass('/dashboard/profile')"
+        >
           <div class="flex flex-col items-center">
-            <Icon name="subway:coin" width="24" height="24" />
-            <span class="text-xs mt-1">Earn</span>
+            <Icon name="la:user-cog" width="24" height="24" />
+            <span class="text-xs mt-1">Profile</span>
           </div>
         </NuxtLink>
       </div>
@@ -69,6 +72,7 @@
 
 <script setup>
 import { ref, provide, onMounted } from "vue";
+import UserHeader from "~/components/UserHeader.vue";
 
 const user = ref(null);
 const loading = ref(true);
