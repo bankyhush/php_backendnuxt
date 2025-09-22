@@ -18,7 +18,7 @@ main::-webkit-scrollbar-thumb {
   </div>
 
   <div
-    v-else-if="admin"
+    v-else
     class="flex h-screen bg-[#0f172a] text-gray-100 font-sans antialiased"
   >
     <!-- Sidebar -->
