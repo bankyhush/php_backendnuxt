@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="loading"
-    class="h-screen flex justify-center items-center bg-white-900 text-lg text-black dark:bg-black dark:text-white"
+    class="h-screen flex justify-center items-center bg-white-900 text-lg text-black dark:bg-[#171717] dark:text-white"
   >
     <Icon name="eos-icons:bubble-loading" class="text-6xl" />
   </div>
@@ -11,13 +11,13 @@
       <UserHeader />
     </div>
 
-    <section class="pt-20 bg-gray-800/60">
+    <section class="pt-20 bg-[#171717]">
       <slot />
     </section>
 
     <section>
       <div
-        class="text-xl fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-3 px-6 flex justify-around text-black md:hidden dark:bg-black dark:text-white"
+        class="text-xl fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-[#d8d4d48b] py-3 px-6 flex justify-around text-black md:hidden dark:bg-[#202020] dark:text-white"
         style="z-index: 1000"
       >
         <NuxtLink to="/dashboard" :class="navItemClass('/dashboard')">

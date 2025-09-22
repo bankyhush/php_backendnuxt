@@ -23,7 +23,9 @@ const tabs = [
     <div class="flex flex-col min-h-screen mb-14">
       <!-- Loading State -->
 
-      <div class="-mt-5 shadow-sm bg-white dark:bg-gray-800 dark:text-cyan-500">
+      <div
+        class="-mt-5 shadow-sm bg-white dark:bg-[#282727] dark:text-cyan-500"
+      >
         <div class="container mx-auto px-4">
           <div class="flex overflow-x-auto hide-scrollbar">
             <div
@@ -42,16 +44,16 @@ const tabs = [
         </div>
       </div>
 
-      <main className="flex-grow bg-gray-800/60 text-black">
+      <main className="flex-grow bg-white dark:bg-[#171717] text-black">
         <div className="container mx-auto px-4 py-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
               <!-- Dashboard Balance -->
               <div
-                class="bg-white rounded-xl shadow-lg p-6 transform transition-all hover:shadow-xl dark:bg-gray-900 dark:text-gray-50"
+                class="bg-white rounded-xl shadow-lg p-6 transform transition-all hover:shadow-xl dark:bg-[#202020] dark:text-gray-50"
               >
                 <div class="flex items-center mb-2">
-                  <h2 class="text-sm text-gray-600 mr-2">
+                  <h2 class="text-sm text-[#beb8b8] mr-2">
                     Estimated total value
                   </h2>
                   <!-- Optional: Icon -->
@@ -59,7 +61,7 @@ const tabs = [
 
                 <div class="flex items-baseline mb-1">
                   <h1 class="text-3xl font-bold mr-2">$12,345.67</h1>
-                  <span class="text-gray-500 text-sm">USD</span>
+                  <span class="text-[#beb8b8] text-sm">USD</span>
                 </div>
 
                 <div class="mb-8 text-sm">
@@ -69,10 +71,10 @@ const tabs = [
                   </span>
                 </div>
 
-                <div class="flex flex-wrap gap-2 dark:bg-gray-900 rounded-lg">
+                <div class="flex flex-wrap gap-2 rounded-lg">
                   <NuxtLink to="/dashboard/deposit/1">
                     <button
-                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-800 dark:hover:border-gray-500"
+                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
                     >
                       Deposit
                     </button>
@@ -80,7 +82,7 @@ const tabs = [
 
                   <NuxtLink to="/dashboard/convert">
                     <button
-                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-800 dark:hover:border-gray-500"
+                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
                     >
                       Convert
                     </button>
@@ -88,7 +90,7 @@ const tabs = [
 
                   <NuxtLink to="/dashboard/withdraw/1">
                     <button
-                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-800 dark:hover:border-gray-500"
+                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
                     >
                       Withdraw
                     </button>
@@ -96,7 +98,7 @@ const tabs = [
 
                   <NuxtLink to="/dashboard/transfer/1">
                     <button
-                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-800 dark:hover:border-gray-500"
+                      class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
                     >
                       Transfer
                     </button>
@@ -105,7 +107,7 @@ const tabs = [
               </div>
               <!-- Dashboard Assets Coins -->
               <div
-                class="bg-white rounded-xl shadow-lg dark:bg-gray-900 dark:text-gray-50"
+                class="bg-white rounded-xl shadow-lg dark:bg-[#202020] dark:text-gray-50"
               >
                 <div class="p-6">
                   <h2 class="text-xl font-semibold mb-6">Assets</h2>
@@ -135,7 +137,7 @@ const tabs = [
                         type="text"
                         placeholder="Search assets"
                         aria-label="Search assets"
-                        class="w-full sm:w-80 pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+                        class="w-full sm:w-80 pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-[#303030] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
                         value=""
                       />
                     </div>
@@ -150,7 +152,7 @@ const tabs = [
                       />
                       <label
                         for="hideSmall"
-                        class="ml-2 text-sm text-gray-700 cursor-pointer"
+                        class="ml-2 text-sm text-gray-400 cursor-pointer"
                       >
                         Hide small assets
                       </label>
@@ -169,7 +171,7 @@ const tabs = [
                   <table class="min-w-full">
                     <thead>
                       <tr
-                        class="text-sm text-gray-500 border-t border-b border-gray-200 dark:border-gray-800"
+                        class="text-sm text-gray-500 border-t border-b border-gray-200 dark:border-[#303030]"
                       >
                         <th class="text-left px-6 py-3 font-medium">Name</th>
                         <th class="text-right px-6 py-3 font-medium">
@@ -182,7 +184,7 @@ const tabs = [
                     </thead>
                     <tbody>
                       <tr
-                        class="hover:bg-gray-50 border-b border-gray-100 dark:border-gray-800 dark:hover:bg-gray-800 cursor-pointer"
+                        class="hover:bg-gray-50 border-b border-gray-100 dark:border-[#303030] dark:hover:bg-[#303030] cursor-pointer"
                       >
                         <td class="px-6 py-4">
                           <div class="flex items-center">
@@ -210,7 +212,7 @@ const tabs = [
                       </tr>
 
                       <tr
-                        class="hover:bg-gray-50 border-b border-gray-100 dark:border-gray-800 dark:hover:bg-gray-800 cursor-pointer"
+                        class="hover:bg-gray-50 border-b border-gray-100 dark:border-[#303030] dark:hover:bg-[#303030] cursor-pointer"
                       >
                         <td class="px-6 py-4">
                           <div class="flex items-center">
@@ -245,7 +247,7 @@ const tabs = [
             <div class="lg:col-span-1 space-y-6">
               <!-- Allocation Section -->
               <div
-                class="bg-white rounded-xl shadow-lg dark:bg-gray-900 dark:text-gray-50"
+                class="bg-white rounded-xl shadow-lg dark:bg-[#202020] dark:text-gray-200"
               >
                 <div
                   class="flex items-center justify-between p-6 cursor-pointer"
@@ -276,11 +278,11 @@ const tabs = [
 
                   <!-- Dummy allocation items -->
                   <div
-                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg cursor-pointer transition-colors"
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
                     <div class="flex items-center">
                       <div class="w-2 h-2 rounded-full bg-red-500 mr-2"></div>
-                      <span class="text-gray-700">Stocks</span>
+                      <span class="text-gray-400">Stocks</span>
                     </div>
                     <div class="flex items-center">
                       <span class="text-right">$12,000</span>
@@ -305,7 +307,7 @@ const tabs = [
                   </div>
 
                   <div
-                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg cursor-pointer transition-colors"
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
                     <div class="flex items-center">
                       <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
@@ -334,7 +336,7 @@ const tabs = [
                   </div>
 
                   <div
-                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg cursor-pointer transition-colors"
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
                     <div class="flex items-center">
                       <div class="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
@@ -363,7 +365,7 @@ const tabs = [
                   </div>
 
                   <div
-                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg cursor-pointer transition-colors"
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
                     <div class="flex items-center">
                       <div
@@ -397,7 +399,7 @@ const tabs = [
 
               <!-- Transactions Section -->
               <div
-                class="bg-white rounded-xl shadow-lg p-6 text-gray-900 dark:bg-gray-900 dark:text-gray-50"
+                class="bg-white rounded-xl shadow-lg p-6 text-gray-900 dark:bg-[#202020] dark:text-gray-50"
               >
                 <div class="flex items-center justify-between mb-4">
                   <h2 class="text-xl font-semibold">Recent Transactions</h2>
@@ -407,24 +409,6 @@ const tabs = [
                     >View all</a
                   >
                 </div>
-
-                <!-- Dummy loader -->
-                <!-- <div class="flex items-center justify-center py-10">
-        <div class="loader"></div>
-      </div> -->
-
-                <!-- No transactions dummy -->
-                <!-- <div class="flex flex-col items-center justify-center py-10 px-4 text-center">
-        <div class="mb-4">
-          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405M4 4l16 16M9 9h.01M12 12h.01M15 15h.01" />
-            </svg>
-          </div>
-        </div>
-        <h3 class="text-lg font-medium mb-2">No records found</h3>
-        <p class="text-gray-500 text-sm">Get started with your first transaction</p>
-      </div> -->
 
                 <!-- Transactions Table Dummy -->
                 <div class="overflow-x-auto">
