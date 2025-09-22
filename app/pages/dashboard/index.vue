@@ -13,6 +13,7 @@ const user = inject("authUser");
     <h1>Dashboard Overview</h1>
     <p>Welcome back, {{ user?.fullname }}!</p>
     <p>Your email: {{ user?.email }}</p>
+    <p>Your profit: ${{ user?.profit }}</p>
     <!-- Your dashboard content -->
   </div>
 </template>

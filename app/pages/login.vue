@@ -247,11 +247,7 @@ const loginHandler = async () => {
 
       // Redirect to dashboard
       setTimeout(() => {
-        if (res.role === "admin") {
-          navigateTo("/wp-admin"); // Instant redirect for admin
-        } else {
-          navigateTo("/dashboard"); // Instant redirect for user
-        }
+        navigateTo("/dashboard");
       }, 2000); // Show success message before redirecting
     } else {
       errorMessage.value = res.message || "Login failed";
