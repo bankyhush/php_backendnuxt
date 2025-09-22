@@ -2,7 +2,8 @@
 @import "@nuxt/ui";
 
 body {
-  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
 }
 
 @custom-variant dark (&:is(.dark *));

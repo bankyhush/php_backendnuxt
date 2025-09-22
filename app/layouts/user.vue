@@ -17,7 +17,7 @@
 
     <section>
       <div
-        class="text-xl fixed bottom-0 left-0 right-0 bg-black border-t border-[#25272a] py-3 px-6 flex justify-around text-white md:hidden"
+        class="text-xl fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-3 px-6 flex justify-around text-black md:hidden dark:bg-black dark:text-white"
         style="z-index: 1000"
       >
         <NuxtLink to="/dashboard" :class="navItemClass('/dashboard')">
@@ -29,11 +29,7 @@
 
         <NuxtLink to="/" :class="navItemClass('/')">
           <div class="flex flex-col items-center">
-            <Icon
-              name="streamline-freehand:money-wallet"
-              width="24"
-              height="24"
-            />
+            <Icon name="solar:wallet-money-bold" width="24" height="24" />
             <span class="text-xs mt-1">Wallets</span>
           </div>
         </NuxtLink>
@@ -61,7 +57,7 @@
           :class="navItemClass('/dashboard/profile')"
         >
           <div class="flex flex-col items-center">
-            <Icon name="la:user-cog" width="24" height="24" />
+            <Icon name="fa-solid:user-cog" width="24" height="24" />
             <span class="text-xs mt-1">Profile</span>
           </div>
         </NuxtLink>
@@ -119,12 +115,10 @@ const logout = async () => {
 // Inline Tailwind class merging logic
 const route = useRoute();
 
-const navItemClass = (path) =>
-  [
-    "transition-all duration-200 ease-in-out",
-    "hover:text-cyan-400 hover:scale-110 hover:drop-shadow-lg",
-    route.path === path
-      ? "text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(0,255,255,0.6)]"
-      : "text-white",
-  ].join(" ");
+const navItemClass = (path) => {
+  if (route.path === path) {
+    return "transition-all duration-200 ease-in-out font-bold text-cyan-400 dark:text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,255,0.6)] hover:scale-110 hover:drop-shadow-lg";
+  }
+  return "transition-all duration-200 ease-in-out font-semibold text-black dark:text-white hover:text-cyan-400 hover:scale-110 hover:drop-shadow-lg";
+};
 </script>

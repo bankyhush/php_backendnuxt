@@ -1,8 +1,11 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { navigateTo } from "#app";
 
 const menuOpen = ref(false);
 const menuRef = ref(null);
+
+const config = useRuntimeConfig();
 
 const menuItems = [
   { name: "Features", href: "#features" },
@@ -40,6 +43,21 @@ const isDark = computed({
     colorMode.preference = _isDark ? "dark" : "light";
   },
 });
+
+const user = inject("authUser");
+
+// Logout logic
+const logout = async () => {
+  try {
+    await $fetch(`${config.public.apiBase}/auth/logout.php`, {
+      credentials: "include",
+    });
+  } catch (e) {
+    // Ignore errors
+  }
+  user.value = null;
+  navigateTo("/login");
+};
 </script>
 
 <template>
@@ -83,17 +101,28 @@ const isDark = computed({
             <!-- Desktop Right -->
             <div class="hidden lg:flex items-center space-x-3">
               <NuxtLink
-                to="/login"
                 class="px-4 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 text-sm font-medium text-black hover:text-foreground hover:border-foreground transition dark:text-white"
               >
-                Login
+                Welcome, {{ user?.fullname }}!
               </NuxtLink>
-              <NuxtLink
-                to="/register"
-                class="px-4 py-1.5 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition dark:text-black"
+
+              <button
+                class="flex justify-center items-center gap-1 cursor-pointer bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 text-sm rounded-md transition-all"
+                @click="logout"
               >
-                Sign Up
-              </NuxtLink>
+                <Icon
+                  name="ant-design:logout-outlined"
+                  width="1024"
+                  height="1024"
+                />
+                Logout
+              </button>
+              <div
+                id="userIcon"
+                class="bg-white/10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 cursor-pointer transition text-md font-semibold text-black uppercase dark:text-white"
+              >
+                <Icon name="ph:user-focus-fill" class="text-3xl" />
+              </div>
               <UButton
                 class="cursor-pointer"
                 :icon="isDark ? 'line-md:sun-rising-loop' : 'line-md:moon-loop'"
@@ -110,8 +139,8 @@ const isDark = computed({
               :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
             >
               <Icon
-                :name="menuOpen ? 'zondicons:close-solid' : 'ion:toggle'"
-                class="w-6 h-6"
+                :name="menuOpen ? 'ph:user-focus-fill' : 'ph:user-focus-fill'"
+                class="text-3xl text-black dark:text-white"
               />
             </button>
           </div>
