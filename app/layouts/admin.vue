@@ -109,7 +109,9 @@ main::-webkit-scrollbar-thumb {
       </header>
 
       <!-- Page content slot -->
-      <main class="flex-1 p-6 lg:p-8 overflow-y-auto">
+      <main
+        class="flex-1 p-6 lg:p-8 overflow-x-auto sm:min-w-[640px] bg-[#0f172a]"
+      >
         <slot />
       </main>
     </div>
@@ -117,6 +119,10 @@ main::-webkit-scrollbar-thumb {
 </template>
 
 <script setup>
+useHead({
+  title: "Admin Dashboard - VVIP",
+});
+
 const navItems = [
   { label: "Dashboard", icon: "lucide:home", to: "/wp-admin" },
   { label: "Users", icon: "lucide:users", to: "/wp-admin/users" },
