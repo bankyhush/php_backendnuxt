@@ -11,7 +11,7 @@
       <UserHeader />
     </div>
 
-    <section class="pt-20 bg-[#171717]">
+    <section class="pt-20 bg-gray-100 dark:bg-[#171717]">
       <slot />
     </section>
 
