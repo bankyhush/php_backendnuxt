@@ -75,18 +75,7 @@ const createCopytrader = async () => {
       <h1 class="text-3xl font-bold text-white mt-2">Create New Copytrader</h1>
     </div>
 
-    <!-- Message Alert -->
-    <div
-      v-if="message.text"
-      :class="[
-        'p-4 rounded-md mb-6',
-        message.type === 'success'
-          ? 'bg-green-500 text-white'
-          : 'bg-red-500 text-white',
-      ]"
-    >
-      {{ message.text }}
-    </div>
+    
 
     <div class="bg-gray-800 rounded-lg p-6">
       <form
@@ -364,6 +353,19 @@ const createCopytrader = async () => {
             class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
+
+        <!-- Message Alert -->
+    <div
+      v-if="message.text"
+      :class="[
+        'p-4 rounded-md mb-6',
+        message.type === 'success'
+          ? 'bg-green-500 text-white'
+          : 'bg-red-500 text-white',
+      ]"
+    >
+      {{ message.text }}
+    </div>
 
         <!-- Submit Buttons -->
         <div class="md:col-span-2 flex gap-4 pt-6 border-t border-gray-700">

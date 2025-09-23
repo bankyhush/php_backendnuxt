@@ -307,6 +307,17 @@ const updateCopytrader = async () => {
           />
         </div>
 
+         <!-- Message Alert -->
+    <div
+      v-if="message.text"
+      :class="[
+        'p-4 rounded-md mb-6',
+        message.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white',
+      ]"
+    >
+      {{ message.text }}
+    </div>
+
         <div class="md:col-span-2 flex gap-4 pt-6 border-t border-gray-700">
           <button
             type="submit"
