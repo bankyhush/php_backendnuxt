@@ -325,7 +325,7 @@ const truncateText = (text, length = 50) => {
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <div class="flex space-x-2">
                   <NuxtLink
-                    :to="`/wp-admin/coins/edit/${coin.coin_id}`"
+                    :to="`/wp-admin/coins/${coin.coin_id}`"
                     class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
                   >
                     Edit

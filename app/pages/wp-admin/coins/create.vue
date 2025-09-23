@@ -517,6 +517,21 @@ const searchCoinGecko = async (query) => {
           </div>
         </div>
 
+        <!-- Message Alert -->
+        <div
+          v-if="message.text"
+          :class="[
+            'p-4 rounded-md mb-6 whitespace-pre-line',
+            message.type === 'success'
+              ? 'bg-green-500 text-white'
+              : message.type === 'error'
+              ? 'bg-red-500 text-white'
+              : 'bg-blue-500 text-white',
+          ]"
+        >
+          {{ message.text }}
+        </div>
+
         <!-- Submit Buttons -->
         <div class="flex gap-4 pt-6 border-t border-gray-700">
           <button
