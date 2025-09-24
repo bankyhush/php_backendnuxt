@@ -150,7 +150,7 @@
                 <button
                   type="submit"
                   :disabled="isLoading"
-                  class="cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white hover:shadow-lg py-1.5 rounded-md disabled:cursor-not-allowed disabled:bg-gray-500"
+                  class="cursor-pointer mb-5 w-full bg-black dark:bg-white dark:text-black text-white hover:shadow-lg py-1.5 rounded-md disabled:cursor-not-allowed disabled:bg-gray-500"
                 >
                   <template v-if="isLoading">
                     <Icon
@@ -160,6 +160,14 @@
                   </template>
                   <template v-else> Next </template>
                 </button>
+                <div class="text-center">
+                  <NuxtLink
+                    to="/request"
+                    class="text-zinc-800 dark:text-gray-100 font-mono"
+                  >
+                    Trouble signing in? Reset your password
+                  </NuxtLink>
+                </div>
               </form>
 
               <!-- Sign up Link -->
