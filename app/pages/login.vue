@@ -229,7 +229,6 @@
 
 <script setup>
 import { ref } from "vue";
-import { navigateTo } from "#app";
 
 const config = useRuntimeConfig();
 

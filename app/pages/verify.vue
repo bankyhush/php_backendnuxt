@@ -22,7 +22,7 @@
           <div
             class="hidden bg-zinc-900 max-w-2xl rounded-3xl overflow-hidden border border-zinc-800 md:block"
           >
-            <center>
+            <div class="text-center">
               <img
                 src="/images/f4.webp"
                 alt="Trading Chart Preview"
@@ -30,21 +30,18 @@
                 width="300"
                 class="mx-auto"
               />
-            </center>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Right Side -->
-      <div class="bg-white w-full -mt-6 md:w-1/2 p-8 md:p-16 flex flex-col">
+      <div
+        class="bg-white dark:bg-[#202020] w-full -mt-6 md:w-1/2 p-8 md:p-16 flex flex-col"
+      >
         <div
           class="max-w-md mx-auto md:mx-0 md:mr-auto flex-1 flex flex-col justify-center"
         >
-          <h1 class="text-4xl font-bold mb-1 text-black">Verify it's you</h1>
-          <span class="text-sm mb-8 text-gray-600 font-light">
-            Look out for the code we've sent to <strong>{{ userEmail }}</strong>
-          </span>
-
           <!-- Success Message -->
           <div
             v-if="successMessage"
@@ -67,67 +64,49 @@
             <UAlert
               color="error"
               variant="subtle"
-              title="Failed!"
+              title="Verification Failed"
               :description="errorMessage"
               icon="i-lucide-x-circle"
             />
           </div>
 
-          <form
-            class="w-full mx-auto p-6 bg-white dark:bg-[#171717d6] shadow-md rounded-lg"
-            @submit.prevent="verifyHandler"
+          <!-- Loading Spinner -->
+          <div
+            v-if="loading"
+            class="flex flex-col items-center justify-center mt-8"
           >
-            <div class="mb-8">
-              <div class="flex justify-center space-x-3 mb-8">
-                <input
-                  v-for="n in 6"
-                  :key="n"
-                  :ref="`codeInput${n}`"
-                  type="text"
-                  inputmode="numeric"
-                  maxlength="1"
-                  v-model="verificationCode[n - 1]"
-                  @input="handleInput(n, $event)"
-                  @keydown="handleKeydown(n, $event)"
-                  @paste="handlePaste"
-                  :disabled="loading"
-                  class="w-10 h-10 md:w-10 md:h-10 text-center text-xl font-semibold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors bg-white dark:bg-gray-800 text-black dark:text-white"
-                  autocomplete="off"
-                />
-              </div>
+            <Icon
+              name="gg:spinner-two-alt"
+              class="animate-spin text-6xl text-center text-black dark:text-white mb-4"
+            />
+            <p class="text-gray-600 dark:text-gray-300">
+              Verifying your account...
+            </p>
+          </div>
 
-              <button
-                type="submit"
-                :disabled="loading || !isCodeComplete"
-                class="cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white hover:shadow-lg py-1.5 rounded-md disabled:cursor-not-allowed disabled:bg-gray-500"
-              >
-                <template v-if="loading">
-                  <Icon
-                    name="gg:spinner-two-alt"
-                    class="animate-spin text-2xl mx-auto"
-                  />
-                </template>
-                <template v-else> Verify </template>
-              </button>
+          <!-- Manual Verification Option (if automatic fails) -->
+          <div v-if="showManualVerification" class="mt-6 p-4 border rounded-lg">
+            <h3 class="font-bold mb-2">Manual Verification</h3>
+            <p class="text-sm mb-3">
+              If automatic verification failed, enter the code sent to your
+              email:
+            </p>
+            <div class="flex space-x-2 mb-3">
+              <input
+                v-for="n in 6"
+                :key="n"
+                v-model="manualCode[n - 1]"
+                @input="handleManualInput(n, $event)"
+                type="text"
+                maxlength="1"
+                class="w-10 h-10 text-center border rounded"
+              />
             </div>
-          </form>
-
-          <div class="text-center text-gray-600 mt-5">
-            <span>Didn't receive anything? </span>
             <button
-              type="button"
-              @click="resendCode"
-              :disabled="resendCooldown > 0"
-              class="font-medium underline text-black hover:text-gray-700 disabled:text-gray-400"
+              @click="submitManualVerification"
+              class="bg-black text-white px-4 py-2 rounded"
             >
-              Resend code {{ resendCooldown > 0 ? `(${resendCooldown})` : "" }}
-            </button>
-            <span> or </span>
-            <button
-              type="button"
-              class="font-medium text-black underline hover:text-gray-700"
-            >
-              change email
+              Verify Manually
             </button>
           </div>
         </div>
@@ -137,176 +116,108 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
-import { navigateTo } from "#app";
+import { ref, onMounted } from "vue";
+
 const config = useRuntimeConfig();
+const route = useRoute();
 
-const verificationCode = ref(Array(6).fill(""));
-const loading = ref(false);
-const errorMessage = ref("");
 const successMessage = ref("");
-const userEmail = ref("you@example.com");
-const resendCooldown = ref(0);
-let countdownInterval = null;
+const errorMessage = ref("");
+const loading = ref(true);
+const showManualVerification = ref(false);
+const manualCode = ref(Array(6).fill(""));
 
-const isCodeComplete = computed(() => {
-  return verificationCode.value.every((digit) => digit !== "");
-});
+onMounted(async () => {
+  const email = route.query.email;
+  const code = route.query.code;
 
-// Auto-focus first input on mount
-onMounted(() => {
-  focusInput(1);
-  startResendCountdown();
-
-  // Try to get user email from session or localStorage
-  const storedEmail = localStorage.getItem("userEmail") || "your email";
-  userEmail.value =
-    storedEmail !== "you@example.com" ? storedEmail : "your email";
-});
-
-onUnmounted(() => {
-  if (countdownInterval) clearInterval(countdownInterval);
-});
-
-const startResendCountdown = () => {
-  resendCooldown.value = 60;
-  countdownInterval = setInterval(() => {
-    resendCooldown.value--;
-    if (resendCooldown.value <= 0) {
-      clearInterval(countdownInterval);
-    }
-  }, 1000);
-};
-
-const focusInput = (index) => {
-  const inputRef = `codeInput${index}`;
-  nextTick(() => {
-    const input = document.querySelector(`[ref="${inputRef}"]`);
-    if (input) input.focus();
-  });
-};
-
-const handleInput = (index, event) => {
-  const value = event.target.value;
-
-  // Only allow numbers
-  if (value && !/^\d$/.test(value)) {
-    verificationCode.value[index - 1] = "";
+  // Validate parameters
+  if (!email || !code) {
+    errorMessage.value =
+      "Invalid verification link. Please check your email for the correct link.";
+    loading.value = false;
+    showManualVerification.value = true;
     return;
   }
 
-  // Move to next input if current has value
-  if (value && index < 6) {
-    focusInput(index + 1);
-  }
+  // Auto-verify using the link parameters
+  await verifyAccount(email, code);
+});
 
-  // Auto-submit when all digits are filled
-  if (isCodeComplete.value) {
-    verifyHandler();
-  }
-};
-
-const handleKeydown = (index, event) => {
-  // Handle backspace
-  if (event.key === "Backspace") {
-    if (!verificationCode.value[index - 1] && index > 1) {
-      focusInput(index - 1);
-    }
-  }
-
-  // Handle arrow keys
-  if (event.key === "ArrowLeft" && index > 1) {
-    event.preventDefault();
-    focusInput(index - 1);
-  }
-  if (event.key === "ArrowRight" && index < 6) {
-    event.preventDefault();
-    focusInput(index + 1);
-  }
-};
-
-const handlePaste = (event) => {
-  event.preventDefault();
-  const pasteData = event.clipboardData.getData("text");
-  const numbers = pasteData.replace(/\D/g, "").split("").slice(0, 6);
-
-  numbers.forEach((num, index) => {
-    if (index < 6) {
-      verificationCode.value[index] = num;
-    }
-  });
-
-  if (numbers.length === 6) {
-    verifyHandler();
-  } else {
-    focusInput(numbers.length + 1);
-  }
-};
-
-const verifyHandler = async () => {
-  if (!isCodeComplete.value) return;
-
-  loading.value = true;
-  errorMessage.value = "";
-  successMessage.value = "";
-
+const verifyAccount = async (email, code) => {
   try {
-    const code = verificationCode.value.join("");
-    const response = await $fetch(`${config.public.apiBase}/auth/verify.php`, {
-      method: "POST",
-      body: {
-        verificationCode: code,
-      },
-      credentials: "include",
-    });
+    loading.value = true;
+    errorMessage.value = "";
+    successMessage.value = "";
 
-    if (!response.success) {
-      throw new Error(response.message);
+    // Use $fetch instead of useFetch for better error handling
+    const response = await $fetch(
+      `${config.public.apiBase}/auth/verify.php?email=${encodeURIComponent(
+        email
+      )}&code=${encodeURIComponent(code)}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (response.success) {
+      successMessage.value = response.message;
+
+      // Redirect to login after 3 seconds
+      setTimeout(() => {
+        navigateTo("/login");
+      }, 3000);
+    } else {
+      errorMessage.value =
+        response.message || "Verification failed. Please try again.";
+      showManualVerification.value = true;
     }
-
-    successMessage.value = response.message;
-    setTimeout(() => {
-      navigateTo("/dashboard"); // Redirect to dashboard after successful verification
-    }, 2000);
-  } catch (err) {
+  } catch (error) {
+    console.error("Verification error:", error);
     errorMessage.value =
-      err?.data?.message ||
-      err?.message ||
-      "Verification failed. Please try again.";
-    // Clear the code on error
-    verificationCode.value = Array(6).fill("");
-    focusInput(1);
+      "Network error. Please check your connection and try again.";
+    showManualVerification.value = true;
   } finally {
     loading.value = false;
   }
 };
 
-const resendCode = async () => {
-  if (resendCooldown.value > 0) return;
+const handleManualInput = (index, event) => {
+  const value = event.target.value;
 
-  errorMessage.value = "";
-  successMessage.value = "";
-
-  try {
-    const response = await $fetch(
-      `${config.public.apiBase}/auth/resend-verification.php`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
-
-    if (!response.success) {
-      throw new Error(response.message);
-    }
-
-    successMessage.value = response.message;
-    startResendCountdown();
-  } catch (err) {
-    errorMessage.value =
-      err?.data?.message ||
-      err?.message ||
-      "Failed to resend code. Please try again.";
+  // Only allow numbers
+  if (value && !/^\d$/.test(value)) {
+    manualCode.value[index - 1] = "";
+    return;
   }
+
+  // Auto-submit when all 6 digits are entered
+  if (
+    manualCode.value.every((digit) => digit !== "") &&
+    manualCode.value.length === 6
+  ) {
+    submitManualVerification();
+  }
+};
+
+const submitManualVerification = async () => {
+  const code = manualCode.value.join("");
+  const email = route.query.email;
+
+  if (!email) {
+    errorMessage.value =
+      "Please use the original verification link from your email.";
+    return;
+  }
+
+  if (code.length !== 6) {
+    errorMessage.value = "Please enter a valid 6-digit code.";
+    return;
+  }
+
+  await verifyAccount(email, code);
 };
 </script>

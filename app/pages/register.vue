@@ -247,9 +247,10 @@ const registerHandler = async () => {
       throw new Error(response.message);
     }
 
-    successMessage.value = "Account created successfully. Redirecting...";
+    successMessage.value =
+      "Account created successfully, check your email for verification info. Redirecting...";
     setTimeout(() => {
-      navigateTo("/verify");
+      navigateTo("/login");
     }, 3000);
   } catch (err) {
     errorMessage.value =
