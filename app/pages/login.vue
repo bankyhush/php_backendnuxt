@@ -247,7 +247,8 @@ const loginHandler = async () => {
 
       // Redirect to dashboard
       setTimeout(() => {
-        navigateTo("/dashboard");
+        window.location.href = "/dashboard";
+        // navigateTo("/dashboard");
       }, 2000); // Show success message before redirecting
     } else {
       errorMessage.value = res.message || "Login failed";

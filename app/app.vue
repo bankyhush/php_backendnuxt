@@ -13,7 +13,7 @@ onMounted(async () => {
     const currentPath = window.location.pathname;
 
     // Don't check auth on login page
-    if (currentPath === "/login") return;
+    if ((currentPath === "/login", "/verify")) return;
 
     try {
       const res = await $fetch(`${config.public.apiBase}/auth/session.php`, {
