@@ -139,7 +139,6 @@ const navItems = [
   },
   { label: "Staking", icon: "hugeicons:stake", to: "/wp-admin/staking" },
   { label: "Plans", icon: "hugeicons:floor-plan", to: "/wp-admin/plans" },
-  { label: "Reports", icon: "lucide:bar-chart-2", to: "/wp-admin/reports" },
   { label: "Settings", icon: "lucide:settings", to: "/wp-admin/settings" },
 ];
 
