@@ -3,7 +3,7 @@
     <HeroHeader />
   </div>
 
-  <div class="min-h-screen flex flex-col">
+  <div class="min-h-screen flex flex-col dark:bg-[#171717] dark:text-white">
     <div class="flex flex-col md:flex-row flex-1">
       <!-- Left Side -->
       <div
@@ -34,19 +34,23 @@
       </div>
 
       <!-- Right Side -->
-      <div class="bg-white w-full -mt-14 md:w-1/2 p-8 md:p-16 flex flex-col">
+      <div
+        class="bg-white dark:bg-[#171717] dark:text-white w-full -mt-10 md:w-1/2 p-8 md:p-16 flex flex-col"
+      >
         <div
           class="max-w-md mx-auto md:mx-0 md:mr-auto flex-1 flex flex-col justify-center"
         >
-          <h1 class="text-4xl font-bold mb-2 text-black">
+          <h1
+            class="whitespace-nowrap text-4xl font-bold mb-2 text-black dark:text-white"
+          >
             Create your account
           </h1>
-          <span class="text-sm text-gray-500 mb-6"
-            >Ensure this email can receive verification codes.</span
+          <span class="text-sm text-gray-500 dark:text-gray-200 mb-6"
+            >Ensure this email can receive verification info.</span
           >
 
           <form
-            class="w-full mx-auto p-6 bg-white dark:bg-background shadow-md rounded-lg"
+            class="w-full mx-auto p-6 bg-white dark:bg-[#202020] shadow-md rounded-lg"
             @submit.prevent="registerHandler"
           >
             <!-- Success Message -->
@@ -182,7 +186,12 @@
             <p>
               This site is protected by Google reCAPTCHA to ensure you're not a
               bot.
-              <a href="#" class="text-black underline"> Learn more </a>
+              <NuxtLink
+                to="/privacy"
+                class="text-black dark:text-gray-400 underline"
+              >
+                Learn more
+              </NuxtLink>
             </p>
           </div>
         </div>

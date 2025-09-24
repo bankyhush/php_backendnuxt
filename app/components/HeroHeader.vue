@@ -155,7 +155,7 @@ const isDark = computed({
                   </NuxtLink>
                   <NuxtLink
                     to="/register"
-                    class="block w-full text-center px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition"
+                    class="block w-full text-center px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition dark:text-black"
                     @click="toggleMenu"
                   >
                     Sign Up

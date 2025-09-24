@@ -3,7 +3,9 @@
     <HeroHeader />
   </div>
 
-  <div class="min-h-screen flex flex-col">
+  <div
+    class="min-h-screen flex flex-col bg-white dark:bg-[#171717] dark:text-white"
+  >
     <div class="flex flex-col md:flex-row flex-1">
       <!-- Left Side -->
       <div
@@ -34,20 +36,24 @@
       </div>
 
       <!-- Right Side -->
-      <div class="bg-white w-full -mt-14 md:w-1/2 p-8 md:p-16 flex flex-col">
+      <div
+        class="bg-white dark:bg-[#202020] dark:text-white w-full -mt-10 md:w-1/2 p-8 md:p-16 flex flex-col"
+      >
         <div
           class="max-w-md mx-auto md:mx-0 md:mr-auto flex-1 flex flex-col justify-center"
         >
-          <h1 class="text-4xl font-bold mb-10 text-black">Log in</h1>
+          <h1 class="text-4xl font-bold mb-10 text-black dark:text-white">
+            Log in
+          </h1>
 
           <!-- Tabs -->
           <div class="w-full">
-            <div class="grid grid-cols-3 mb-3">
+            <div class="grid grid-cols-3 mb-10">
               <button
                 :class="[
-                  'py-2',
+                  'py-2 mr-5 whitespace-nowrap',
                   currentTab === 'email'
-                    ? 'border-b-2 border-black rounded-none shadow-none dark:text-black'
+                    ? 'border-b-2 dark:border-cyan-500 rounded-none shadow-none dark:text-cyan-400'
                     : '',
                   'cursor-pointer',
                 ]"
@@ -57,9 +63,9 @@
               </button>
               <button
                 :class="[
-                  'py-2',
+                  'py-2 ml-5 whitespace-nowrap',
                   currentTab === 'qr'
-                    ? 'border-b-2 border-black rounded-none shadow-none dark:text-black'
+                    ? 'border-b-2 dark:border-cyan-500 rounded-none shadow-none dark:text-cyan-400'
                     : '',
                   'cursor-pointer',
                 ]"
@@ -160,7 +166,9 @@
               <div class="mt-6 text-center">
                 <p class="text-gray-600">
                   Don't have an account?
-                  <NuxtLink to="/register" class="text-black font-medium"
+                  <NuxtLink
+                    to="/register"
+                    class="text-black dark:text-gray-400 font-medium"
                     >Sign up</NuxtLink
                   >
                 </p>
@@ -188,9 +196,11 @@
                 </div>
               </div>
               <div class="mt-6 text-center">
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-400">
                   Don't have an account?
-                  <NuxtLink to="/register" class="text-black font-medium"
+                  <NuxtLink
+                    to="/register"
+                    class="text-black dark:text-gray-400 font-medium"
                     >Sign up</NuxtLink
                   >
                 </p>
@@ -203,7 +213,12 @@
             <p>
               This site is protected by Google reCAPTCHA to ensure you’re not a
               bot.
-              <a href="#" class="text-black underline">Learn more</a>
+              <NuxtLink
+                to="/privacy"
+                class="text-black dark:text-gray-400 underline"
+              >
+                Learn more
+              </NuxtLink>
             </p>
           </div>
         </div>
