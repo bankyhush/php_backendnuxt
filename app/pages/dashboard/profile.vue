@@ -91,8 +91,10 @@ try {
             </div>
           </div>
           <div>
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-              Account Settings
+            <h1
+              class="whitespace-nowrap text-2xl font-bold text-gray-900 dark:text-white"
+            >
+              Profile Settings
             </h1>
             <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
               Manage your personal information and preferences
@@ -137,15 +139,21 @@ try {
               </span>
               <span
                 :class="[
-                  data?.user?.kycStatus === 'Verified'
+                  data?.user?.kyc_status === 'true'
                     ? 'text-green-500'
-                    : data?.user?.kycStatus === 'Pending'
-                    ? 'text-yellow-500'
-                    : 'text-gray-400',
+                    : data?.user?.kyc_status === 'false'
+                    ? 'text-red-400'
+                    : 'text-amber-600',
                   'font-semibold',
                 ]"
               >
-                {{ data?.user?.kycStatus || "Not Verified" }}
+                {{
+                  data?.user?.kyc_status === "true"
+                    ? "Verified"
+                    : data?.user?.kyc_status === "false"
+                    ? "Not Verified"
+                    : "Pending"
+                }}
               </span>
             </div>
             <div>
@@ -172,7 +180,7 @@ try {
             <div>
               <p class="text-gray-500 dark:text-gray-400">Phone</p>
               <span class="text-gray-800 dark:text-gray-100 font-medium">
-                {{ data?.user?.phoneNumber || "Not Provided" }}
+                {{ data?.user?.phone || "Not Provided" }}
               </span>
             </div>
             <div>
@@ -191,16 +199,31 @@ try {
 
           <!-- Actions -->
           <div class="flex justify-between items-center mt-8">
-            <NuxtLink to="/dashboard/profile/edit">
+            <NuxtLink to="/dashboard/editprofile">
               <button
-                class="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2 px-5 rounded-md transition duration-200 shadow-md dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-black"
+                class="cursor-pointer flex justify-center items-center gap-1 bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2 px-5 rounded-md transition duration-200 shadow-md dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-black"
               >
+                <Icon name="nimbus:edit" width="16" height="16" />
                 Edit Profile
               </button>
             </NuxtLink>
-
-            <LogoutButton />
           </div>
+          <NuxtLink
+            to="/dashboard/kyc"
+            v-if="data?.user?.kyc_status !== 'true'"
+          >
+            <button
+              class="flex justify-center items-center gap-1 mt-3 cursor-pointer bg-red-400 hover:bg-red-500 text-white font-semibold py-2 px-5 rounded-md transition duration-200 shadow-md"
+            >
+              <Icon
+                name="hugeicons:user-id-verification"
+                width="24"
+                height="24"
+                class="font-bold"
+              />
+              Verification
+            </button>
+          </NuxtLink>
         </section>
       </div>
     </div>

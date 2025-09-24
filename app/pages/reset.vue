@@ -197,7 +197,6 @@ const resetPassword = async () => {
 
     if (response.success) {
       successMessage.value = response.message;
-      // Redirect to login after 3 seconds
 
       setTimeout(() => {
         navigateTo("/login");
