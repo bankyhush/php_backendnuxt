@@ -297,6 +297,7 @@ const clearPreview = (type) => {
         <div class="text-right">
           <button
             type="submit"
+            :disabled="loading"
             class="flex justify-center items-center gap-1 cursor-pointer bg-[#202020] text-white font-medium py-2 px-6 rounded-md dark:bg-white dark:text-black dark:hover:bg-gray-200 hover:bg-black transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Icon name="hugeicons:security-lock" width="24" height="24" />
