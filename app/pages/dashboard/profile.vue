@@ -213,6 +213,7 @@ try {
             v-if="data?.user?.kyc_status !== 'true'"
           >
             <button
+              :disabled="data?.user?.kyc_status === 'pending'"
               class="flex justify-center items-center gap-1 mt-3 cursor-pointer bg-red-400 hover:bg-red-500 text-white font-semibold py-2 px-5 rounded-md transition duration-200 shadow-md"
             >
               <Icon
