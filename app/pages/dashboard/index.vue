@@ -16,6 +16,35 @@ const tabs = [
   { name: "Order center", active: false },
   { name: "Account statement", active: false },
 ];
+
+const config = useRuntimeConfig();
+
+// Create loading delay manually
+const data = ref(null);
+const error = ref(null);
+const isPending = ref(true);
+
+try {
+  const response = await useFetch(`${config.public.apiBase}/user/profile.php`, {
+    credentials: "include",
+  });
+
+  // Artificial delay for skeleton (e.g., 800ms)
+
+  data.value = response.data.value;
+  error.value = response.error.value;
+  isPending.value = false;
+} catch (err) {
+  error.value = err;
+  isPending.value = false;
+}
+
+function formatCurrency(value) {
+  return Number(value || 0).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
 </script>
 
 <template>
@@ -243,6 +272,7 @@ const tabs = [
                 </div>
               </div>
             </div>
+
             <!-- Right Bar SIde  -->
             <div class="lg:col-span-1 space-y-6">
               <!-- Allocation Section -->
@@ -276,46 +306,21 @@ const tabs = [
                     ></div>
                   </div>
 
-                  <!-- Dummy allocation items -->
-                  <div
-                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
-                  >
-                    <div class="flex items-center">
-                      <div class="w-2 h-2 rounded-full bg-red-500 mr-2"></div>
-                      <span class="text-gray-400">Stocks</span>
-                    </div>
-                    <div class="flex items-center">
-                      <span class="text-right">$12,000</span>
-                      <span class="text-xs text-gray-500 ml-1">40.0%</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="text-gray-400 ml-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-
                   <div
                     class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
                     <div class="flex items-center">
                       <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
-                      <span class="text-gray-700">Bonds</span>
+                      <span class="text-gray-700 dark:text-gray-200"
+                        >Deposit Balance</span
+                      >
                     </div>
                     <div class="flex items-center">
-                      <span class="text-right">$9,000</span>
-                      <span class="text-xs text-gray-500 ml-1">30.0%</span>
+                      <span class="text-right">
+                        {{ data?.user?.currency || "$"
+                        }}{{ formatCurrency(data?.user?.deposit) }}
+                      </span>
+
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="text-gray-400 ml-2"
@@ -340,11 +345,16 @@ const tabs = [
                   >
                     <div class="flex items-center">
                       <div class="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                      <span class="text-gray-700">Real Estate</span>
+                      <span class="text-gray-700 dark:text-gray-200"
+                        >Profit Balance</span
+                      >
                     </div>
                     <div class="flex items-center">
-                      <span class="text-right">$6,000</span>
-                      <span class="text-xs text-gray-500 ml-1">20.0%</span>
+                      <span class="text-right">
+                        {{ data?.user?.currency || "$"
+                        }}{{ formatCurrency(data?.user?.profit) }}</span
+                      >
+
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="text-gray-400 ml-2"
@@ -371,11 +381,50 @@ const tabs = [
                       <div
                         class="w-2 h-2 rounded-full bg-yellow-500 mr-2"
                       ></div>
-                      <span class="text-gray-700">Cash</span>
+                      <span class="text-gray-700 dark:text-gray-200"
+                        >Bonus Balance</span
+                      >
                     </div>
                     <div class="flex items-center">
-                      <span class="text-right">$3,000</span>
-                      <span class="text-xs text-gray-500 ml-1">10.0%</span>
+                      <span class="text-right">
+                        {{ data?.user?.currency || "$"
+                        }}{{ formatCurrency(data?.user?.bonus) }}</span
+                      >
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="text-gray-400 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Dummy allocation items -->
+                  <div
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
+                  >
+                    <div class="flex items-center">
+                      <div class="w-2 h-2 rounded-full bg-red-500 mr-2"></div>
+                      <span class="text-gray-700 dark:text-gray-200"
+                        >Payout Balance</span
+                      >
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-right">
+                        {{ data?.user?.currency || "$"
+                        }}{{ formatCurrency(data?.user?.withdrawal) }}
+                      </span>
+
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="text-gray-400 ml-2"
