@@ -36,7 +36,7 @@ try {
     >
       <!-- Skeleton -->
       <div v-if="isPending" class="space-y-6 animate-pulse">
-        <div class="h-8 bg-gray-300 dark:bg-[#171717] w-2/3 rounded"></div>
+        <div class="h-8 bg-gray-200 dark:bg-[#171717] w-2/3 rounded"></div>
         <div class="h-6 bg-gray-200 dark:bg-[#171717] w-1/2 rounded"></div>
         <div class="h-48 bg-gray-200 dark:bg-[#171717] rounded-lg"></div>
         <div class="h-48 bg-gray-200 dark:bg-[#171717] rounded-lg"></div>

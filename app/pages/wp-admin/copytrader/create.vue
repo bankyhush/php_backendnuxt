@@ -75,8 +75,6 @@ const createCopytrader = async () => {
       <h1 class="text-3xl font-bold text-white mt-2">Create New Copytrader</h1>
     </div>
 
-    
-
     <div class="bg-gray-800 rounded-lg p-6">
       <form
         @submit.prevent="createCopytrader"
@@ -109,38 +107,39 @@ const createCopytrader = async () => {
             >Photo URL</label
           >
 
-          <p class="text-sm text-gray-400 mb-2">
-    Upload your image to one of the free image hosts below, then paste the image **direct URL** (ends in .jpg, .png, etc):
-    <ul class="list-disc list-inside text-blue-400 mt-1 space-y-1">
-      <li>
-        <a
-          href="https://imgbb.com/"
-          target="_blank"
-          rel="noopener"
-          class="hover:underline"
-          >imgbb.com</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://postimages.org/"
-          target="_blank"
-          rel="noopener"
-          class="hover:underline"
-          >postimages.org</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://imgur.com/upload"
-          target="_blank"
-          rel="noopener"
-          class="hover:underline"
-          >Imgur (free dev)</a
-        >
-      </li>
-    </ul>
-  </p>
+          <span class="text-sm text-gray-400 mb-2">
+            Upload your image to one of the free image hosts below, then paste
+            the image **direct URL** (ends in .jpg, .png, etc):
+            <ul class="list-disc list-inside text-blue-400 mt-1 space-y-1">
+              <li>
+                <a
+                  href="https://imgbb.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >imgbb.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://postimages.org/"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >postimages.org</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://imgur.com/upload"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >Imgur (free dev)</a
+                >
+              </li>
+            </ul>
+          </span>
 
           <br />
           <input
@@ -355,17 +354,17 @@ const createCopytrader = async () => {
         </div>
 
         <!-- Message Alert -->
-    <div
-      v-if="message.text"
-      :class="[
-        'p-4 rounded-md mb-6',
-        message.type === 'success'
-          ? 'bg-green-500 text-white'
-          : 'bg-red-500 text-white',
-      ]"
-    >
-      {{ message.text }}
-    </div>
+        <div
+          v-if="message.text"
+          :class="[
+            'p-4 rounded-md mb-6',
+            message.type === 'success'
+              ? 'bg-green-500 text-white'
+              : 'bg-red-500 text-white',
+          ]"
+        >
+          {{ message.text }}
+        </div>
 
         <!-- Submit Buttons -->
         <div class="md:col-span-2 flex gap-4 pt-6 border-t border-gray-700">

@@ -17,7 +17,7 @@
 
     <section>
       <div
-        class="text-xl fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-[#d8d4d48b] py-3 px-6 flex justify-around text-black md:hidden dark:bg-[#202020] dark:text-white"
+        class="text-xl fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-[#d8d4d48b] py-3 px-6 flex justify-around font-medium text-black md:hidden dark:bg-[#202020] dark:text-white"
         style="z-index: 1000"
       >
         <NuxtLink to="/dashboard" :class="navItemClass('/dashboard')">

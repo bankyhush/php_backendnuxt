@@ -46,7 +46,7 @@ onMounted(async () => {
     );
 
     if (res && res.success && res.copytrader) {
-      const ct = res.copytrader; 
+      const ct = res.copytrader;
       form.value = {
         name: ct.name ?? "",
         photo: ct.photo ?? "",
@@ -111,7 +111,10 @@ const updateCopytrader = async () => {
 <template>
   <div class="max-w-4xl mx-auto">
     <div class="mb-6">
-      <NuxtLink to="/wp-admin/copytrader" class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+      <NuxtLink
+        to="/wp-admin/copytrader"
+        class="text-blue-400 hover:text-blue-300 flex items-center gap-2"
+      >
         ← Back to Copytraders
       </NuxtLink>
       <h1 class="text-3xl font-bold text-white mt-2">Edit Copytrader</h1>
@@ -122,21 +125,30 @@ const updateCopytrader = async () => {
       v-if="message.text"
       :class="[
         'p-4 rounded-md mb-6',
-        message.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white',
+        message.type === 'success'
+          ? 'bg-green-500 text-white'
+          : 'bg-red-500 text-white',
       ]"
     >
       {{ message.text }}
     </div>
 
     <div class="bg-gray-800 rounded-lg p-6">
-      <form @submit.prevent="updateCopytrader" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form
+        @submit.prevent="updateCopytrader"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
         <!-- Basic Information -->
         <div class="md:col-span-2">
-          <h2 class="text-xl font-semibold text-white mb-4">Basic Information</h2>
+          <h2 class="text-xl font-semibold text-white mb-4">
+            Basic Information
+          </h2>
         </div>
 
         <div class="md:col-span-2">
-          <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name *</label>
+          <label for="name" class="block text-sm font-medium text-gray-300 mb-2"
+            >Name *</label
+          >
           <input
             id="name"
             v-model="form.name"
@@ -147,17 +159,46 @@ const updateCopytrader = async () => {
         </div>
 
         <div class="md:col-span-2">
-          <label for="photo" class="block text-sm font-medium text-gray-300 mb-2">Photo URL</label>
-          <p class="text-sm text-gray-400 mb-2">
-            Upload your image to one of the free image hosts below, then paste the image **direct URL** (ends in .jpg, .png, etc):
+          <label
+            for="photo"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Photo URL</label
+          >
+          <span class="text-sm text-gray-400 mb-2">
+            Upload your image to one of the free image hosts below, then paste
+            the image **direct URL** (ends in .jpg, .png, etc):
             <ul class="list-disc list-inside text-blue-400 mt-1 space-y-1">
-              <li><a href="https://imgbb.com/" target="_blank" rel="noopener" class="hover:underline">imgbb.com</a></li>
-              <li><a href="https://postimages.org/" target="_blank" rel="noopener" class="hover:underline">postimages.org</a></li>
-              <li><a href="https://imgur.com/upload" target="_blank" rel="noopener" class="hover:underline">Imgur (free dev)</a></li>
+              <li>
+                <a
+                  href="https://imgbb.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >imgbb.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://postimages.org/"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >postimages.org</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://imgur.com/upload"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                  >Imgur (free dev)</a
+                >
+              </li>
             </ul>
-          </p>
-          <br/>
-        <img :src="form.photo" v-if="form.photo" class="w-20 h-20 mb-5" />
+          </span>
+          <br />
+          <img :src="form.photo" v-if="form.photo" class="w-20 h-20 mb-5" />
 
           <input
             id="photo"
@@ -170,7 +211,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div class="md:col-span-2">
-          <label for="strategy_desc" class="block text-sm font-medium text-gray-300 mb-2">Strategy Description *</label>
+          <label
+            for="strategy_desc"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Strategy Description *</label
+          >
           <textarea
             id="strategy_desc"
             v-model="form.strategy_desc"
@@ -186,7 +231,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="notrades" class="block text-sm font-medium text-gray-300 mb-2">Number of Trades</label>
+          <label
+            for="notrades"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Number of Trades</label
+          >
           <input
             id="notrades"
             v-model="form.notrades"
@@ -197,7 +246,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="nocopiers" class="block text-sm font-medium text-gray-300 mb-2">Number of Copiers</label>
+          <label
+            for="nocopiers"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Number of Copiers</label
+          >
           <input
             id="nocopiers"
             v-model="form.nocopiers"
@@ -208,7 +261,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="nowins" class="block text-sm font-medium text-gray-300 mb-2">Number of Wins</label>
+          <label
+            for="nowins"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Number of Wins</label
+          >
           <input
             id="nowins"
             v-model="form.nowins"
@@ -219,7 +276,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="noloss" class="block text-sm font-medium text-gray-300 mb-2">Number of Loss</label>
+          <label
+            for="noloss"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Number of Loss</label
+          >
           <input
             id="noloss"
             v-model="form.noloss"
@@ -235,7 +296,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="profit" class="block text-sm font-medium text-gray-300 mb-2">Profit ($)</label>
+          <label
+            for="profit"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Profit ($)</label
+          >
           <input
             id="profit"
             v-model="form.profit"
@@ -246,7 +311,9 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="loss" class="block text-sm font-medium text-gray-300 mb-2">Loss ($)</label>
+          <label for="loss" class="block text-sm font-medium text-gray-300 mb-2"
+            >Loss ($)</label
+          >
           <input
             id="loss"
             v-model="form.loss"
@@ -257,7 +324,9 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="rank" class="block text-sm font-medium text-gray-300 mb-2">Rank</label>
+          <label for="rank" class="block text-sm font-medium text-gray-300 mb-2"
+            >Rank</label
+          >
           <input
             id="rank"
             v-model="form.rank"
@@ -268,7 +337,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="commision" class="block text-sm font-medium text-gray-300 mb-2">Commission (%)</label>
+          <label
+            for="commision"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Commission (%)</label
+          >
           <input
             id="commision"
             v-model.number="form.commision"
@@ -286,7 +359,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="status" class="block text-sm font-medium text-gray-300 mb-2">Status</label>
+          <label
+            for="status"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Status</label
+          >
           <select
             id="status"
             v-model="form.status"
@@ -298,7 +375,11 @@ const updateCopytrader = async () => {
         </div>
 
         <div>
-          <label for="edate" class="block text-sm font-medium text-gray-300 mb-2">Expiration Date</label>
+          <label
+            for="edate"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Expiration Date</label
+          >
           <input
             id="edate"
             v-model="form.edate"
@@ -307,16 +388,18 @@ const updateCopytrader = async () => {
           />
         </div>
 
-         <!-- Message Alert -->
-    <div
-      v-if="message.text"
-      :class="[
-        'p-4 rounded-md mb-6',
-        message.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white',
-      ]"
-    >
-      {{ message.text }}
-    </div>
+        <!-- Message Alert -->
+        <div
+          v-if="message.text"
+          :class="[
+            'p-4 rounded-md mb-6',
+            message.type === 'success'
+              ? 'bg-green-500 text-white'
+              : 'bg-red-500 text-white',
+          ]"
+        >
+          {{ message.text }}
+        </div>
 
         <div class="md:col-span-2 flex gap-4 pt-6 border-t border-gray-700">
           <button
