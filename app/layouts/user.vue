@@ -117,8 +117,8 @@ const route = useRoute();
 
 const navItemClass = (path) => {
   if (route.path === path) {
-    return "transition-all duration-200 ease-in-out font-bold text-cyan-400 dark:text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,255,0.6)] hover:scale-110 hover:drop-shadow-lg";
+    return "transition-all duration-200 ease-in-out font-bold text-gray-400 dark:text-gray-400 drop-shadow-[0_0_10px_rgba(0,255,255,0.6)] hover:scale-110 hover:drop-shadow-lg";
   }
-  return "transition-all duration-200 ease-in-out font-semibold text-black dark:text-white hover:text-cyan-400 hover:scale-110 hover:drop-shadow-lg";
+  return "transition-all duration-200 ease-in-out font-mono text-black dark:text-white hover:text-gray-400 hover:scale-110 hover:drop-shadow-lg";
 };
 </script>

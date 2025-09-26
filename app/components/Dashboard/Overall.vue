@@ -42,7 +42,7 @@
     <div v-else>
       <div class="flex items-center mb-2">
         <h2 class="text-sm text-[#beb8b8] mr-2">Estimated total value</h2>
-        <Icon name="lucide:info" class="w-4 h-4 text-[#beb8b8]" />
+        <!-- Optional: Icon -->
       </div>
 
       <div class="flex items-baseline mb-1">
@@ -50,68 +50,63 @@
           ${{ formatNumber(balances.total_value) }}
         </h1>
         <span class="text-[#beb8b8] text-sm">USD</span>
+        <!-- Overall total coin balance -->
       </div>
 
       <div class="mb-8 text-sm">
-        <span class="mr-1">Balances:</span>
+        <span class="mr-1">Available's W/L:</span>
         <span class="text-green-500">
           ${{ formatNumber(balances.available_value) }}
-          <!-- Available Balance -->
-          <span class="text-red-500 ml-2">
-            <!-- On Order Balance -->
-            (${{ formatNumber(balances.on_order_value) }} on order)
-          </span>
+          <!-- Overall total coin available balance -->
+          <span class="text-red-500"
+            ><!-- Overall total coin on_order balance -->
+            (-${{ formatNumber(balances.on_order_value) }})</span
+          >
         </span>
       </div>
 
-      <!-- Detailed Breakdown (Optional - can be hidden/show on click) -->
-      <div class="mb-4 p-3 bg-gray-50 dark:bg-[#303030] rounded-lg text-xs">
-        <div class="grid grid-cols-3 gap-2 text-center">
-          <div>
-            <div class="text-[#beb8b8]">Available</div>
-            <div class="font-medium">
-              ${{ formatNumber(balances.available_value) }}
-            </div>
-          </div>
-          <div>
-            <div class="text-[#beb8b8]">On Order</div>
-            <div class="font-medium">
-              ${{ formatNumber(balances.on_order_value) }}
-            </div>
-          </div>
-          <div>
-            <div class="text-[#beb8b8]">Staked</div>
-            <div class="font-medium">
-              ${{ formatNumber(balances.staked_value) }}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="flex flex-wrap gap-2 rounded-lg text-center justify-center items-center"
-      >
-        <NuxtLink to="/dashboard/deposit/1">
+      <div class="flex flex-wrap gap-2 rounded-lg">
+        <!-- Button 1 -->
+        <NuxtLink to="/dashboard/deposit/1" class="w-[32%] sm:w-auto">
           <button
-            class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
+            <Icon name="fluent-mdl2:add-to" width="2048" height="2048" />
             Deposit
           </button>
         </NuxtLink>
 
-        <NuxtLink to="/dashboard/convert">
+        <!-- Button 2 -->
+        <NuxtLink to="/dashboard/transfer/1" class="w-[32%] sm:w-auto">
           <button
-            class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
-            transfer
+            <Icon
+              name="solar:round-transfer-diagonal-broken"
+              width="24"
+              height="24"
+            />
+            Transfer
           </button>
         </NuxtLink>
 
-        <NuxtLink to="/dashboard/withdraw/1">
+        <!-- Button 3 -->
+        <NuxtLink to="/dashboard/withdraw/1" class="w-[32%] sm:w-auto">
           <button
-            class="cursor-pointer bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
+            <Icon name="icons8:minus" width="32" height="32" />
             Withdraw
+          </button>
+        </NuxtLink>
+
+        <!-- Button 4 (Hidden on mobile) -->
+        <NuxtLink to="/dashboard/exchange" class="hidden sm:block sm:w-auto">
+          <button
+            class="flex items-center gap-1 justify-center bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+          >
+            <Icon name="hugeicons:coins-swap" width="24" height="24" />
+            Convert
           </button>
         </NuxtLink>
       </div>

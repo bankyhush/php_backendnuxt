@@ -1,345 +1,448 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-[#171717] py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Back Button -->
-      <div class="mb-6">
-        <button
-          @click="goBack"
-          class="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-        >
-          <Icon name="lucide:arrow-left" class="w-5 h-5 mr-2" />
-          Back to Assets
-        </button>
-      </div>
-
-      <!-- Loading Skeleton -->
+  <div
+    class="min-h-screen bg-gray-50 dark:bg-background/50 py-10 px-4 text-gray-900 dark:text-gray-100 mb-14"
+  >
+    <div class="max-w-6xl mx-auto">
+      <!-- Loading Skeleton with 800ms delay -->
       <div v-if="loading" class="animate-pulse">
-        <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6 mb-6">
-          <div class="flex items-center space-x-4 mb-6">
+        <!-- Back Button Skeleton -->
+        <div class="mb-6">
+          <div class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        </div>
+
+        <!-- Header Skeleton -->
+        <div class="mb-8 flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full"
+          ></div>
+          <div>
             <div
-              class="w-12 h-12 bg-gray-200 dark:bg-[#303030] rounded-full"
+              class="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-2"
             ></div>
-            <div>
-              <div
-                class="h-6 bg-gray-200 dark:bg-[#303030] rounded w-32 mb-2"
-              ></div>
-              <div class="h-4 bg-gray-200 dark:bg-[#303030] rounded w-24"></div>
+            <div class="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          </div>
+        </div>
+
+        <!-- Portfolio Value Skeleton -->
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 mb-8">
+          <div class="h-4 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+          <div class="h-8 w-40 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+          <div class="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        </div>
+
+        <!-- Actions Skeleton -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <div
+            v-for="n in 4"
+            :key="n"
+            class="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg"
+          ></div>
+        </div>
+
+        <!-- Main Content Skeleton -->
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Asset Summary Skeleton -->
+          <div
+            class="lg:col-span-2 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm"
+          >
+            <div
+              class="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+            ></div>
+            <div class="space-y-2">
+              <div class="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div class="h-4 w-40 bg-gray-200 dark:bg-gray-700 rounded"></div>
             </div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <!-- Allocation Skeleton -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
             <div
-              v-for="n in 4"
-              :key="n"
-              class="bg-gray-100 dark:bg-[#303030] rounded-lg p-4"
-            >
+              class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+            ></div>
+            <div
+              class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-4"
+            ></div>
+            <div class="space-y-2">
               <div
-                class="h-4 bg-gray-200 dark:bg-[#404040] rounded w-3/4 mb-2"
+                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
               ></div>
               <div
-                class="h-6 bg-gray-200 dark:bg-[#404040] rounded w-1/2"
+                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
+              ></div>
+              <div
+                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
               ></div>
             </div>
           </div>
         </div>
 
-        <!-- Chart Skeleton -->
-        <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-          <div class="h-64 bg-gray-200 dark:bg-[#303030] rounded"></div>
+        <!-- Tabs Skeleton -->
+        <div class="mt-10">
+          <div class="flex gap-6 mb-6">
+            <div
+              v-for="n in 2"
+              :key="n"
+              class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded"
+            ></div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm h-64"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Content when data is loaded -->
+      <div v-else-if="coinData">
+        <!-- Back Button -->
+        <div class="mb-6">
+          <button
+            @click="goBack"
+            class="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            <Icon name="lucide:arrow-left" class="w-5 h-5 mr-2" />
+            Back to Assets
+          </button>
+        </div>
+
+        <!-- HEADER -->
+        <div class="mb-8 flex items-center space-x-3">
+          <img
+            v-if="coinData.photo"
+            :src="coinData.photo"
+            :alt="`${coinData.coin_name} logo`"
+            class="w-10 h-10 rounded-full object-cover"
+          />
+          <div
+            v-else
+            class="w-10 h-10 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center font-bold text-lg"
+          >
+            {{ coinData.coin_name?.charAt(0) ?? "?" }}
+          </div>
+          <div>
+            <h1 class="text-xl font-semibold">{{ coinData.coin_name }}</h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400 uppercase">
+              {{ coinData.coin_title }}
+            </p>
+          </div>
+        </div>
+
+        <!-- PORTFOLIO VALUE -->
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 mb-8">
+          <div class="flex justify-between items-center mb-2">
+            <h2 class="text-sm text-gray-500 dark:text-gray-400">
+              Available Value
+            </h2>
+          </div>
+          <div class="flex items-end space-x-2">
+            <h1 class="text-3xl font-bold">
+              ${{ formatNumber(coinData.available_value) }}
+            </h1>
+          </div>
+          <div class="text-sm mt-1">
+            <span class="text-orange-500 dark:text-orange-400 mr-1"
+              >Total Portfolio:</span
+            >
+            <span class="text-orange-600 dark:text-orange-500 font-medium">
+              ${{ formatNumber(coinData.total_value) }}
+            </span>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <NuxtLink
+            :to="`/dashboard/deposit/${coinId}`"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+          >
+            <Icon
+              name="lucide:download"
+              class="mr-2 text-gray-600 dark:text-gray-300"
+            />
+            Deposit
+          </NuxtLink>
+
+          <NuxtLink
+            :to="`/dashboard/withdraw/${coinId}`"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+          >
+            <Icon
+              name="lucide:upload"
+              class="mr-2 text-gray-600 dark:text-gray-300"
+            />
+            Withdraw
+          </NuxtLink>
+
+          <NuxtLink
+            to="/dashboard/convert"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+          >
+            <Icon
+              name="lucide:bar-chart"
+              class="mr-2 text-gray-600 dark:text-gray-300"
+            />
+            Convert
+          </NuxtLink>
+
+          <NuxtLink
+            to="/support"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+          >
+            <Icon
+              name="lucide:bell"
+              class="mr-2 text-gray-600 dark:text-gray-300"
+            />
+            Support
+          </NuxtLink>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Asset Summary -->
+          <div
+            class="lg:col-span-2 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm"
+          >
+            <h3 class="text-lg font-semibold mb-4">Asset Summary</h3>
+            <div class="space-y-3">
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                <span class="font-medium">Available Balance:</span>
+                {{ formatNumber(coinData.available_balance, 6) }}
+                {{ coinData.coin_name }} (${{
+                  formatNumber(coinData.available_value)
+                }})
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                <span class="font-medium">On Order:</span>
+                {{ formatNumber(coinData.on_order_balance, 6) }}
+                {{ coinData.coin_name }} (${{
+                  formatNumber(coinData.on_order_value)
+                }})
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                <span class="font-medium">Staked:</span>
+                {{ formatNumber(coinData.staked_balance, 6) }}
+                {{ coinData.coin_name }} (${{
+                  formatNumber(coinData.staked_value)
+                }})
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                <span class="font-medium">Spot Price:</span> ${{
+                  formatNumber(coinData.coin_rate)
+                }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Allocation -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold mb-4">Allocation</h3>
+
+            <!-- Pie Chart Visualization -->
+            <div class="relative w-32 h-32 mx-auto mb-4">
+              <svg width="128" height="128" viewBox="0 0 42 42" class="donut">
+                <!-- Available Balance -->
+                <circle
+                  cx="21"
+                  cy="21"
+                  r="15.915"
+                  fill="transparent"
+                  stroke="#10B981"
+                  stroke-width="3"
+                  :stroke-dasharray="`${availablePercentage} ${
+                    100 - availablePercentage
+                  }`"
+                  stroke-dashoffset="25"
+                />
+                <!-- On Order Balance -->
+                <circle
+                  cx="21"
+                  cy="21"
+                  r="15.915"
+                  fill="transparent"
+                  stroke="#3B82F6"
+                  stroke-width="3"
+                  :stroke-dasharray="`${onOrderPercentage} ${
+                    100 - onOrderPercentage
+                  }`"
+                  :stroke-dashoffset="25 - availablePercentage"
+                />
+                <!-- Staked Balance -->
+                <circle
+                  cx="21"
+                  cy="21"
+                  r="15.915"
+                  fill="transparent"
+                  stroke="#8B5CF6"
+                  stroke-width="3"
+                  :stroke-dasharray="`${stakedPercentage} ${
+                    100 - stakedPercentage
+                  }`"
+                  :stroke-dashoffset="
+                    25 - (availablePercentage + onOrderPercentage)
+                  "
+                />
+              </svg>
+            </div>
+
+            <div class="space-y-2">
+              <div
+                class="flex justify-between text-sm text-gray-700 dark:text-gray-300"
+              >
+                <span class="flex items-center">
+                  <div class="w-3 h-3 bg-green-500 rounded mr-2"></div>
+                  Available
+                </span>
+                <span>{{ availablePercentage.toFixed(1) }}%</span>
+              </div>
+              <div
+                class="flex justify-between text-sm text-gray-700 dark:text-gray-300"
+              >
+                <span class="flex items-center">
+                  <div class="w-3 h-3 bg-blue-500 rounded mr-2"></div>
+                  On Order
+                </span>
+                <span>{{ onOrderPercentage.toFixed(1) }}%</span>
+              </div>
+              <div
+                class="flex justify-between text-sm text-gray-700 dark:text-gray-300"
+              >
+                <span class="flex items-center">
+                  <div class="w-3 h-3 bg-purple-500 rounded mr-2"></div>
+                  Staked
+                </span>
+                <span>{{ stakedPercentage.toFixed(1) }}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="mt-10">
+          <div
+            class="flex gap-6 border-b border-gray-300 dark:border-gray-700 pb-2 mb-6"
+          >
+            <button
+              v-for="tab in ['history', 'about']"
+              :key="tab"
+              @click="activeTab = tab"
+              :class="[
+                'text-sm font-medium pb-2',
+                activeTab === tab
+                  ? 'text-indigo-600 border-b-2 border-indigo-600'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400',
+              ]"
+            >
+              {{ tab === "history" ? "Recent History" : "About Coin" }}
+            </button>
+          </div>
+
+          <template v-if="activeTab === 'history'">
+            <!-- Search -->
+            <div class="relative mb-4 max-w-md">
+              <input
+                type="text"
+                placeholder="Search transaction type..."
+                class="w-full border border-gray-300 dark:border-gray-700 px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-gray-900 dark:text-gray-100"
+                v-model="searchTerm"
+              />
+              <Icon
+                name="lucide:search"
+                class="absolute left-3 top-2.5 text-gray-400 dark:text-gray-500"
+              />
+            </div>
+
+            <!-- Transactions -->
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+              <h3
+                class="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100"
+              >
+                Recent Transactions
+              </h3>
+              <p
+                v-if="filteredTransactions.length === 0"
+                class="text-sm text-gray-500 dark:text-gray-400"
+              >
+                No transactions found.
+              </p>
+              <div v-else class="space-y-3">
+                <div
+                  v-for="transaction in filteredTransactions"
+                  :key="transaction.id"
+                  class="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
+                >
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                    >
+                      <Icon
+                        :name="getTransactionIcon(transaction.type)"
+                        class="w-4 h-4"
+                      />
+                    </div>
+                    <div>
+                      <div class="font-medium capitalize">
+                        {{ transaction.type }}
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        {{ formatDate(transaction.createdAt) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div
+                      :class="[
+                        'font-medium',
+                        transaction.amount >= 0
+                          ? 'text-green-600'
+                          : 'text-red-600',
+                      ]"
+                    >
+                      {{ transaction.amount >= 0 ? "+" : ""
+                      }}{{ formatNumber(transaction.amount) }}
+                      {{ coinData.coin_name }}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{ transaction.status }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template v-else>
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+              <h3
+                class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100"
+              >
+                About {{ coinData.coin_name }}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                {{ coinData.coin_title }} is a cryptocurrency currently trading
+                at ${{ formatNumber(coinData.coin_rate) }}. Your current
+                holdings include
+                {{ formatNumber(coinData.available_balance, 6) }} available,
+                {{ formatNumber(coinData.on_order_balance, 6) }} on order, and
+                {{ formatNumber(coinData.staked_balance, 6) }} staked.
+              </p>
+            </div>
+          </template>
         </div>
       </div>
 
       <!-- Error State -->
-      <div
-        v-else-if="error"
-        class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-8 text-center"
-      >
+      <div v-else class="text-center py-20">
         <Icon
           name="lucide:alert-circle"
           class="w-16 h-16 text-red-500 mx-auto mb-4"
         />
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-          Error Loading Portfolio
-        </h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">
-          Please try refreshing the page, or come back later. If the problem
-          persists, contact our support team.
-        </p>
+        <h2 class="text-xl font-semibold mb-2">Error Loading Portfolio</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ error }}</p>
         <button
           @click="fetchCoinDetails"
           class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors"
         >
           Try Again
         </button>
-      </div>
-
-      <!-- Coin Details -->
-      <div v-else-if="coin" class="space-y-6">
-        <!-- Header Card -->
-        <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-              <div
-                v-if="coin.photo"
-                class="w-12 h-12 rounded-full overflow-hidden"
-              >
-                <img
-                  :src="coin.photo"
-                  :alt="coin.coin_name"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div
-                v-else
-                class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg bg-[#23292F] text-white"
-              >
-                {{ coin.coin_name.charAt(0).toUpperCase() }}
-              </div>
-              <div>
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                  {{ coin.coin_title }}
-                </h1>
-                <p class="text-gray-600 dark:text-gray-300">
-                  {{ coin.coin_name }} • ${{ formatNumber(coin.coin_rate) }}
-                </p>
-              </div>
-            </div>
-            <div class="text-right">
-              <div class="text-2xl font-bold text-gray-900 dark:text-white">
-                ${{ formatNumber(coin.total_value) }}
-              </div>
-              <div class="text-gray-600 dark:text-gray-300">Total Value</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Balance Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Available Balance -->
-          <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Available
-              </h3>
-              <Icon name="lucide:wallet" class="w-6 h-6 text-green-500" />
-            </div>
-            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-              {{ formatNumber(coin.available_balance, 6) }}
-            </div>
-            <div class="text-lg text-gray-600 dark:text-gray-300">
-              ${{ formatNumber(coin.available_balance * coin.coin_rate) }}
-            </div>
-            <div class="mt-3 text-sm text-green-500">Ready to trade</div>
-          </div>
-
-          <!-- On Order Balance -->
-          <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                On Order
-              </h3>
-              <Icon name="lucide:shopping-cart" class="w-6 h-6 text-blue-500" />
-            </div>
-            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-              {{ formatNumber(coin.on_order_balance, 6) }}
-            </div>
-            <div class="text-lg text-gray-600 dark:text-gray-300">
-              ${{ formatNumber(coin.on_order_balance * coin.coin_rate) }}
-            </div>
-            <div class="mt-3 text-sm text-blue-500">In active orders</div>
-          </div>
-
-          <!-- Staked Balance -->
-          <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Staked
-              </h3>
-              <Icon name="lucide:lock" class="w-6 h-6 text-purple-500" />
-            </div>
-            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-              {{ formatNumber(coin.staked_balance, 6) }}
-            </div>
-            <div class="text-lg text-gray-600 dark:text-gray-300">
-              ${{ formatNumber(coin.staked_balance * coin.coin_rate) }}
-            </div>
-            <div class="mt-3 text-sm text-purple-500">Earning rewards</div>
-          </div>
-
-          <!-- Total Balance -->
-          <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Total
-              </h3>
-              <Icon name="lucide:pie-chart" class="w-6 h-6 text-orange-500" />
-            </div>
-            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-              {{ formatNumber(coin.total_balance, 6) }}
-            </div>
-            <div class="text-lg text-gray-600 dark:text-gray-300">
-              ${{ formatNumber(coin.total_value) }}
-            </div>
-            <div class="mt-3 text-sm text-orange-500">All holdings</div>
-          </div>
-        </div>
-
-        <!-- Chart and Additional Info -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Balance Distribution Chart -->
-          <div
-            class="lg:col-span-2 bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
-            >
-              Balance Distribution
-            </h3>
-            <div class="h-64 flex items-center justify-center">
-              <div class="text-center">
-                <div class="relative w-48 h-48 mx-auto mb-4">
-                  <!-- Pie Chart Visualization -->
-                  <svg
-                    width="200"
-                    height="200"
-                    viewBox="0 0 42 42"
-                    class="donut"
-                  >
-                    <!-- Available Balance -->
-                    <circle
-                      cx="21"
-                      cy="21"
-                      r="15.915"
-                      fill="transparent"
-                      stroke="#10B981"
-                      stroke-width="3"
-                      :stroke-dasharray="`${
-                        (coin.available_balance / coin.total_balance) * 100
-                      } ${
-                        100 -
-                        (coin.available_balance / coin.total_balance) * 100
-                      }`"
-                      stroke-dashoffset="25"
-                    />
-                    <!-- On Order Balance -->
-                    <circle
-                      cx="21"
-                      cy="21"
-                      r="15.915"
-                      fill="transparent"
-                      stroke="#3B82F6"
-                      stroke-width="3"
-                      :stroke-dasharray="`${
-                        (coin.on_order_balance / coin.total_balance) * 100
-                      } ${
-                        100 - (coin.on_order_balance / coin.total_balance) * 100
-                      }`"
-                      :stroke-dashoffset="
-                        25 - (coin.available_balance / coin.total_balance) * 100
-                      "
-                    />
-                    <!-- Staked Balance -->
-                    <circle
-                      cx="21"
-                      cy="21"
-                      r="15.915"
-                      fill="transparent"
-                      stroke="#8B5CF6"
-                      stroke-width="3"
-                      :stroke-dasharray="`${
-                        (coin.staked_balance / coin.total_balance) * 100
-                      } ${
-                        100 - (coin.staked_balance / coin.total_balance) * 100
-                      }`"
-                      :stroke-dashoffset="
-                        25 -
-                        ((coin.available_balance + coin.on_order_balance) /
-                          coin.total_balance) *
-                          100
-                      "
-                    />
-                  </svg>
-                </div>
-                <div class="space-y-2">
-                  <div class="flex items-center justify-center space-x-2">
-                    <div class="w-3 h-3 bg-green-500 rounded"></div>
-                    <span class="text-sm"
-                      >Available:
-                      {{
-                        (
-                          (coin.available_balance / coin.total_balance) *
-                          100
-                        ).toFixed(1)
-                      }}%</span
-                    >
-                  </div>
-                  <div class="flex items-center justify-center space-x-2">
-                    <div class="w-3 h-3 bg-blue-500 rounded"></div>
-                    <span class="text-sm"
-                      >On Order:
-                      {{
-                        (
-                          (coin.on_order_balance / coin.total_balance) *
-                          100
-                        ).toFixed(1)
-                      }}%</span
-                    >
-                  </div>
-                  <div class="flex items-center justify-center space-x-2">
-                    <div class="w-3 h-3 bg-purple-500 rounded"></div>
-                    <span class="text-sm"
-                      >Staked:
-                      {{
-                        (
-                          (coin.staked_balance / coin.total_balance) *
-                          100
-                        ).toFixed(1)
-                      }}%</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Actions -->
-          <div class="bg-white dark:bg-[#202020] rounded-xl shadow-lg p-6">
-            <h3
-              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
-            >
-              Quick Actions
-            </h3>
-            <div class="space-y-3">
-              <button
-                @click="navigateToTrade('buy')"
-                class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
-              >
-                <Icon name="lucide:plus" class="w-4 h-4" />
-                <span>Buy {{ coin.coin_name }}</span>
-              </button>
-              <button
-                @click="navigateToTrade('sell')"
-                class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors flex items-center justify-center space-x-2"
-              >
-                <Icon name="lucide:minus" class="w-4 h-4" />
-                <span>Sell {{ coin.coin_name }}</span>
-              </button>
-              <button
-                @click="navigateToStake"
-                class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors flex items-center justify-center space-x-2"
-              >
-                <Icon name="lucide:lock" class="w-4 h-4" />
-                <span>Stake {{ coin.coin_name }}</span>
-              </button>
-              <button
-                @click="navigateToTransfer"
-                class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2"
-              >
-                <Icon name="lucide:send" class="w-4 h-4" />
-                <span>Transfer</span>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -358,9 +461,63 @@ const router = useRouter();
 const coinId = route.params.id;
 
 // Reactive data
-const coin = ref(null);
+const coinData = ref(null);
 const loading = ref(true);
 const error = ref("");
+const activeTab = ref("history");
+const searchTerm = ref("");
+
+// Computed percentages for pie chart
+const availablePercentage = computed(() => {
+  if (!coinData.value || coinData.value.total_balance === 0) return 0;
+  return (
+    (coinData.value.available_balance / coinData.value.total_balance) * 100
+  );
+});
+
+const onOrderPercentage = computed(() => {
+  if (!coinData.value || coinData.value.total_balance === 0) return 0;
+  return (coinData.value.on_order_balance / coinData.value.total_balance) * 100;
+});
+
+const stakedPercentage = computed(() => {
+  if (!coinData.value || coinData.value.total_balance === 0) return 0;
+  return (coinData.value.staked_balance / coinData.value.total_balance) * 100;
+});
+
+// Mock transactions data (replace with API call)
+const transactions = ref([
+  {
+    id: 1,
+    type: "deposit",
+    amount: 0.5,
+    status: "Completed",
+    createdAt: new Date(Date.now() - 86400000),
+  },
+  {
+    id: 2,
+    type: "stake",
+    amount: -0.2,
+    status: "Processing",
+    createdAt: new Date(Date.now() - 172800000),
+  },
+  {
+    id: 3,
+    type: "trade",
+    amount: 0.1,
+    status: "Completed",
+    createdAt: new Date(Date.now() - 259200000),
+  },
+]);
+
+const filteredTransactions = computed(() => {
+  if (!searchTerm.value) return transactions.value;
+  return transactions.value.filter(
+    (t) =>
+      t.type.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+      t.status.toLowerCase().includes(searchTerm.value.toLowerCase())
+  );
+});
 
 // Format numbers
 const formatNumber = (num, precision = 2) => {
@@ -372,22 +529,30 @@ const formatNumber = (num, precision = 2) => {
   return num.toLocaleString("en-US", { maximumFractionDigits: precision });
 };
 
-// Navigate back to assets
+// Format date
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
+// Get transaction icon
+const getTransactionIcon = (type) => {
+  const icons = {
+    deposit: "lucide:download",
+    withdraw: "lucide:upload",
+    stake: "lucide:lock",
+    trade: "lucide:arrow-up-down",
+    convert: "lucide:refresh-cw",
+  };
+  return icons[type] || "lucide:circle";
+};
+
+// Navigate back
 const goBack = () => {
   router.push("/dashboard");
-};
-
-// Navigation functions for quick actions
-const navigateToTrade = (action) => {
-  router.push(`/dashboard/trade?coin=${coin.value.coin_id}&action=${action}`);
-};
-
-const navigateToStake = () => {
-  router.push(`/dashboard/stake?coin=${coin.value.coin_id}`);
-};
-
-const navigateToTransfer = () => {
-  router.push(`/dashboard/transfer?coin=${coin.value.coin_id}`);
 };
 
 // Fetch coin details from API
@@ -396,6 +561,9 @@ const fetchCoinDetails = async () => {
   error.value = "";
 
   try {
+    // Add 800ms delay to show skeleton
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
     const response = await $fetch(
       `${config.public.apiBase}/user/portfolio.php?coin_id=${coinId}`,
       {
@@ -404,14 +572,14 @@ const fetchCoinDetails = async () => {
     );
 
     if (response.success) {
-      coin.value = response.data;
+      coinData.value = response.data;
     } else {
       throw new Error(response.message);
     }
   } catch (err) {
     error.value =
       err?.data?.message || err?.message || "Failed to load portfolio details";
-    coin.value = null;
+    coinData.value = null;
   } finally {
     loading.value = false;
   }
@@ -425,7 +593,7 @@ onMounted(() => {
 
 <style scoped>
 .donut {
-  animation: donut-fill 2s ease-out;
+  animation: donut-fill 1.5s ease-out;
 }
 
 @keyframes donut-fill {
