@@ -390,76 +390,8 @@
 
           <template v-if="activeTab === 'history'">
             <!-- Search -->
-            <div class="relative mb-4 max-w-md">
-              <input
-                type="text"
-                placeholder="Search transaction type..."
-                class="w-full border border-gray-300 dark:border-[#303030] px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-[#202020] dark:text-gray-100"
-                v-model="searchTerm"
-              />
-              <Icon
-                name="lucide:search"
-                class="absolute left-3 top-2.5 text-gray-400 dark:text-gray-500"
-              />
-            </div>
-
+            <DashboardCointrans :coin-id="coinId" />
             <!-- Transactions -->
-            <div class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm">
-              <h3
-                class="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100"
-              >
-                Recent Transactions
-              </h3>
-              <p
-                v-if="filteredTransactions.length === 0"
-                class="text-sm text-gray-500 dark:text-gray-400"
-              >
-                No transactions found.
-              </p>
-              <div v-else class="space-y-3">
-                <div
-                  v-for="transaction in filteredTransactions"
-                  :key="transaction.id"
-                  class="flex items-center justify-between p-3 border border-gray-200 dark:border-[#303030] rounded-lg"
-                >
-                  <div class="flex items-center space-x-3">
-                    <div
-                      class="w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
-                    >
-                      <Icon
-                        :name="getTransactionIcon(transaction.type)"
-                        class="w-4 h-4"
-                      />
-                    </div>
-                    <div>
-                      <div class="font-medium capitalize">
-                        {{ transaction.type }}
-                      </div>
-                      <div class="text-sm text-gray-500">
-                        {{ formatDate(transaction.createdAt) }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <div
-                      :class="[
-                        'font-medium',
-                        transaction.amount >= 0
-                          ? 'text-green-600'
-                          : 'text-red-600',
-                      ]"
-                    >
-                      {{ transaction.amount >= 0 ? "+" : ""
-                      }}{{ formatNumber(transaction.amount) }}
-                      {{ coinData.coin_name }}
-                    </div>
-                    <div class="text-sm text-gray-500">
-                      {{ transaction.status }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </template>
 
           <template v-else>
@@ -536,40 +468,6 @@ const stakedPercentage = computed(() => {
   return (coinData.value.staked_balance / coinData.value.total_balance) * 100;
 });
 
-// Mock transactions data (replace with API call)
-const transactions = ref([
-  {
-    id: 1,
-    type: "deposit",
-    amount: 0.5,
-    status: "Completed",
-    createdAt: new Date(Date.now() - 86400000),
-  },
-  {
-    id: 2,
-    type: "stake",
-    amount: -0.2,
-    status: "Processing",
-    createdAt: new Date(Date.now() - 172800000),
-  },
-  {
-    id: 3,
-    type: "trade",
-    amount: 0.1,
-    status: "Completed",
-    createdAt: new Date(Date.now() - 259200000),
-  },
-]);
-
-const filteredTransactions = computed(() => {
-  if (!searchTerm.value) return transactions.value;
-  return transactions.value.filter(
-    (t) =>
-      t.type.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-      t.status.toLowerCase().includes(searchTerm.value.toLowerCase())
-  );
-});
-
 // Format numbers
 const formatNumber = (num, precision = 2) => {
   if (num === 0) return "0." + "0".repeat(precision);
@@ -578,32 +476,6 @@ const formatNumber = (num, precision = 2) => {
   if (num < 1) return num.toFixed(precision);
   if (num < 1000) return num.toFixed(precision);
   return num.toLocaleString("en-US", { maximumFractionDigits: precision });
-};
-
-// Format date
-const formatDate = (date) => {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-};
-
-// Get transaction icon
-const getTransactionIcon = (type) => {
-  const icons = {
-    deposit: "lucide:download",
-    withdraw: "lucide:upload",
-    stake: "lucide:lock",
-    trade: "lucide:arrow-up-down",
-    convert: "lucide:refresh-cw",
-  };
-  return icons[type] || "lucide:circle";
-};
-
-// Navigate back
-const goBack = () => {
-  router.push("/dashboard");
 };
 
 // Fetch coin details from API

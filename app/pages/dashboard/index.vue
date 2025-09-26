@@ -7,15 +7,7 @@ definePageMeta({
 // Inject the user data provided by the layout
 const user = inject("authUser");
 
-const tabs = [
-  { name: "Overview", active: true },
-  { name: "Funding", active: false },
-  { name: "Trading", active: false },
-  { name: "Grow", active: false },
-  { name: "Analysis", active: false },
-  { name: "Order center", active: false },
-  { name: "Account statement", active: false },
-];
+const tabs = [{ name: "Overview", active: true }];
 
 const config = useRuntimeConfig();
 
@@ -53,7 +45,7 @@ function formatCurrency(value) {
       <!-- Loading State -->
 
       <div
-        class="-mt-5 shadow-sm bg-white dark:bg-[#282727] dark:text-cyan-500"
+        class="-mt-5 shadow-sm bg-gray-100 dark:bg-[#282727] dark:text-cyan-500"
       >
         <div class="container mx-auto px-4">
           <div class="flex overflow-x-auto hide-scrollbar">
@@ -63,7 +55,7 @@ function formatCurrency(value) {
               class="px-6 py-4 whitespace-nowrap cursor-pointer text-sm font-medium transition-colors"
               :class="
                 tab.active
-                  ? 'dark:text-red-400 border-b-2 border-black'
+                  ? 'dark:text-red-400 text-red-400 border-gray-200 border-b-2 dark:border-[#303030]'
                   : 'dark:text-gray-50 hover:text-black'
               "
             >

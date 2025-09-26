@@ -10,7 +10,7 @@ const config = useRuntimeConfig();
 const menuItems = [
   { name: "Features", href: "#features" },
   { name: "Solution", href: "#solution" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Statement", href: "/dashboard/statement" },
   { name: "Profile", href: "/dashboard/profile" },
 ];
 
