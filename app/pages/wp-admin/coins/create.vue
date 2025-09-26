@@ -458,13 +458,13 @@ const searchCoinGecko = async (query) => {
               <label
                 for="deposit_instructions"
                 class="block text-sm font-medium text-gray-300 mb-2"
-                >Deposit Instructions</label
+                >About Coin/Stocks/Others</label
               >
               <textarea
                 id="deposit_instructions"
                 v-model="form.deposit_instructions"
                 rows="3"
-                placeholder="Instructions for depositing this coin..."
+                placeholder="More about the crypto coin/stock/others..."
                 class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
             </div>

@@ -1,33 +1,37 @@
 <template>
   <div
-    class="min-h-screen bg-gray-50 dark:bg-background/50 py-10 px-4 text-gray-900 dark:text-gray-100 mb-14"
+    class="min-h-screen bg-gray-50 dark:bg-[#171717] py-10 px-4 text-gray-900 dark:text-gray-100 mb-14"
   >
     <div class="max-w-6xl mx-auto">
       <!-- Loading Skeleton with 800ms delay -->
       <div v-if="loading" class="animate-pulse">
         <!-- Back Button Skeleton -->
         <div class="mb-6">
-          <div class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div class="h-6 w-24 bg-gray-200 dark:bg-[#171717] rounded"></div>
         </div>
 
         <!-- Header Skeleton -->
         <div class="mb-8 flex items-center space-x-3">
           <div
-            class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full"
+            class="w-10 h-10 bg-gray-200 dark:bg-[#171717] rounded-full"
           ></div>
           <div>
             <div
-              class="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-2"
+              class="h-6 w-32 bg-gray-200 dark:bg-[#171717] rounded mb-2"
             ></div>
-            <div class="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+            <div class="h-4 w-24 bg-gray-200 dark:bg-[#171717] rounded"></div>
           </div>
         </div>
 
         <!-- Portfolio Value Skeleton -->
-        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 mb-8">
-          <div class="h-4 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-          <div class="h-8 w-40 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-          <div class="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div class="bg-white dark:bg-[#202020] rounded-xl shadow-sm p-6 mb-8">
+          <div
+            class="h-4 w-32 bg-gray-200 dark:bg-[#171717] rounded mb-4"
+          ></div>
+          <div
+            class="h-8 w-40 bg-gray-200 dark:bg-[#171717] rounded mb-2"
+          ></div>
+          <div class="h-4 w-48 bg-gray-200 dark:bg-[#171717] rounded"></div>
         </div>
 
         <!-- Actions Skeleton -->
@@ -35,7 +39,7 @@
           <div
             v-for="n in 4"
             :key="n"
-            class="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg"
+            class="h-12 bg-gray-200 dark:bg-[#171717] rounded-lg"
           ></div>
         </div>
 
@@ -43,34 +47,34 @@
         <div class="grid lg:grid-cols-3 gap-6">
           <!-- Asset Summary Skeleton -->
           <div
-            class="lg:col-span-2 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm"
+            class="lg:col-span-2 bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm"
           >
             <div
-              class="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+              class="h-6 w-32 bg-gray-200 dark:bg-[#171717] rounded mb-4"
             ></div>
             <div class="space-y-2">
-              <div class="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              <div class="h-4 w-40 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div class="h-4 w-48 bg-gray-200 dark:bg-[#171717] rounded"></div>
+              <div class="h-4 w-40 bg-gray-200 dark:bg-[#171717] rounded"></div>
             </div>
           </div>
 
           <!-- Allocation Skeleton -->
-          <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+          <div class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm">
             <div
-              class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+              class="h-6 w-24 bg-gray-200 dark:bg-[#171717] rounded mb-4"
             ></div>
             <div
-              class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-4"
+              class="h-3 w-full bg-gray-200 dark:bg-[#171717] rounded mb-4"
             ></div>
             <div class="space-y-2">
               <div
-                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
+                class="h-4 w-full bg-gray-200 dark:bg-[#171717] rounded"
               ></div>
               <div
-                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
+                class="h-4 w-full bg-gray-200 dark:bg-[#171717] rounded"
               ></div>
               <div
-                class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"
+                class="h-4 w-full bg-gray-200 dark:bg-[#171717] rounded"
               ></div>
             </div>
           </div>
@@ -82,11 +86,11 @@
             <div
               v-for="n in 2"
               :key="n"
-              class="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded"
+              class="h-6 w-24 bg-gray-200 dark:bg-[#171717] rounded"
             ></div>
           </div>
           <div
-            class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm h-64"
+            class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm h-64"
           ></div>
         </div>
       </div>
@@ -94,15 +98,6 @@
       <!-- Content when data is loaded -->
       <div v-else-if="coinData">
         <!-- Back Button -->
-        <div class="mb-6">
-          <button
-            @click="goBack"
-            class="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-          >
-            <Icon name="lucide:arrow-left" class="w-5 h-5 mr-2" />
-            Back to Assets
-          </button>
-        </div>
 
         <!-- HEADER -->
         <div class="mb-8 flex items-center space-x-3">
@@ -127,23 +122,21 @@
         </div>
 
         <!-- PORTFOLIO VALUE -->
-        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 mb-8">
+        <div class="bg-white dark:bg-[#202020] rounded-xl shadow-sm p-6 mb-8">
           <div class="flex justify-between items-center mb-2">
             <h2 class="text-sm text-gray-500 dark:text-gray-400">
-              Available Value
+              Total Portfolio
             </h2>
           </div>
           <div class="flex items-end space-x-2">
             <h1 class="text-3xl font-bold">
-              ${{ formatNumber(coinData.available_value) }}
+              ${{ formatNumber(coinData.total_balance) }}
             </h1>
           </div>
           <div class="text-sm mt-1">
-            <span class="text-orange-500 dark:text-orange-400 mr-1"
-              >Total Portfolio:</span
-            >
             <span class="text-orange-600 dark:text-orange-500 font-medium">
-              ${{ formatNumber(coinData.total_value) }}
+              ~ {{ formatNumber(coinData.total_value) }}
+              {{ coinData.coin_name }}
             </span>
           </div>
         </div>
@@ -152,7 +145,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <NuxtLink
             :to="`/dashboard/deposit/${coinId}`"
-            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:download"
@@ -163,7 +156,7 @@
 
           <NuxtLink
             :to="`/dashboard/withdraw/${coinId}`"
-            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:upload"
@@ -174,7 +167,7 @@
 
           <NuxtLink
             to="/dashboard/convert"
-            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:bar-chart"
@@ -185,7 +178,7 @@
 
           <NuxtLink
             to="/support"
-            class="cursor-pointer flex items-center justify-center bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 py-3 text-sm font-medium hover:shadow transition"
+            class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:bell"
@@ -199,41 +192,101 @@
         <div class="grid lg:grid-cols-3 gap-6">
           <!-- Asset Summary -->
           <div
-            class="lg:col-span-2 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm"
+            class="lg:col-span-2 bg-white dark:bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-[#303030]"
           >
-            <h3 class="text-lg font-semibold mb-4">Asset Summary</h3>
-            <div class="space-y-3">
-              <p class="text-sm text-gray-600 dark:text-gray-300">
-                <span class="font-medium">Available Balance:</span>
-                {{ formatNumber(coinData.available_balance, 6) }}
-                {{ coinData.coin_name }} (${{
-                  formatNumber(coinData.available_value)
-                }})
-              </p>
-              <p class="text-sm text-gray-600 dark:text-gray-300">
-                <span class="font-medium">On Order:</span>
-                {{ formatNumber(coinData.on_order_balance, 6) }}
-                {{ coinData.coin_name }} (${{
-                  formatNumber(coinData.on_order_value)
-                }})
-              </p>
-              <p class="text-sm text-gray-600 dark:text-gray-300">
-                <span class="font-medium">Staked:</span>
-                {{ formatNumber(coinData.staked_balance, 6) }}
-                {{ coinData.coin_name }} (${{
-                  formatNumber(coinData.staked_value)
-                }})
-              </p>
-              <p class="text-sm text-gray-600 dark:text-gray-300">
-                <span class="font-medium">Spot Price:</span> ${{
-                  formatNumber(coinData.coin_rate)
-                }}
-              </p>
+            <h3
+              class="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 tracking-wide"
+            >
+              Asset Summary
+            </h3>
+
+            <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
+              <!-- Available Balance -->
+              <div
+                class="p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-[#303030] bg-gray-50 dark:bg-[#2a2a2a] hover:shadow-md transition"
+              >
+                <div
+                  class="text-[13px] sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
+                  Available
+                </div>
+                <div
+                  class="text-base sm:text-xl font-semibold text-green-500 dark:text-green-400"
+                >
+                  ${{ formatNumber(coinData.available_balance, 2) }}
+                </div>
+                <div
+                  class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400"
+                >
+                  {{ formatNumber(coinData.available_value) }}
+                  {{ coinData.coin_name }}
+                </div>
+              </div>
+
+              <!-- On Order -->
+              <div
+                class="p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-[#303030] bg-gray-50 dark:bg-[#2a2a2a] hover:shadow-md transition"
+              >
+                <div
+                  class="text-[13px] sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
+                  On Order
+                </div>
+                <div
+                  class="text-base sm:text-xl font-semibold text-red-500 dark:text-red-400"
+                >
+                  ${{ formatNumber(coinData.on_order_balance, 2) }}
+                </div>
+                <div
+                  class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400"
+                >
+                  {{ formatNumber(coinData.on_order_value) }}
+                  {{ coinData.coin_name }}
+                </div>
+              </div>
+
+              <!-- Staked -->
+              <div
+                class="p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-[#303030] bg-gray-50 dark:bg-[#2a2a2a] hover:shadow-md transition"
+              >
+                <div
+                  class="text-[13px] sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
+                  Staked
+                </div>
+                <div
+                  class="text-base sm:text-xl font-semibold text-yellow-500 dark:text-yellow-400"
+                >
+                  ${{ formatNumber(coinData.staked_balance, 2) }}
+                </div>
+                <div
+                  class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400"
+                >
+                  {{ formatNumber(coinData.staked_value) }}
+                  {{ coinData.coin_name }}
+                </div>
+              </div>
+
+              <!-- Spot Price -->
+              <div
+                class="p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-[#303030] bg-gray-50 dark:bg-[#2a2a2a] hover:shadow-md transition"
+              >
+                <div
+                  class="text-[13px] sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
+                  Spot Price
+                </div>
+                <div
+                  class="text-base sm:text-xl font-semibold text-indigo-600 dark:text-indigo-400"
+                >
+                  ${{ formatNumber(coinData.coin_rate) }}
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Allocation -->
-          <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+          <div class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm">
             <h3 class="text-lg font-semibold mb-4">Allocation</h3>
 
             <!-- Pie Chart Visualization -->
@@ -318,7 +371,7 @@
         <!-- TABS -->
         <div class="mt-10">
           <div
-            class="flex gap-6 border-b border-gray-300 dark:border-gray-700 pb-2 mb-6"
+            class="flex gap-6 border-b border-gray-300 dark:border-[#303030] pb-2 mb-6"
           >
             <button
               v-for="tab in ['history', 'about']"
@@ -341,7 +394,7 @@
               <input
                 type="text"
                 placeholder="Search transaction type..."
-                class="w-full border border-gray-300 dark:border-gray-700 px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-gray-900 dark:text-gray-100"
+                class="w-full border border-gray-300 dark:border-[#303030] px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-[#202020] dark:text-gray-100"
                 v-model="searchTerm"
               />
               <Icon
@@ -351,7 +404,7 @@
             </div>
 
             <!-- Transactions -->
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+            <div class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm">
               <h3
                 class="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100"
               >
@@ -367,7 +420,7 @@
                 <div
                   v-for="transaction in filteredTransactions"
                   :key="transaction.id"
-                  class="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg"
+                  class="flex items-center justify-between p-3 border border-gray-200 dark:border-[#303030] rounded-lg"
                 >
                   <div class="flex items-center space-x-3">
                     <div
@@ -410,19 +463,14 @@
           </template>
 
           <template v-else>
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm">
+            <div class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-sm">
               <h3
                 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100"
               >
                 About {{ coinData.coin_name }}
               </h3>
               <p class="text-sm text-gray-600 dark:text-gray-300">
-                {{ coinData.coin_title }} is a cryptocurrency currently trading
-                at ${{ formatNumber(coinData.coin_rate) }}. Your current
-                holdings include
-                {{ formatNumber(coinData.available_balance, 6) }} available,
-                {{ formatNumber(coinData.on_order_balance, 6) }} on order, and
-                {{ formatNumber(coinData.staked_balance, 6) }} staked.
+                {{ coinData.deposit_instructions }}
               </p>
             </div>
           </template>
@@ -436,7 +484,10 @@
           class="w-16 h-16 text-red-500 mx-auto mb-4"
         />
         <h2 class="text-xl font-semibold mb-2">Error Loading Portfolio</h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ error }}</p>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Please try refreshing the page, or come back later. If the problem
+          persists, contact our support team.
+        </p>
         <button
           @click="fetchCoinDetails"
           class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors"
