@@ -248,120 +248,17 @@ function formatCurrency(value) {
                 </div>
               </div>
 
-              <!-- Transactions Section -->
+              <!-- News Section -->
               <div
                 class="bg-white rounded-xl shadow-lg p-6 text-gray-900 dark:bg-[#202020] dark:text-gray-50"
               >
                 <div class="flex items-center justify-between mb-4">
-                  <h2 class="text-xl font-semibold">Recent Transactions</h2>
-                  <a
-                    href="/dashboard/transactions"
-                    class="text-sm dark:text-red-600 hover:underline font-semibold"
-                    >View all</a
-                  >
+                  <h2 class="text-xl font-semibold">CoinDesk Headlines</h2>
                 </div>
 
                 <!-- Transactions Table Dummy -->
-                <div class="overflow-x-auto">
-                  <table class="w-full text-sm">
-                    <thead>
-                      <tr class="border-b border-gray-300 dark:border-gray-700">
-                        <th class="py-2 text-left">Type</th>
-                        <th class="py-2 text-left">Amount</th>
-                        <th class="py-2 text-left">Status</th>
-                        <th class="py-2 text-left">Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        class="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                      >
-                        <td class="py-2">Deposit</td>
-                        <td class="py-2">$1,000.00</td>
-                        <td class="py-2">
-                          <span
-                            class="px-1 rounded-sm text-sm font-medium text-green-600 bg-green-100"
-                            >Approved</span
-                          >
-                        </td>
-                        <td class="py-2">2025-09-22</td>
-                      </tr>
-                      <tr
-                        class="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                      >
-                        <td class="py-2">Withdrawal</td>
-                        <td class="py-2">$500.00</td>
-                        <td class="py-2">
-                          <span
-                            class="px-1 rounded-sm text-sm font-medium text-yellow-600 bg-yellow-100"
-                            >Pending</span
-                          >
-                        </td>
-                        <td class="py-2">2025-09-20</td>
-                      </tr>
-                      <tr
-                        class="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                      >
-                        <td class="py-2">Transfer</td>
-                        <td class="py-2">$300.00</td>
-                        <td class="py-2">
-                          <span
-                            class="px-1 rounded-sm text-sm font-medium text-blue-600 bg-blue-100"
-                            >Submit</span
-                          >
-                        </td>
-                        <td class="py-2">2025-09-18</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
 
-                <div class="flex justify-between items-center mt-4">
-                  <button
-                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-not-allowed opacity-50 hover:bg-gray-300"
-                    disabled
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="inline-block"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      width="16"
-                      height="16"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-
-                  <span>Page 1 of 3</span>
-
-                  <button
-                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="inline-block"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      width="16"
-                      height="16"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                <DashboardNews />
               </div>
             </div>
           </div>
