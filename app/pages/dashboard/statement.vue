@@ -265,11 +265,13 @@
               <div
                 :class="[
                   'font-medium',
-                  getAmountColor(transaction.type, transaction.amount),
+                  transaction.method === 'credit'
+                    ? 'text-green-600'
+                    : 'text-red-600',
                 ]"
               >
-                {{ getAmountPrefix(transaction.type, transaction.amount) }}${{
-                  formatNumber(Math.abs(transaction.amount))
+                {{ transaction.method === "credit" ? "+" : "-" }}${{
+                  formatNumber(transaction.amount)
                 }}
               </div>
               <div :class="['text-sm', getStatusColor(transaction.status)]">
