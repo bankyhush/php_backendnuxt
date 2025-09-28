@@ -57,7 +57,9 @@
           <h2 class="text-xl font-semibold mb-2">
             Error Loading Transfer Page
           </h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">{{ error }}</p>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Server down, try again
+          </p>
           <button
             @click="fetchUserCoins"
             class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors"
@@ -123,11 +125,13 @@
 
                 <!-- Amount -->
                 <div>
-                  <label class="block mb-2 text-sm font-medium">Amount</label>
+                  <label class="block mb-2 text-sm font-medium"
+                    >Amount ($)</label
+                  >
                   <input
                     type="number"
                     v-model="transferAmount"
-                    :placeholder="`0.00 ${selectedCoin?.coin_name || ''}`"
+                    :placeholder="`0.00`"
                     :max="selectedCoin?.available_balance || 0"
                     step="0.000001"
                     min="0"
@@ -191,8 +195,7 @@
                   v-if="submitSuccess"
                   class="p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg text-sm"
                 >
-                  Transfer completed successfully to
-                  {{ successData?.recipient_name }}!
+                  Transfer completed successfully!
                 </div>
               </div>
 

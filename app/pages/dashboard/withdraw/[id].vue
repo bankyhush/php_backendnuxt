@@ -148,7 +148,7 @@
                 <label
                   class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
                 >
-                  Amount to Withdraw ({{ coinData?.coin_name }})
+                  Amount to Withdraw ($)
                 </label>
                 <input
                   type="number"
