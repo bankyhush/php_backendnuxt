@@ -8,8 +8,9 @@ const menuRef = ref(null);
 const config = useRuntimeConfig();
 
 const menuItems = [
-  { name: "Features", href: "#features" },
-  { name: "Solution", href: "#solution" },
+  { name: "Staking", href: "/dashboard/staking" },
+  { name: "Copy Trader", href: "/dashboard/trader" },
+  { name: "Trading Plan", href: "/dashboard/plans" },
   { name: "Statement", href: "/dashboard/statement" },
   { name: "Profile", href: "/dashboard/profile" },
 ];

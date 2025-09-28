@@ -106,7 +106,7 @@
             class="flex items-center gap-1 justify-center bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon name="hugeicons:coins-swap" width="24" height="24" />
-            Convert
+            Exchange
           </button>
         </NuxtLink>
       </div>

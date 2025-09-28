@@ -166,14 +166,14 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/dashboard/convert"
+            to="/dashboard/exchange"
             class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:bar-chart"
               class="mr-2 text-gray-600 dark:text-gray-300"
             />
-            Convert
+            Exchange
           </NuxtLink>
 
           <NuxtLink
