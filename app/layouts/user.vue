@@ -45,7 +45,10 @@
           </div>
         </NuxtLink>
 
-        <NuxtLink to="/swaps" :class="navItemClass('/swaps')">
+        <NuxtLink
+          to="/dashboard/exchange"
+          :class="navItemClass('/dashboard/exchange')"
+        >
           <div class="flex flex-col items-center">
             <Icon
               name="ic:outline-swap-horizontal-circle"

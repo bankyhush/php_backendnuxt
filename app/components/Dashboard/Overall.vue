@@ -69,7 +69,7 @@
         <!-- Button 1 -->
         <NuxtLink to="/dashboard/deposit/1" class="w-[32%] sm:w-auto">
           <button
-            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon name="fluent-mdl2:add-to" width="2048" height="2048" />
             Deposit
@@ -77,9 +77,9 @@
         </NuxtLink>
 
         <!-- Button 2 -->
-        <NuxtLink to="/dashboard/transfer/1" class="w-[32%] sm:w-auto">
+        <NuxtLink to="/dashboard/transfer/" class="w-[32%] sm:w-auto">
           <button
-            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon
               name="solar:round-transfer-diagonal-broken"
@@ -93,7 +93,7 @@
         <!-- Button 3 -->
         <NuxtLink to="/dashboard/withdraw/1" class="w-[32%] sm:w-auto">
           <button
-            class="flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon name="icons8:minus" width="32" height="32" />
             Withdraw
@@ -103,7 +103,7 @@
         <!-- Button 4 (Hidden on mobile) -->
         <NuxtLink to="/dashboard/exchange" class="hidden sm:block sm:w-auto">
           <button
-            class="flex items-center gap-1 justify-center bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
+            class="cursor-pointer flex items-center gap-1 justify-center bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon name="hugeicons:coins-swap" width="24" height="24" />
             Exchange
