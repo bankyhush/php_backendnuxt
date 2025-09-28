@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-[#202020] rounded-xl shadow-sm p-2">
+  <div class="bg-white dark:bg-[#202020] rounded-xl shadow-sm p-1">
     <!-- Header -->
 
     <!-- Loading State -->
@@ -55,13 +55,13 @@
         class="border border-gray-200 dark:border-[#303030] rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
         @click="openNews(item)"
       >
-        <div class="flex items-start space-x-4">
+        <div class="flex items-start space-x-2">
           <!-- News Image -->
           <div v-if="item.photo" class="flex-shrink-0">
             <img
               :src="item.photo"
               :alt="item.title"
-              class="w-16 h-16 object-cover rounded-lg"
+              class="w-8 h-8 object-cover rounded-xl"
             />
           </div>
 
@@ -69,7 +69,7 @@
             <!-- Title and Type -->
             <div class="flex items-center space-x-2 mb-2">
               <h3
-                class="text-lg font-semibold text-gray-900 dark:text-white truncate"
+                class="text-sm font-semibold text-gray-900 dark:text-white truncate"
               >
                 {{ item.title }}
               </h3>
@@ -77,26 +77,25 @@
                 v-if="item.type"
                 class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
               >
-                {{ item.type }}
+                <span v-if="item.author" class="flex items-center">
+                  <Icon name="lucide:user" class="w-3 h-3 mr-1" />
+                  {{ item.author }}
+                </span>
               </span>
             </div>
 
             <!-- Content Preview -->
             <p
-              class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-3"
+              class="-ml-9 mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-3"
             >
               {{ truncateContent(item.content, 120) }}
             </p>
 
             <!-- Meta Information -->
             <div
-              class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
+              class="-ml-10 flex items-start justify-between text-xs text-gray-500 dark:text-gray-400"
             >
-              <div class="flex items-center space-x-3">
-                <span v-if="item.author" class="flex items-center">
-                  <Icon name="lucide:user" class="w-3 h-3 mr-1" />
-                  {{ item.author }}
-                </span>
+              <div class="flex items-center space-x-2">
                 <span class="flex items-center">
                   <Icon name="lucide:calendar" class="w-3 h-3 mr-1" />
                   {{ formatDate(item.date) }}

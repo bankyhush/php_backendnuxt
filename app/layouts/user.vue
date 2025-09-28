@@ -22,21 +22,25 @@
       >
         <NuxtLink to="/dashboard" :class="navItemClass('/dashboard')">
           <div class="flex flex-col items-center">
-            <Icon name="icon-park-outline:market" width="24" height="24" />
+            <Icon
+              name="arcticons:stock-market-simulator-game"
+              width="24"
+              height="24"
+            />
             <span class="text-xs mt-1">Explore</span>
           </div>
         </NuxtLink>
 
         <NuxtLink to="/" :class="navItemClass('/')">
           <div class="flex flex-col items-center">
-            <Icon name="solar:wallet-money-bold" width="24" height="24" />
+            <Icon name="solar:wallet-broken" width="24" height="24" />
             <span class="text-xs mt-1">Wallets</span>
           </div>
         </NuxtLink>
 
         <NuxtLink to="/trade" :class="navItemClass('/trade')">
           <div class="flex flex-col items-center">
-            <Icon name="uis:chart" width="24" height="24" />
+            <Icon name="mi:bar-chart" width="24" height="24" />
             <span class="text-xs mt-1">Trade</span>
           </div>
         </NuxtLink>
@@ -44,7 +48,7 @@
         <NuxtLink to="/swaps" :class="navItemClass('/swaps')">
           <div class="flex flex-col items-center">
             <Icon
-              name="material-symbols-light:swap-horizontal-circle"
+              name="ic:outline-swap-horizontal-circle"
               width="26"
               height="26"
             />
@@ -57,7 +61,7 @@
           :class="navItemClass('/dashboard/profile')"
         >
           <div class="flex flex-col items-center">
-            <Icon name="fa-solid:user-cog" width="24" height="24" />
+            <Icon name="fluent-mdl2:profile-search" width="24" height="24" />
             <span class="text-xs mt-1">Profile</span>
           </div>
         </NuxtLink>
@@ -119,6 +123,6 @@ const navItemClass = (path) => {
   if (route.path === path) {
     return "transition-all duration-200 ease-in-out font-bold text-gray-400 dark:text-gray-400 drop-shadow-[0_0_10px_rgba(0,255,255,0.6)] hover:scale-110 hover:drop-shadow-lg";
   }
-  return "transition-all duration-200 ease-in-out font-mono text-black dark:text-white hover:text-gray-400 hover:scale-110 hover:drop-shadow-lg";
+  return "transition-all duration-200 ease-in-out font-light text-black dark:text-white hover:text-gray-400 hover:scale-110 hover:drop-shadow-lg";
 };
 </script>

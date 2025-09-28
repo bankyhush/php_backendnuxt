@@ -102,11 +102,13 @@
           <div
             :class="[
               'font-medium',
-              transaction.amount >= 0 ? 'text-green-600' : 'text-red-600',
+              transaction.method === 'credit'
+                ? 'text-green-600'
+                : 'text-red-600',
             ]"
           >
-            {{ transaction.amount >= 0 ? "+" : "" }}${{
-              formatNumber(Math.abs(transaction.amount))
+            {{ transaction.method === "credit" ? "+" : "-" }}${{
+              formatNumber(transaction.amount)
             }}
           </div>
           <div class="text-sm text-gray-500 capitalize">

@@ -305,7 +305,7 @@ onMounted(() => {
     if (!loading.value) {
       fetchCoins();
     }
-  }, 50000);
+  }, 80000);
 });
 
 onBeforeUnmount(() => {

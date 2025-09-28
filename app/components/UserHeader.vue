@@ -174,21 +174,18 @@ const logout = async () => {
                   {{ item.name }}
                 </NuxtLink>
 
-                <div class="flex justify-center items-center mt-6 space-x-3">
-                  <NuxtLink
-                    to="/login"
-                    class="block w-full text-center px-4 py-2 rounded-md border text-sm font-medium text-muted-foreground hover:text-foreground transition"
-                    @click="toggleMenu"
+                <div class="flex mt-6 space-x-3">
+                  <button
+                    @click="logout"
+                    class="cursor-pointer flex gap-1 justify-center items-center w-32 text-center px-4 py-2 rounded-md border border-gray-400 bg-zinc-100 text-sm font-medium text-zinc-700 transition hover:shadow-md hover:text-foreground dark:bg-zinc-900 dark:border-zinc-900 dark:text-white dark:hover:text-foreground dark:hover:shadow-md"
                   >
-                    Login
-                  </NuxtLink>
-                  <NuxtLink
-                    to="/register"
-                    class="block w-full text-center px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary/90 transition"
-                    @click="toggleMenu"
-                  >
-                    Sign Up
-                  </NuxtLink>
+                    <Icon
+                      name="ant-design:logout-outlined"
+                      width="1024"
+                      height="1024"
+                    />
+                    Logout
+                  </button>
                 </div>
               </nav>
             </div>

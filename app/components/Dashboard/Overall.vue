@@ -180,7 +180,7 @@ onMounted(() => {
     if (!loading.value) {
       fetchBalances();
     }
-  }, 30000);
+  }, 80000);
 });
 
 onBeforeUnmount(() => {

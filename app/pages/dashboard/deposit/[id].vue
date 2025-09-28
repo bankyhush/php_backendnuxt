@@ -368,6 +368,8 @@ const fetchCoinData = async () => {
     error.value =
       err?.data?.message || err?.message || "Failed to load coin data";
     coinData.value = null;
+
+    navigateTo("/dashboard");
   } finally {
     loading.value = false;
   }
