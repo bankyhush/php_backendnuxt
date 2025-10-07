@@ -285,7 +285,7 @@
           @click="handleSwap"
           :disabled="!isFormValid || isLoading"
           :class="[
-            'cursor-pointer w-full font-medium py-4 px-6 rounded-xl transition-all flex items-center justify-center space-x-2',
+            'min-h-[40px] cursor-pointer w-full font-medium py-4 px-6 rounded-xl transition-all flex items-center justify-center space-x-2',
             isFormValid && !isLoading
               ? 'bg-black hover:bg-zinc-700 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white transform hover:scale-[1.02]'
               : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed',

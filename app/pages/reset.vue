@@ -128,7 +128,7 @@
             <button
               type="submit"
               :disabled="loading"
-              class="cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white py-3 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+              class="min-h-[40px] cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white py-3 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <template v-if="loading">
                 <Icon name="gg:spinner-two-alt" class="animate-spin mx-auto" />

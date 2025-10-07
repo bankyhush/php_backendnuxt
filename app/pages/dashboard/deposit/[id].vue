@@ -234,7 +234,7 @@
                   <button
                     type="submit"
                     :disabled="submitLoading"
-                    class="cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white rounded-md py-3 flex items-center justify-center hover:bg-zinc-800 dark:hover:bg-gray-100 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                    class="min-h-[40px] cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white rounded-md py-3 flex items-center justify-center hover:bg-zinc-800 dark:hover:bg-gray-100 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
                   >
                     <Icon
                       v-if="submitLoading"

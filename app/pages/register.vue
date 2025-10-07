@@ -170,7 +170,7 @@
             <button
               type="submit"
               :disabled="loading"
-              class="cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white hover:shadow-lg py-1.5 rounded-md disabled:cursor-not-allowed disabled:bg-gray-500"
+              class="min-h-[40px] cursor-pointer w-full bg-black dark:bg-white dark:text-black text-white hover:shadow-lg py-1.5 rounded-md disabled:cursor-not-allowed disabled:bg-gray-500"
             >
               <template v-if="loading">
                 <Icon
