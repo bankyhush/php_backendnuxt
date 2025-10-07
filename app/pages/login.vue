@@ -277,9 +277,7 @@ const loginHandler = async () => {
     }
   } catch (err) {
     errorMessage.value =
-      err?.data?.message ||
-      err?.message ||
-      "Registration failed. Please try again.";
+      err?.data?.message || err?.message || "Login failed. Please try again.";
   } finally {
     isLoading.value = false;
   }

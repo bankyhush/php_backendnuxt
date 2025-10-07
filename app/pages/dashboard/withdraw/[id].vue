@@ -40,7 +40,10 @@
         <h2 class="text-xl font-semibold mb-2">
           Error Loading Withdrawal Page
         </h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ error }}</p>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Please try refreshing the page, or come back later. If the problem
+          persists, contact our support team.
+        </p>
         <button
           @click="fetchCoinData"
           class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
