@@ -184,7 +184,7 @@
           <!-- Invest Button -->
           <button
             @click="openInvestModal(plan)"
-            class="cursor-pointer mt-6 bg-[#202020] text-white font-medium py-3 rounded-xl hover:bg-zinc-700 transition-colors w-full"
+            class="cursor-pointer mt-6 bg-[#202020] text-white dark:bg-white dark:text-black font-medium py-3 rounded-xl hover:bg-zinc-700 transition-colors w-full"
           >
             Invest Now
           </button>

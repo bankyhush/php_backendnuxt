@@ -24,6 +24,21 @@
         </div>
       </div>
 
+      <!-- Success/Error Messages -->
+      <div
+        v-if="copySuccess"
+        class="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg"
+      >
+        {{ copySuccess }}
+      </div>
+
+      <div
+        v-if="copyError"
+        class="mb-6 p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-lg"
+      >
+        {{ copyError }}
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div
@@ -67,76 +82,72 @@
       </div>
 
       <!-- Current Trader Info -->
+      <div v-if="currentTrader" class="mb-8">
+        <div
+          class="bg-gradient-to-br from-green-500 to-emerald-600 dark:from-[#014115] dark:to-[#1c2918] rounded-3xl p-8 mb-10 shadow-xl text-white relative overflow-hidden"
+        >
+          <div class="flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4 mb-6 sm:mb-0">
+              <img
+                :src="currentTrader.photo || '/traders/current.jpg'"
+                :alt="currentTrader.name"
+                class="w-16 h-16 rounded-full border-4 border-white"
+              />
+              <div>
+                <h2 class="text-2xl font-bold relative inline-block">
+                  {{ currentTrader.current_trader }}
+                  <img
+                    :src="'/traders/v.png'"
+                    alt="Verified"
+                    class="absolute top-2 -right-7 h-5 w-5"
+                  />
+                </h2>
+                <p class="text-sm opacity-80">Trade in progress...</p>
+              </div>
+            </div>
+            <button
+              class="bg-white text-green-700 hover:bg-gray-200 font-semibold px-6 py-2 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Current Trader
+            </button>
+          </div>
 
-      <!-- 🟢 Featured Trader Singleton Card -->
-      <div
-        v-if="currentTrader"
-        class="bg-gradient-to-br from-green-500 to-emerald-600 dark:from-[#014115] dark:to-[#1c2918] rounded-3xl p-8 mb-10 shadow-xl text-white relative overflow-hidden"
-      >
-        <div class="flex flex-col sm:flex-row justify-between items-center">
-          <div class="flex items-center space-x-4 mb-6 sm:mb-0">
-            <img
-              :src="currentTrader.photo || '/traders/current.jpg'"
-              :alt="currentTrader.name"
-              class="w-16 h-16 rounded-full border-4 border-white"
-            />
+          <div class="grid grid-cols-4 text-center mt-6 text-sm">
             <div>
-              <h2 class="text-2xl font-bold relative inline-block">
-                {{ currentTrader.current_trader }}
-                <img
-                  :src="'/traders/v.png'"
-                  alt="Verified"
-                  class="absolute top-2 -right-7 h-5 w-5"
-                />
-              </h2>
-
-              <p class="text-sm opacity-80">Trade in progress...</p>
+              <p class="text-xl font-semibold">{{ currentTrader.copiers }}</p>
+              <p>Copy Traders</p>
+            </div>
+            <div>
+              <p
+                :class="[
+                  'capitalize text-xl font-semibold',
+                  currentTrader.trade_status === 'active'
+                    ? 'text-green-400'
+                    : 'text-yellow-400',
+                ]"
+              >
+                {{ currentTrader.trade_status }}
+              </p>
+              <p>Status</p>
+            </div>
+            <div>
+              <p class="text-xl font-semibold">{{ currentTrader.win_rate }}</p>
+              <p>Winning Trades</p>
+            </div>
+            <div>
+              <p class="text-xl font-semibold">
+                {{ currentTrader.trader_profit }}%
+              </p>
+              <p>Total Profit</p>
             </div>
           </div>
-          <button
-            class="bg-white text-green-700 hover:bg-gray-200 font-semibold px-6 py-2 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+
+          <div class="absolute right-6 bottom-6 opacity-10 text-7xl font-bold">
             Current Trader
-          </button>
-        </div>
-
-        <!-- Performance GIF -->
-
-        <div class="grid grid-cols-4 text-center mt-6 text-sm">
-          <div>
-            <p class="text-xl font-semibold">{{ currentTrader.copiers }}</p>
-            <p>Copy Traders</p>
           </div>
-          <div>
-            <p
-              :class="[
-                'text-xl font-semibold',
-                currentTrader.trade_status === 'active'
-                  ? 'text-green-400'
-                  : 'text-yellow-400',
-              ]"
-            >
-              {{ currentTrader.trade_status }}
-            </p>
-            <p>Status</p>
-          </div>
-          <div>
-            <p class="text-xl font-semibold">{{ currentTrader.win_rate }}</p>
-            <p>Winning Trades</p>
-          </div>
-          <div>
-            <p class="text-xl font-semibold">
-              ${{ currentTrader.trader_profit }}
-            </p>
-            <p>Total Profit</p>
-          </div>
-        </div>
-
-        <div class="absolute right-6 bottom-6 opacity-10 text-7xl font-bold">
-          <!--  Water mark -->
-          Current Trader
         </div>
       </div>
+
       <!-- 🔁 Trader Grid List -->
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
@@ -164,15 +175,15 @@
 
             <button
               @click="copyTrader(trader)"
-              :disabled="isCopying"
-              class="bg-green-600 hover:bg-green-500 text-white text-sm px-4 py-1.5 rounded-full font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="copyingTraderId === trader.id"
+              class="cursor-pointer bg-green-600 hover:bg-green-500 text-white text-sm px-4 py-1.5 rounded-full font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Icon
-                v-if="isCopying"
+                v-if="copyingTraderId === trader.id"
                 name="lucide:loader-2"
                 class="animate-spin w-3 h-3 mr-1"
               />
-              {{ isCopying ? "..." : "Copy Now" }}
+              {{ copyingTraderId === trader.id ? "Copying" : `Copy Now` }}
             </button>
           </div>
 
@@ -182,13 +193,13 @@
           </p>
 
           <!-- Performance GIF -->
-          <div
-            class="h-20 mb-6 bg-gray-100 dark:bg-[#222] rounded-lg overflow-hidden"
-          >
+          <div class="h-20 mb-6 rounded-lg px-0 overflow-hidden">
             <img
-              src="/traders/tr.png"
+              :src="getRandomImage()"
               alt="Performance Chart"
-              class="w-full h-full object-cover"
+              :class="
+                getRandomColor() + ' w-full h-full object-center animate-pulse'
+              "
             />
           </div>
 
@@ -254,6 +265,17 @@ definePageMeta({
 
 import { onMounted, ref, computed } from "vue";
 
+function getRandomImage() {
+  const randomNum = Math.floor(Math.random() * 10) + 1;
+  return `/signal/${randomNum}.svg`;
+}
+
+function getRandomColor() {
+  const colors = ["text-yellow-500", "text-red-500", "text-green-500"];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
 const config = useRuntimeConfig();
 
 // Reactive data
@@ -262,7 +284,7 @@ const currentTrader = ref(null);
 const loading = ref(true);
 const error = ref("");
 const searchQuery = ref("");
-const isCopying = ref(false);
+const copyingTraderId = ref(null);
 const copyError = ref("");
 const copySuccess = ref("");
 
@@ -277,10 +299,6 @@ const filteredTraders = computed(() => {
       (trader.strategy_desc &&
         trader.strategy_desc.toLowerCase().includes(query))
   );
-});
-
-const featuredTrader = computed(() => {
-  return traders.value.length > 0 ? traders.value[0] : null;
 });
 
 // Format numbers
@@ -335,6 +353,81 @@ const fetchCurrentTrader = async () => {
 };
 
 // Copy trader function
+const copyTrader = async (trader) => {
+  copyingTraderId.value = trader.id;
+  copyError.value = "";
+  copySuccess.value = "";
+
+  try {
+    const amount = parseFloat(trader.commision);
+
+    // Add a small delay for better UX
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    // console.log("Attempting to copy trader:", {
+    //   trader_id: trader.id,
+    //   trader_name: trader.name,
+    //   amount: amount,
+    //   commission: trader.commision,
+    // });
+
+    // Call copy trader API
+    const response = await $fetch(
+      `${config.public.apiBase}/user/copy-trader.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          trader_id: trader.id,
+          amount: amount,
+        }),
+        credentials: "include",
+      }
+    );
+
+    // console.log("API Response:", response);
+
+    if (response.success) {
+      copySuccess.value = `Successfully started copying ${trader.name} for $${amount}! You will now mirror their trades.`;
+
+      // Refresh data to show updated current trader
+      await Promise.all([fetchTraders(), fetchCurrentTrader()]);
+
+      setTimeout(() => {
+        copySuccess.value = "";
+      }, 5000);
+    } else {
+      throw new Error(response.message || "Unknown error occurred");
+    }
+  } catch (err) {
+    // console.error("Copy trader error details:", {
+    //   message: err.message,
+    //   data: err.data,
+    //   status: err.status,
+    //   statusText: err.statusText,
+    // });
+
+    // More specific error handling
+    if (err.data?.message) {
+      copyError.value = err.data.message;
+    } else if (err.message) {
+      copyError.value = err.message;
+    } else if (err.status === 500) {
+      copyError.value = "Server error. Please try again later.";
+    } else {
+      copyError.value =
+        "Failed to copy trader. Please check your balance and try again.";
+    }
+
+    setTimeout(() => {
+      copyError.value = "";
+    }, 5000);
+  } finally {
+    copyingTraderId.value = null;
+  }
+};
 
 // Initialize
 onMounted(() => {
