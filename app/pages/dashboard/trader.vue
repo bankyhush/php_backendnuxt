@@ -218,7 +218,7 @@
               <p class="text-xs">Wins</p>
             </div>
             <div>
-              <p class="font-semibold text-base">{{ trader.profit }}%</p>
+              <p class="font-semibold text-base">{{ trader.profit }}</p>
               <p class="text-xs">Profit</p>
             </div>
           </div>
