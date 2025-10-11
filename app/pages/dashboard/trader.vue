@@ -47,17 +47,17 @@
           class="bg-gray-800 rounded-2xl p-6 animate-pulse"
         >
           <div class="flex items-center space-x-3 mb-4">
-            <div class="w-12 h-12 bg-gray-700 rounded-full"></div>
+            <div class="w-12 h-12 bg-zinc-800 rounded-full"></div>
             <div class="space-y-2">
-              <div class="h-4 bg-gray-700 rounded w-32"></div>
-              <div class="h-3 bg-gray-700 rounded w-20"></div>
+              <div class="h-4 bg-zinc-800 rounded w-32"></div>
+              <div class="h-3 bg-zinc-800 rounded w-20"></div>
             </div>
           </div>
-          <div class="h-20 bg-gray-700 rounded mb-4"></div>
+          <div class="h-20 bg-zinc-800 rounded mb-4"></div>
           <div class="grid grid-cols-3 gap-2">
             <div v-for="m in 3" :key="m" class="space-y-1">
-              <div class="h-4 bg-gray-700 rounded"></div>
-              <div class="h-3 bg-gray-700 rounded"></div>
+              <div class="h-4 bg-zinc-800 rounded"></div>
+              <div class="h-3 bg-zinc-800 rounded"></div>
             </div>
           </div>
         </div>
@@ -72,7 +72,10 @@
         <h2 class="text-xl font-semibold text-white mb-2">
           Error Loading Traders
         </h2>
-        <p class="text-gray-400 mb-4">{{ error }}</p>
+        <p class="text-gray-400 mb-4">
+          Please try refreshing the page, or come back later. If the problem
+          persists, contact our support team.
+        </p>
         <button
           @click="fetchTraders"
           class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
