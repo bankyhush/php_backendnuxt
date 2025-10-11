@@ -31,14 +31,20 @@
           </div>
         </NuxtLink>
 
-        <NuxtLink to="/" :class="navItemClass('/')">
+        <NuxtLink
+          to="/dashboard/market"
+          :class="navItemClass('/dashboard/market')"
+        >
           <div class="flex flex-col items-center">
             <Icon name="solar:wallet-broken" width="24" height="24" />
-            <span class="text-xs mt-1">Wallets</span>
+            <span class="text-xs mt-1">Market</span>
           </div>
         </NuxtLink>
 
-        <NuxtLink to="/trade" :class="navItemClass('/trade')">
+        <NuxtLink
+          to="/dashboard/trade"
+          :class="navItemClass('/dashboard/trade')"
+        >
           <div class="flex flex-col items-center">
             <Icon name="mi:bar-chart" width="24" height="24" />
             <span class="text-xs mt-1">Trade</span>

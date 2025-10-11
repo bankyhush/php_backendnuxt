@@ -10,12 +10,12 @@
       {{ stakeSuccess }}
     </div>
 
-    <div
+    <!-- <div
       v-if="stakeError"
       class="mb-6 p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded-lg"
     >
       {{ stakeError }}
-    </div>
+    </div> -->
 
     <!-- Loading State -->
     <div v-if="loading" class="mb-4">
@@ -165,7 +165,7 @@
     <!-- Stake Modal -->
     <div
       v-if="showStakeModal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      class="fixed inset-0 bg-[#ffffff92] bg-opacity-50 flex items-center justify-center z-50 p-4"
     >
       <div
         class="bg-white dark:bg-[#202020] rounded-lg shadow-xl w-full max-w-2xl"
@@ -183,7 +183,7 @@
 
           <!-- Modal Header -->
           <div
-            class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white dark:bg-[#202020]"
+            class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white dark:bg-[#202020] mb-10"
           >
             <h5 class="text-xl font-bold text-gray-900 dark:text-white">
               {{ selectedPlan?.name }}
@@ -195,6 +195,21 @@
             >
               <Icon name="lucide:x" class="w-6 h-6" />
             </button>
+          </div>
+
+          <!-- Success/Error Messages -->
+          <div
+            v-if="stakeSuccess"
+            class="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
+          >
+            {{ stakeSuccess }}
+          </div>
+
+          <div
+            v-if="stakeError"
+            class="mb-6 p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
+          >
+            {{ stakeError }}
           </div>
 
           <!-- Modal Body -->

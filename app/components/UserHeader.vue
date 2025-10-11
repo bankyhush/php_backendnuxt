@@ -8,11 +8,31 @@ const menuRef = ref(null);
 const config = useRuntimeConfig();
 
 const menuItems = [
-  { name: "Staking", href: "/dashboard/staking" },
-  { name: "Copy Trader", href: "/dashboard/trader" },
-  { name: "Trading Plan", href: "/dashboard/plans" },
-  { name: "Statement", href: "/dashboard/statement" },
-  { name: "Profile", href: "/dashboard/profile" },
+  {
+    name: "Staking",
+    href: "/dashboard/staking",
+    icon: "clarity:coin-bag-line",
+  },
+  {
+    name: "Copy Trader",
+    href: "/dashboard/trader",
+    icon: "solar:copy-broken",
+  },
+  {
+    name: "Trading Plan",
+    href: "/dashboard/plans",
+    icon: "solar:chart-broken",
+  },
+  {
+    name: "Statement",
+    href: "/dashboard/statement",
+    icon: "solar:history-2-broken",
+  },
+  {
+    name: "Profile",
+    href: "/dashboard/profile",
+    icon: "solar:user-broken",
+  },
 ];
 
 const toggleMenu = () => {
@@ -92,8 +112,9 @@ const logout = async () => {
                   v-for="item in menuItems"
                   :key="item.name"
                   :to="item.href"
-                  class="text-sm font-medium text-muted-foreground hover:text-foreground transition"
+                  class="flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition"
                 >
+                  <Icon :name="item.icon" class="w-4 h-4 mr-2 text-gray-400" />
                   {{ item.name }}
                 </NuxtLink>
               </div>
@@ -169,9 +190,10 @@ const logout = async () => {
                   v-for="item in menuItems"
                   :key="item.name"
                   :to="item.href"
-                  class="block text-base font-medium text-muted-foreground hover:text-foreground transition"
+                  class="flex items-center text-base font-medium text-muted-foreground hover:text-foreground transition"
                   @click="toggleMenu"
                 >
+                  <Icon :name="item.icon" class="w-4 h-4 mr-2 text-gray-400" />
                   {{ item.name }}
                 </NuxtLink>
 

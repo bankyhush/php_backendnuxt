@@ -67,7 +67,7 @@
 
       <div class="flex flex-wrap gap-2 rounded-lg">
         <!-- Button 1 -->
-        <NuxtLink to="/dashboard/deposit/1" class="w-[32%] sm:w-auto">
+        <NuxtLink to="/dashboard/deposit/1" class="w-[30%] sm:w-auto">
           <button
             class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
@@ -77,7 +77,7 @@
         </NuxtLink>
 
         <!-- Button 2 -->
-        <NuxtLink to="/dashboard/transfer/" class="w-[32%] sm:w-auto">
+        <NuxtLink to="/dashboard/transfer/" class="w-[30%] sm:w-auto">
           <button
             class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
@@ -91,7 +91,7 @@
         </NuxtLink>
 
         <!-- Button 3 -->
-        <NuxtLink to="/dashboard/withdraw/1" class="w-[32%] sm:w-auto">
+        <NuxtLink to="/dashboard/withdraw/1" class="w-[30%] sm:w-auto">
           <button
             class="cursor-pointer flex items-center gap-1 justify-center w-full bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >

@@ -115,24 +115,12 @@
             </button>
           </div>
 
-          <div class="grid grid-cols-4 text-center mt-6 text-sm">
+          <div class="grid grid-cols-3 text-center mt-6 text-sm">
             <div>
               <p class="text-xl font-semibold">{{ currentTrader.copiers }}</p>
               <p>Copy Traders</p>
             </div>
-            <div>
-              <p
-                :class="[
-                  'capitalize text-xl font-semibold',
-                  currentTrader.trade_status === 'active'
-                    ? 'text-green-400'
-                    : 'text-yellow-400',
-                ]"
-              >
-                {{ currentTrader.trade_status }}
-              </p>
-              <p>Status</p>
-            </div>
+
             <div>
               <p class="text-xl font-semibold">{{ currentTrader.win_rate }}</p>
               <p>Winning Trades</p>
@@ -179,7 +167,7 @@
             <button
               @click="copyTrader(trader)"
               :disabled="copyingTraderId === trader.id"
-              class="cursor-pointer bg-green-600 hover:bg-green-500 text-white text-sm px-4 py-1.5 rounded-full font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
+              class="cursor-pointer whitespace-nowrap bg-green-600 hover:bg-green-500 text-white text-sm px-4 py-1.5 rounded-full font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Icon
                 v-if="copyingTraderId === trader.id"
@@ -207,7 +195,7 @@
           </div>
 
           <!-- Metrics -->
-          <div class="grid grid-cols-4 text-center text-sm gap-y-2">
+          <div class="grid grid-cols-3 text-center text-sm gap-y-2">
             <div>
               <p class="font-semibold text-base">{{ trader.nocopiers }}</p>
               <p class="text-xs">Copiers</p>
@@ -216,10 +204,7 @@
               <p class="font-semibold text-base">{{ trader.notrades }}</p>
               <p class="text-xs">Total Trades</p>
             </div>
-            <div>
-              <p class="font-semibold text-base">{{ trader.nowins }}</p>
-              <p class="text-xs">Wins</p>
-            </div>
+
             <div>
               <p class="font-semibold text-base">{{ trader.profit }}</p>
               <p class="text-xs">Profit</p>
@@ -236,7 +221,7 @@
                   : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
               ]"
             >
-              {{ trader.status }}
+              Wins: {{ trader.nowins }}
             </span>
             <span class="text-xs text-gray-500">
               Commission: ${{ trader.commision }}
