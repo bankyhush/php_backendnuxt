@@ -213,7 +213,7 @@
           </div>
 
           <!-- Modal Body -->
-          <div class="p-6 overflow-y-auto">
+          <div class="p-4 overflow-y-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <!-- Left Column -->
               <div>
@@ -244,31 +244,36 @@
 
               <!-- Right Column -->
               <div>
-                <ul
-                  class="mb-4 space-y-2 text-sm text-gray-700 dark:text-gray-300"
+                <span
+                  class="flex items-center justify-start space-x-6 text-sm text-gray-700 dark:text-gray-300 mb-4"
                 >
-                  <li class="flex justify-between">
-                    <span>Minimum Locked Amount</span>
+                  <!-- Min -->
+                  <span class="flex items-center space-x-1">
+                    <span class="text-gray-500 dark:text-gray-400">Min:</span>
                     <span class="font-medium"
                       >${{ selectedPlan?.min_amount.toLocaleString() }}</span
                     >
-                  </li>
-                  <li class="flex justify-between">
-                    <span>Annual Yield Percentage</span>
+                  </span>
+
+                  <!-- Yield -->
+                  <span class="flex items-center space-x-1">
+                    <span class="text-gray-500 dark:text-gray-400">Yield:</span>
                     <span class="font-medium"
                       >{{ selectedPlan?.percent }}%</span
                     >
-                  </li>
-                  <li
+                  </span>
+
+                  <!-- Max (optional) -->
+                  <span
                     v-if="selectedPlan?.max_amount"
-                    class="flex justify-between"
+                    class="flex items-center space-x-1"
                   >
-                    <span>Maximum Amount</span>
+                    <span class="text-gray-500 dark:text-gray-400">Max:</span>
                     <span class="font-medium"
                       >${{ selectedPlan?.max_amount.toLocaleString() }}</span
                     >
-                  </li>
-                </ul>
+                  </span>
+                </span>
 
                 <div class="mb-4">
                   <label
