@@ -44,7 +44,7 @@
         <div
           v-for="n in 6"
           :key="n"
-          class="bg-gray-800 rounded-2xl p-6 animate-pulse"
+          class="bg-zinc-900 rounded-2xl p-6 animate-pulse"
         >
           <div class="flex items-center space-x-3 mb-4">
             <div class="w-12 h-12 bg-zinc-800 rounded-full"></div>

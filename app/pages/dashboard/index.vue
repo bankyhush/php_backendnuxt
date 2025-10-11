@@ -95,6 +95,10 @@ function formatCurrency(value) {
                       style="width: 40%; min-width: 4px"
                     ></div>
                     <div
+                      class="bg-purple-500 h-full transition-all"
+                      style="width: 40%; min-width: 4px"
+                    ></div>
+                    <div
                       class="bg-blue-500 h-full transition-all"
                       style="width: 30%; min-width: 4px"
                     ></div>
@@ -211,7 +215,7 @@ function formatCurrency(value) {
                       </svg>
                     </div>
                   </div>
-                  <!-- Dummy allocation items -->
+
                   <div
                     class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
                   >
@@ -245,6 +249,43 @@ function formatCurrency(value) {
                       </svg>
                     </div>
                   </div>
+
+                  <div
+                    class="flex items-center justify-between mb-4 hover:bg-gray-50 dark:hover:bg-[#303030] p-2 rounded-lg cursor-pointer transition-colors"
+                  >
+                    <div class="flex items-center">
+                      <div
+                        class="w-2 h-2 rounded-full bg-purple-500 mr-2"
+                      ></div>
+                      <span class="text-gray-700 dark:text-gray-200"
+                        >Active Plan</span
+                      >
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-right">
+                        ${{ formatCurrency(data?.user?.planamount) }}
+                        {{ data?.user?.activeplan }}</span
+                      >
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="text-gray-400 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Dummy allocation items -->
                 </div>
               </div>
 
