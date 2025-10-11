@@ -87,8 +87,8 @@
                 : 'text-red-500'
             "
           >
-            {{ crypto.price_change_percentage_24h >= 0 ? "+" : "" }}
-            {{ formatChange(crypto.price_change_percentage_24h) }}%
+            {{ crypto.price_change_percentage_24h >= 0 ? "+" : ""
+            }}{{ formatChange(crypto.price_change_percentage_24h) }}%
           </div>
         </div>
       </div>
