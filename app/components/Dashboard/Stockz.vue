@@ -7,9 +7,7 @@
         <div
           class="flex justify-around items-center font-semibold rounded-lg mb-3"
         >
-          <span
-            class="w-1/2 pb-2 border-b-3 border-zinc-900 dark:border-zinc-100 text-center"
-          >
+          <span class="w-1/2 pb-2 border-b-1 border-gray-900 text-center">
             <NuxtLink
               to="/dashboard"
               class="flex items-center justify-center gap-2"
@@ -23,7 +21,9 @@
             </NuxtLink>
           </span>
 
-          <span class="w-1/2 pb-2 border-b-1 border-gray-900 text-center">
+          <span
+            class="w-1/2 pb-2 border-b-3 border-zinc-900 dark:border-zinc-100 text-center"
+          >
             <NuxtLink
               to="/dashboard/stocks"
               class="flex items-center justify-center gap-2"

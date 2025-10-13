@@ -197,7 +197,7 @@
                 type="submit"
                 :disabled="isLoading || !withdrawalAddress || !withdrawalAmount"
                 :class="[
-                  'min-h-[40px] cursor-pointer flex items-center justify-center w-48 px-6 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed',
+                  'min-h-[40px] whitespace-nowrap cursor-pointer flex items-center justify-center w-48 px-6 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed',
                   isLoading
                     ? 'bg-black text-white dark:bg-white dark:text-black'
                     : 'bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200',
