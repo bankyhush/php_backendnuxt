@@ -98,10 +98,10 @@ onMounted(async () => {
     if (res.loggedIn) {
       user.value = res.user;
     } else {
-      await router.push("/login");
+      window.location.href = "/login";
     }
   } catch (error) {
-    await router.push("/login");
+    window.location.href = "/login";
   } finally {
     loading.value = false;
   }
@@ -120,7 +120,7 @@ const logout = async () => {
     // ignore errors
   }
   user.value = null;
-  await router.push("/login");
+  window.location.href = "/login";
 };
 
 // Navigation item class logic

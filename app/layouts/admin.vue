@@ -194,11 +194,11 @@ onMounted(async () => {
         return;
       }
     } else {
-      await router.push("/login");
+      window.location.href = "/login";
       return;
     }
   } catch (error) {
-    await router.push("/login");
+    window.location.href = "/login";
     return;
   } finally {
     loading.value = false;
@@ -218,6 +218,6 @@ const logout = async () => {
     // Ignore errors
   }
   user.value = null;
-  await router.push("/login");
+  window.location.href = "/login";
 };
 </script>
