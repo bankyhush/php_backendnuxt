@@ -120,7 +120,7 @@
       @click.self="closeModal"
     >
       <div
-        class="bg-gray-200 text-zinc-900 dark:bg-zinc-900 dark:text-gray-100 w-full max-w-2xl p-6 rounded-xl shadow-xl relative overflow-y-auto max-h-[90vh]"
+        class="bg-gray-200 text-black dark:bg-zinc-900 dark:text-gray-100 w-full max-w-2xl p-6 rounded-xl shadow-xl relative overflow-y-auto max-h-[90vh]"
       >
         <button
           @click="closeModal"

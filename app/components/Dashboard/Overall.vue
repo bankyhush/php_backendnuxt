@@ -29,7 +29,7 @@
         name="lucide:alert-circle"
         class="w-6 h-6 text-red-500 mx-auto mb-2"
       />
-      <p class="text-red-500 text-sm">{{ error }}</p>
+      <p class="text-red-500 text-sm">Error: Try again later</p>
       <button
         @click="fetchBalances"
         class="mt-2 text-blue-500 hover:text-blue-600 text-sm"
