@@ -590,7 +590,7 @@ const fetchTradingSpots = async () => {
       }
     }
   } catch (err) {
-    console.error("Failed to fetch trading spots:", err);
+    // console.error("Failed to fetch trading spots:", err);
   }
 };
 
@@ -608,7 +608,7 @@ const fetchTradeHistory = async () => {
       tradeHistory.value = response.data;
     }
   } catch (err) {
-    console.error("Failed to fetch trade history:", err);
+    //console.error("Failed to fetch trade history:", err);
     errorMessage.value = "Failed to load trade history";
     clearMessages();
   } finally {
@@ -668,10 +668,10 @@ const placeOrder = async () => {
       }
     );
 
-    console.log("Response status:", response.status);
+    //console.log("Response status:", response.status);
 
     const responseText = await response.text();
-    console.log("Raw response text:", responseText);
+    //console.log("Raw response text:", responseText);
 
     let responseData;
     try {
@@ -681,10 +681,10 @@ const placeOrder = async () => {
       throw new Error(`Server returned: ${responseText}`);
     }
 
-    console.log("Parsed response data:", responseData);
+    //  console.log("Parsed response data:", responseData);
 
     if (responseData.success) {
-      successMessage.value = `Trade placed successfully! Trade ID: ${responseData.data.trade_id}`;
+      successMessage.value = `Trade placed successfully!`;
 
       // Reset form
       tradeData.value.amount = "";
