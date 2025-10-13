@@ -211,9 +211,6 @@
                   @error="handleImageError"
                 />
                 <span class="dark:text-white">{{ spot.coin_name }}</span>
-                <span class="text-xs text-gray-500 ml-auto"
-                  >${{ spot.coin_rate?.toLocaleString() }}</span
-                >
               </div>
             </div>
           </div>

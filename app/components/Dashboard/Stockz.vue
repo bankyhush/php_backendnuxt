@@ -199,7 +199,7 @@
                 ${{ formatNumber(coin.total_balance, 2) }}
               </div>
               <div class="text-sm text-gray-500 dark:text-gray-400">
-                {{ formatNumber(coin.total_value) }} {{ coin.coin_name }}
+                {{ formatNumber(coin.total_value) }} {{ coin.coin_title }}
               </div>
             </td>
           </tr>
@@ -289,7 +289,7 @@ const changePage = (page) => {
 
 // Navigate to portfolio details
 const navigateToPortfolio = (coinId) => {
-  router.push(`/dashboard/portfolio/${coinId}`);
+  router.push(`/dashboard/stockfolio/${coinId}`);
 };
 
 // Fetch coins from API
@@ -305,7 +305,7 @@ const fetchCoins = async () => {
     });
 
     const response = await $fetch(
-      `${config.public.apiBase}/user/user-coins.php?${params}`,
+      `${config.public.apiBase}/user/user-stocks.php?${params}`,
       {
         credentials: "include",
       }

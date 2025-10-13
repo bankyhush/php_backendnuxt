@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Widget</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #0f0f0f;
+        width: 100%;
+        height: 100%;
+        overflow-y: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Finlogix Widget BEGIN-->
+    <div class="finlogix-container"></div>
+    <script
+      type="text/javascript"
+      src="https://widget.finlogix.com/Widget.js"
+    ></script>
+    <script type="text/javascript">
+      Widget.init({
+        widgetId: "4f279817-2ec7-44f9-8556-58501dc09c53",
+        type: "BigChart",
+        language: "en",
+        showBrand: true,
+        isShowTradeButton: true,
+        isShowBeneathLink: false,
+        isShowDataFromACYInfo: true,
+        symbolName: "Microsoft",
+        hasSearchBar: false,
+        hasSymbolName: false,
+        hasSymbolChange: false,
+        hasButton: false,
+        chartShape: "candles",
+        timePeriod: "D1",
+        isAdaptive: true,
+      });
+    </script>
+    <!-- Finlogix Widget END-->
+  </body>
+</html>
