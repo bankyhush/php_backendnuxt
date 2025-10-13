@@ -101,12 +101,12 @@
         </NuxtLink>
 
         <!-- Button 4 (Hidden on mobile) -->
-        <NuxtLink to="/dashboard/exchange" class="hidden sm:block sm:w-auto">
+        <NuxtLink to="/dashboard/trade" class="hidden sm:block sm:w-auto">
           <button
             class="cursor-pointer flex items-center gap-1 justify-center bg-white text-black border border-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium hover:border-gray-400 transition-colors dark:bg-[#303030] dark:text-white dark:border-[#303030] dark:hover:border-gray-500"
           >
             <Icon name="hugeicons:coins-swap" width="24" height="24" />
-            Exchange
+            Trade
           </button>
         </NuxtLink>
       </div>

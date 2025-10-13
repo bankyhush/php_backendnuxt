@@ -39,11 +39,11 @@
         class="w-full lg:w-1/3 bg-white dark:bg-[#202020] p-4 rounded-xl shadow-md"
       >
         <div class="flex border-b mb-4">
-          <button
+          <!-- <button
             class="w-1/2 py-2 text-center border-blue-600 text-blue-600 font-semibold dark:text-blue-400"
           >
             Trades
-          </button>
+          </button> -->
         </div>
 
         <form class="space-y-4" @submit.prevent="placeOrder">

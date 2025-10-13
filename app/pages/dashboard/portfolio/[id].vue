@@ -177,14 +177,14 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/support"
+            to="/dashboard/market"
             class="cursor-pointer flex items-center justify-center bg-white dark:bg-[#202020] rounded-lg border border-gray-300 dark:border-[#303030] py-3 text-sm font-medium hover:shadow transition"
           >
             <Icon
               name="lucide:bell"
               class="mr-2 text-gray-600 dark:text-gray-300"
             />
-            Support
+            Market Alert
           </NuxtLink>
         </div>
 
