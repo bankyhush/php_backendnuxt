@@ -52,13 +52,18 @@ function formatCurrency(value) {
             <div
               v-for="tab in tabs"
               :key="tab.name"
-              class="px-6 py-4 whitespace-nowrap cursor-pointer text-sm font-medium transition-colors"
+              class="flex items-center gap-1 px-6 py-4 whitespace-nowrap cursor-pointer text-sm font-medium transition-colors"
               :class="
                 tab.active
                   ? 'dark:text-gray-200 text-zinc-900 border-gray-200 border-b-2 dark:border-[#303030]'
                   : 'dark:text-gray-50 hover:text-black'
               "
             >
+              <Icon
+                name="streamline-plump:safe-vault-remix"
+                width="24"
+                height="24"
+              />
               {{ tab.name }}
             </div>
           </div>
