@@ -10,18 +10,14 @@
           class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4"
         >
           <h2 class="text-xl font-semibold text-left dark:text-white">
-            Live Chart -
-            {{ selectedTradingSpot.coin_name || selectedAsset.coin_name }}
+            Live Chart - {{ selectedAsset.coin_name }}
           </h2>
           <div class="flex items-center gap-2">
             <span class="text-sm text-gray-600 dark:text-gray-400"
               >Current Price:</span
             >
             <span class="font-semibold text-green-600"
-              >${{
-                selectedTradingSpot.coin_rate?.toLocaleString() ||
-                selectedAsset.coin_rate?.toLocaleString()
-              }}</span
+              >${{ selectedAsset.coin_rate?.toLocaleString() }}</span
             >
           </div>
         </div>
@@ -31,7 +27,7 @@
             class="w-full h-[450px] rounded"
             frameborder="0"
             :src="`https://www.tradingview.com/widgetembed/?frameElementId=tradingview-widget&symbol=BINANCE:${
-              selectedTradingSpot.symbol || selectedAsset.symbol || 'BTCUSDT'
+              selectedAsset.symbol || 'BTCUSDT'
             }&interval=15&theme=${isDark ? 'dark' : 'light'}`"
             allowfullscreen
           ></iframe>
@@ -323,7 +319,7 @@
       </div>
     </section>
 
-    <!-- Order History (unchanged) -->
+    <!-- Order History -->
     <section
       class="bg-white dark:bg-[#202020] p-6 rounded-xl shadow-md overflow-x-auto"
     >
@@ -414,7 +410,9 @@
                 {{ trade.trade_result || "PENDING" }}
               </span>
             </td>
-            <td class="px-4 py-3">{{ formatDate(trade.created_at) }}</td>
+            <td class="px-4 py-3 whitespace-nowrap">
+              {{ formatDate(trade.created_at) }}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -502,6 +500,9 @@ const selectAsset = (asset) => {
   tradeData.value.coin_id = asset.coin_id;
   tradeData.value.coin_name = asset.coin_name;
   assetDropdownOpen.value = false;
+
+  // FIXED: Update chart when Select Asset changes
+  updateChart(asset);
 };
 
 const selectTradingSpot = (spot) => {
@@ -509,15 +510,28 @@ const selectTradingSpot = (spot) => {
   tradeData.value.trading_spot = spot.coin_name;
   spotDropdownOpen.value = false;
 
-  // Update chart with the selected trading spot
-  updateChart(spot);
+  // REMOVED: Chart update from Trade Spot
+  // The chart should only update when Select Asset changes
 };
 
 const updateChart = (asset) => {
-  const symbol = asset.coin_code
-    ? `${asset.coin_code}USDT`
-    : asset.coin_name || "BTCUSDT";
-  selectedTradingSpot.value.symbol = symbol;
+  // Generate symbol for the chart based on the selected asset
+  // For TradingView, we need a proper trading pair format
+  let symbol;
+
+  if (asset.coin_code) {
+    // If asset has a coin_code (like BTC, ETH), use it for the pair
+    symbol = `${asset.coin_code}USDT`;
+  } else if (asset.coin_name) {
+    // Extract first 3-4 letters for crypto symbols
+    const code = asset.coin_name.substring(0, 3).toUpperCase();
+    symbol = `${code}USDT`;
+  } else {
+    symbol = "BTCUSDT"; // Fallback
+  }
+
+  selectedAsset.value.symbol = symbol;
+  console.log("Updating chart for:", symbol);
 };
 
 const formatDate = (dateString) => {
