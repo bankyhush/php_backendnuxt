@@ -51,7 +51,7 @@
         name="lucide:alert-circle"
         class="w-8 h-8 text-red-500 mx-auto mb-2"
       />
-      <p class="text-red-500 text-sm">{{ error }}</p>
+      <p class="text-red-500 text-sm">Error Loading History</p>
       <button
         @click="fetchTransactions"
         class="mt-2 text-blue-500 hover:text-blue-600 text-sm"
@@ -92,7 +92,7 @@
             />
           </div>
           <div>
-            <div class="font-medium capitalize">{{ transaction.type }}</div>
+            <div class="font-medium uppercase">{{ transaction.type }}</div>
             <div class="text-sm text-gray-500">
               {{ formatDate(transaction.createdAt) }}
             </div>

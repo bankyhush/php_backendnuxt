@@ -241,7 +241,7 @@
                 />
               </div>
               <div>
-                <div class="font-medium capitalize">
+                <div class="font-medium uppercase">
                   {{ transaction.type }}
                   <span
                     v-if="transaction.coin_name"

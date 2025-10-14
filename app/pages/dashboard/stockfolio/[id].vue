@@ -98,6 +98,15 @@
       <!-- Content when data is loaded -->
       <div v-else-if="coinData">
         <!-- Back Button -->
+        <div class="mb-6">
+          <button
+            @click="router.back()"
+            class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center"
+          >
+            <Icon name="lucide:arrow-left" class="w-5 h-5 mr-2" />
+            Back
+          </button>
+        </div>
 
         <!-- HEADER -->
         <div class="mb-8 flex items-center space-x-3">
@@ -142,11 +151,10 @@
         </div>
 
         <!-- ACTIONS -->
-
         <div
           class="bg-white dark:bg-[#202020] rounded-xl shadow-sm p-6 mb-8 h-[500px] overflow-hidden"
         >
-          <!-- Finlogix Widget BEGIN-->
+          <!-- Finlogix Widget -->
           <iframe
             src="/widgets/stock.html"
             width="100%"
@@ -154,8 +162,6 @@
             frameborder="0"
             style="border: none"
           ></iframe>
-
-          <!-- Finlogix Widget END-->
         </div>
 
         <!-- MAIN CONTENT -->
@@ -192,8 +198,6 @@
                   {{ coinData.coin_name }}
                 </div>
               </div>
-
-              <!-- Staked -->
 
               <!-- Spot Price -->
               <div
@@ -355,34 +359,171 @@
           Try Again
         </button>
       </div>
-    </div>
 
-    <div
-      style="
-        font-size: 1.25rem;
-        position: fixed;
-        bottom: 165px;
-        right: 0;
-        background-color: transparent;
-        border-top: 0px solid #25272a;
-        max-width: 100%;
-        padding: 0.75rem 1.5rem;
-        color: #494a4b;
-        z-index: 3000;
-      "
-    >
-      <!-- Fixed button centered on the page -->
-
-      <button
-        class="bg-red-700 hover:bg-red-800 dark:bg-green-800 dark:hover:bg-green-900 text-white px-4 py-2 rounded-4xl shadow-md transition-colors duration-300 cursor-pointer"
+      <!-- Fixed Place Order Button -->
+      <div
+        style="
+          font-size: 1.25rem;
+          position: fixed;
+          bottom: 165px;
+          right: 20px;
+          background-color: transparent;
+          border-top: 0px solid #25272a;
+          max-width: 100%;
+          padding: 0.75rem 1.5rem;
+          color: #494a4b;
+          z-index: 3000;
+        "
       >
-        <Icon
-          name="streamline-freehand:e-commerce-click-buy"
-          width="24"
-          height="24"
-          class="text-3xl"
-        />
-      </button>
+        <button
+          @click="openModal"
+          class="bg-red-700 hover:bg-red-800 dark:bg-green-800 dark:hover:bg-green-900 text-white px-4 py-2 rounded-full shadow-md transition-colors duration-300 cursor-pointer"
+        >
+          <Icon
+            name="streamline-freehand:e-commerce-click-buy"
+            width="24"
+            height="24"
+            class="inline-block mr-2"
+          />
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <transition name="fade">
+        <div
+          v-if="showModal"
+          class="fixed inset-0 bg-[#171717bd] bg-opacity-50 z-50 flex items-center justify-center px-4"
+        >
+          <div
+            class="bg-white dark:bg-[#1a1a1a] p-6 rounded-xl shadow-lg max-w-md w-full relative"
+          >
+            <!-- Close Button -->
+            <button
+              class="cursor-pointer absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:hover:text-white"
+              @click="closeModal"
+            >
+              <Icon name="mdi:close" width="20" height="20" />
+            </button>
+
+            <!-- Modal Header -->
+            <h2
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+            >
+              Place Order
+            </h2>
+
+            <!-- Success Message -->
+            <div
+              v-if="successMessage"
+              class="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg"
+            >
+              <div class="flex items-center text-green-700 dark:text-green-300">
+                <Icon
+                  name="lucide:check-circle"
+                  class="w-4 h-4 mr-2 flex-shrink-0"
+                />
+                <span class="text-sm font-medium">{{ successMessage }}</span>
+              </div>
+            </div>
+
+            <!-- Error Message -->
+            <div
+              v-if="modalError && !successMessage"
+              class="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg"
+            >
+              <div class="flex items-center text-red-700 dark:text-red-300">
+                <Icon
+                  name="lucide:alert-circle"
+                  class="w-4 h-4 mr-2 flex-shrink-0"
+                />
+                <span class="text-sm font-medium">{{ modalError }}</span>
+              </div>
+            </div>
+
+            <!-- Form (hidden when success message is shown) -->
+            <form v-if="!successMessage" @submit.prevent="placeOrder">
+              <!-- Amount -->
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300"
+                >
+                  Amount
+                </label>
+                <input
+                  v-model.number="orderForm.amount"
+                  type="number"
+                  min="0"
+                  step="any"
+                  placeholder="Enter amount"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-[#2a2a2a] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  :class="{
+                    'border-red-300 dark:border-red-700':
+                      orderForm.amount <= 0 ||
+                      (orderForm.action === 'sell' &&
+                        orderForm.amount > (coinData?.available_balance || 0)),
+                  }"
+                  required
+                />
+                <div
+                  v-if="orderForm.amount <= 0"
+                  class="mt-1 text-xs text-red-500 dark:text-red-400 flex items-center"
+                >
+                  <Icon name="lucide:alert-circle" class="w-3 h-3 mr-1" />
+                  Amount must be greater than 0
+                </div>
+                <div
+                  v-if="
+                    orderForm.action === 'sell' &&
+                    orderForm.amount > (coinData?.available_balance || 0)
+                  "
+                  class="mt-1 text-xs text-red-500 dark:text-red-400 flex items-center"
+                >
+                  <Icon name="lucide:alert-circle" class="w-3 h-3 mr-1" />
+                  Amount exceeds available balance ( ${{
+                    formatNumber(coinData?.available_balance || 0, 2)
+                  }})
+                </div>
+              </div>
+
+              <!-- Buy/Sell Select -->
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300"
+                >
+                  Action
+                </label>
+                <select
+                  v-model="orderForm.action"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-[#2a2a2a] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  required
+                >
+                  <option value="buy">Buy</option>
+                  <option value="sell">Sell</option>
+                </select>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                :disabled="
+                  isSubmitting ||
+                  orderForm.amount <= 0 ||
+                  (orderForm.action === 'sell' &&
+                    orderForm.amount > (coinData?.available_balance || 0))
+                "
+                class="cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Icon
+                  v-if="isSubmitting"
+                  name="lucide:loader-2"
+                  class="animate-spin w-4 h-4 mr-2 inline"
+                />
+                {{ isSubmitting ? "Submitting..." : "Submit Order" }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -392,9 +533,21 @@ definePageMeta({
   layout: "user",
 });
 
+import { ref, computed, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
 const config = useRuntimeConfig();
 const route = useRoute();
 const router = useRouter();
+
+const showModal = ref(false);
+const modalError = ref("");
+const isSubmitting = ref(false);
+const successMessage = ref(""); // New ref for success message
+const orderForm = ref({
+  amount: 0,
+  action: "buy",
+});
 
 // Get coin ID from route parameters
 const coinId = route.params.id;
@@ -404,7 +557,6 @@ const coinData = ref(null);
 const loading = ref(true);
 const error = ref("");
 const activeTab = ref("history");
-const searchTerm = ref("");
 
 // Computed percentages for pie chart
 const availablePercentage = computed(() => {
@@ -426,6 +578,7 @@ const stakedPercentage = computed(() => {
 
 // Format numbers
 const formatNumber = (num, precision = 2) => {
+  if (num == null) return "0." + "0".repeat(precision);
   if (num === 0) return "0." + "0".repeat(precision);
   if (num < 0.000001) return num.toExponential(4);
   if (num < 0.001) return num.toFixed(6);
@@ -438,20 +591,27 @@ const formatNumber = (num, precision = 2) => {
 const fetchCoinDetails = async () => {
   loading.value = true;
   error.value = "";
-
   try {
     // Add 800ms delay to show skeleton
     await new Promise((resolve) => setTimeout(resolve, 800));
-
     const response = await $fetch(
       `${config.public.apiBase}/user/portfolio.php?coin_id=${coinId}`,
       {
         credentials: "include",
       }
     );
-
     if (response.success) {
-      coinData.value = response.data;
+      coinData.value = {
+        ...response.data,
+        available_balance: Number(response.data.available_balance) || 0,
+        total_balance: Number(response.data.total_balance) || 0,
+        on_order_balance: Number(response.data.on_order_balance) || 0,
+        staked_balance: Number(response.data.staked_balance) || 0,
+        total_value: Number(response.data.total_value) || 0,
+        available_value: Number(response.data.available_value) || 0,
+        coin_rate: Number(response.data.coin_rate) || 0,
+      };
+      //console.log("Fetched coin data:", coinData.value);
     } else {
       throw new Error(response.message);
     }
@@ -459,8 +619,79 @@ const fetchCoinDetails = async () => {
     error.value =
       err?.data?.message || err?.message || "Failed to load portfolio details";
     coinData.value = null;
+    console.error("Fetch error:", err);
   } finally {
     loading.value = false;
+  }
+};
+
+// Open modal
+const openModal = () => {
+  //console.log("Opening modal");
+  showModal.value = true;
+  orderForm.value = { amount: 0, action: "buy" };
+  modalError.value = "";
+  successMessage.value = "";
+};
+
+// Close modal
+const closeModal = () => {
+  //console.log("Closing modal");
+  showModal.value = false;
+  orderForm.value = { amount: 0, action: "buy" };
+  modalError.value = "";
+  successMessage.value = "";
+};
+
+// Place order
+const placeOrder = async () => {
+  if (orderForm.value.amount <= 0) {
+    modalError.value = "Amount must be greater than 0";
+    return;
+  }
+  if (
+    orderForm.value.action === "sell" &&
+    orderForm.value.amount > (coinData.value?.available_balance || 0)
+  ) {
+    modalError.value = `Amount exceeds available balance ($ ${formatNumber(
+      coinData.value?.available_balance || 0,
+      2
+    )})`;
+    return;
+  }
+
+  isSubmitting.value = true;
+  modalError.value = "";
+  successMessage.value = "";
+  try {
+    const response = await $fetch(`${config.public.apiBase}/user/stockup.php`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        coin_id: coinId,
+        amount: parseFloat(orderForm.value.amount),
+        action: orderForm.value.action.toUpperCase(),
+      },
+      credentials: "include",
+    });
+
+    if (response.success) {
+      //console.log("Order placed successfully:", response);
+      successMessage.value = `Order placed successfully: ${
+        response.data.action
+      } $${formatNumber(response.data.amount, 2)} of ${response.data.coin}`;
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // Wait 5 seconds
+      closeModal();
+      await fetchCoinDetails();
+    } else {
+      throw new Error(response.message);
+    }
+  } catch (err) {
+    modalError.value =
+      err?.data?.message || err?.message || "Failed to place order";
+    console.error("Order error:", err);
+  } finally {
+    isSubmitting.value = false;
   }
 };
 
@@ -479,5 +710,21 @@ onMounted(() => {
   from {
     stroke-dasharray: 0 100;
   }
+}
+
+/* Fade transition for modal */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Ensure modal is on top */
+.fixed.inset-0 {
+  z-index: 50;
 }
 </style>
