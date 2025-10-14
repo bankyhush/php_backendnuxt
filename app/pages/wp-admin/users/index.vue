@@ -212,13 +212,13 @@ onMounted(() => {
                 <span
                   :class="[
                     'px-2 py-1 text-xs rounded-full',
-                    userItem.is_verified === true
+                    userItem.is_verified === 'true'
                       ? 'bg-green-500 text-white'
                       : 'bg-yellow-700 text-white',
                   ]"
                 >
                   {{
-                    userItem.is_verified === true ? "Verified" : "Unverified"
+                    userItem.is_verified === "true" ? "Verified" : "Unverified"
                   }}
                 </span>
               </td>
