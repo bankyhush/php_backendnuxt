@@ -176,7 +176,7 @@ onMounted(() => {
           <button
             type="submit"
             :disabled="saving"
-            class="cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+            class="whitespace-nowrap cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
           >
             {{ saving ? "Saving..." : "Update User" }}
           </button>
@@ -189,6 +189,73 @@ onMounted(() => {
           </NuxtLink>
         </div>
       </form>
+    </div>
+
+    <div
+      class="mb-6 p-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4"
+    >
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Manage History
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Create History
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-cyan-600 text-white rounded-md hover:bg-cyan-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Credit & Debit Balances
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Manage Trade Records
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-fuchsia-800 text-white rounded-md hover:bg-fuchsia-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Create Trade Records
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-pink-700 text-white rounded-md hover:bg-pink-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Stake History
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-red-800 text-white rounded-md hover:bg-red-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Investment History
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-lime-700 text-white rounded-md hover:bg-lime-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Send Email
+      </button>
+
+      <button
+        type="submit"
+        class="cursor-pointer px-6 py-2 bg-rose-700 text-white rounded-md hover:bg-rose-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+      >
+        Convert Order & Stake & Available Balances
+      </button>
     </div>
   </div>
 </template>

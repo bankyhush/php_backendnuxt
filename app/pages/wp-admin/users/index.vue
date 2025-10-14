@@ -6,6 +6,17 @@ definePageMeta({
 const user = inject("authUser");
 const config = useRuntimeConfig();
 
+// Format numbers
+const formatNumber = (num, precision = 2) => {
+  if (num == null) return "0." + "0".repeat(precision);
+  if (num === 0) return "0." + "0".repeat(precision);
+  if (num < 0.000001) return num.toExponential(4);
+  if (num < 0.001) return num.toFixed(6);
+  if (num < 1) return num.toFixed(precision);
+  if (num < 1000) return num.toFixed(precision);
+  return num.toLocaleString("en-US", { maximumFractionDigits: precision });
+};
+
 // State
 const users = ref([]);
 const loading = ref(true);
@@ -155,7 +166,12 @@ onMounted(() => {
               <th
                 class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
               >
-                Role
+                Total ($)
+              </th>
+              <th
+                class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              >
+                Email
               </th>
               <th
                 class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
@@ -183,18 +199,30 @@ onMounted(() => {
                   <div class="text-sm text-gray-300">{{ userItem.email }}</div>
                 </div>
               </td>
+
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div>
+                  <div class="text-sm font-medium text-white">
+                    ${{ formatNumber(userItem.balances.total_balance) }}
+                  </div>
+                </div>
+              </td>
+
               <td class="px-6 py-4 whitespace-nowrap">
                 <span
                   :class="[
                     'px-2 py-1 text-xs rounded-full',
-                    userItem.role === 'admin'
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-blue-500 text-white',
+                    userItem.is_verified === true
+                      ? 'bg-green-500 text-white'
+                      : 'bg-yellow-700 text-white',
                   ]"
                 >
-                  {{ userItem.role }}
+                  {{
+                    userItem.is_verified === true ? "Verified" : "Unverified"
+                  }}
                 </span>
               </td>
+
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                 {{ formatDate(userItem.created_at) }}
               </td>
