@@ -52,15 +52,28 @@ const fetchUser = async () => {
 // Fetch available coins
 const fetchAvailableCoins = async () => {
   try {
+    // console.log(
+    //   "Fetching coins from:",
+    //   `${config.public.apiBase}/admin/edit-get-coins.php`
+    // );
+
     const res = await $fetch(
       `${config.public.apiBase}/admin/edit-get-coins.php`,
       {
         credentials: "include",
+        method: "GET",
       }
     );
-    if (res.success) availableCoins.value = res.coins;
+
+    //console.log("Coins API response:", res);
+
+    if (res.success) {
+      availableCoins.value = res.coins;
+      // console.log("Available coins loaded:", availableCoins.value.length); // Debug log
+    }
   } catch (error) {
     console.error("Failed to fetch coins:", error);
+    availableCoins.value = []; // Ensure it's always an array
   }
 };
 

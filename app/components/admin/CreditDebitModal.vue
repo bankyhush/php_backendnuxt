@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="show"
-    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+    class="fixed inset-0 bg-[#171717d5] bg-opacity-50 z-50 flex items-center justify-center p-4"
   >
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full">
       <div
@@ -55,6 +55,10 @@
               {{ coin.coin_name }} ({{ coin.coin_code }})
             </option>
           </select>
+          <!-- Debug info -->
+          <div class="text-xs text-gray-500 mt-1">
+            {{ availableCoins.length }} coins available
+          </div>
         </div>
 
         <div>
@@ -111,13 +115,13 @@
           </button>
           <button
             type="submit"
-            :disabled="loading"
+            :disabled="loading || !form.coin_id"
             :class="[
               'flex-1 px-4 py-2 text-sm font-medium text-white rounded-md transition-colors',
               form.action === 'credit'
                 ? 'bg-green-600 hover:bg-green-700'
                 : 'bg-red-600 hover:bg-red-700',
-              loading ? 'opacity-50 cursor-not-allowed' : '',
+              loading || !form.coin_id ? 'opacity-50 cursor-not-allowed' : '',
             ]"
           >
             {{
@@ -138,7 +142,10 @@
 const props = defineProps({
   show: Boolean,
   user: Object,
-  availableCoins: Array,
+  availableCoins: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 const emit = defineEmits(["close", "success"]);
@@ -153,6 +160,27 @@ const form = ref({
   amount: "",
   description: "",
 });
+
+// Debug: log when props change
+watch(
+  () => props.availableCoins,
+  (newCoins) => {
+    //console.log("CreditDebitModal: availableCoins updated", newCoins);
+  },
+  { deep: true }
+);
+
+watch(
+  () => props.show,
+  (isOpen) => {
+    if (isOpen) {
+      //   console.log(
+      //     "CreditDebitModal: Modal opened with coins:",
+      //     props.availableCoins
+      //   );
+    }
+  }
+);
 
 const submitForm = async () => {
   loading.value = true;
@@ -181,6 +209,7 @@ const submitForm = async () => {
       message.value = { type: "error", text: response.message };
     }
   } catch (error) {
+    console.error("Credit/Debit error:", error);
     message.value = { type: "error", text: "Failed to process transaction" };
   }
 
@@ -198,6 +227,7 @@ watch(
         description: "",
       };
       message.value = { type: "", text: "" };
+      //   console.log("CreditDebitModal: Form reset");
     }
   }
 );
