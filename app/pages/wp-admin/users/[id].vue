@@ -1,5 +1,6 @@
 <script setup>
 import CreditDebitModal from "~/components/admin/CreditDebitModal.vue";
+import HistoryModal from "~/components/admin/HistoryModal.vue";
 import UserBalancesModal from "~/components/admin/UserBalancesModal.vue";
 
 definePageMeta({
@@ -535,6 +536,7 @@ onMounted(() => {
         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"
       >
         <button
+          @click="showHistoryModal = true"
           class="cursor-pointer px-4 py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md transition-colors"
         >
           Manage History
@@ -595,6 +597,11 @@ onMounted(() => {
       :available-coins="availableCoins"
       @close="showCreditDebitModal = false"
       @success="handleModalSuccess"
+    />
+    <HistoryModal
+      :show="showHistoryModal"
+      :user="user"
+      @close="showHistoryModal = false"
     />
   </div>
 </template>
