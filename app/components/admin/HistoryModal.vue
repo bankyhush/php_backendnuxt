@@ -199,6 +199,35 @@
             />
           </div>
 
+          <!-- Deposit and Withdrawal Info Section -->
+          <div v-if="editForm.deposit_info || editForm.withdraw_info">
+            <div v-if="editForm.deposit_info">
+              <label
+                class="block text-sm font-medium text-green-700 dark:text-green-300 mb-2"
+              >
+                Deposit Info
+              </label>
+              <div
+                class="p-3 bg-green-50 dark:bg-green-900/20 rounded-md text-sm text-green-800 dark:text-green-300"
+              >
+                {{ editForm.deposit_info || "No deposit information" }}
+              </div>
+            </div>
+
+            <div v-if="editForm.withdraw_info" class="mt-4">
+              <label
+                class="block text-sm font-medium text-red-700 dark:text-red-300 mb-2"
+              >
+                Withdrawal Info
+              </label>
+              <div
+                class="p-3 bg-red-50 dark:bg-red-900/20 rounded-md text-sm text-red-800 dark:text-red-300"
+              >
+                {{ editForm.withdraw_info || "No withdrawal information" }}
+              </div>
+            </div>
+          </div>
+
           <div>
             <label
               class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -375,6 +404,8 @@ const editForm = ref({
   status: "",
   userid: "",
   coin_id: "",
+  deposit_info: "", // Add this
+  withdraw_info: "", // Add this
 });
 
 const deleteForm = ref({
@@ -423,6 +454,8 @@ const openEditModal = (transaction) => {
     status: transaction.status,
     userid: transaction.userid,
     coin_id: transaction.coin_id,
+    deposit_info: transaction.deposit_info || "", // Add this
+    withdraw_info: transaction.withdraw_info || "", // Add this
   };
   showEditModal.value = true;
   message.value = { type: "", text: "" };
