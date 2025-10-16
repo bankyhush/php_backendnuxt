@@ -1,6 +1,9 @@
 <script setup>
+import ConvertBalancesModal from "~/components/admin/ConvertBalancesModal.vue";
+import CreateHistoryModal from "~/components/admin/CreateHistoryModal.vue";
 import CreditDebitModal from "~/components/admin/CreditDebitModal.vue";
 import HistoryModal from "~/components/admin/HistoryModal.vue";
+import SendEmailModal from "~/components/admin/SendEmailModal.vue";
 import UserBalancesModal from "~/components/admin/UserBalancesModal.vue";
 
 definePageMeta({
@@ -21,6 +24,9 @@ const message = ref({ type: "", text: "" });
 const showBalancesModal = ref(false);
 const showCreditDebitModal = ref(false);
 const showHistoryModal = ref(false);
+const showCreateHistoryModal = ref(false);
+const showSendEmailModal = ref(false);
+const showConvertBalancesModal = ref(false);
 const showTradeModal = ref(false);
 
 // Available coins for credit/debit
@@ -542,6 +548,7 @@ onMounted(() => {
           Manage History
         </button>
         <button
+          @click="showCreateHistoryModal = true"
           class="cursor-pointer px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors"
         >
           Create History
@@ -573,11 +580,13 @@ onMounted(() => {
           Investment History
         </button>
         <button
+          @click="showSendEmailModal = true"
           class="cursor-pointer px-4 py-3 bg-lime-600 hover:bg-lime-700 text-white rounded-md transition-colors"
         >
           Send Email
         </button>
         <button
+          @click="showConvertBalancesModal = true"
           class="cursor-pointer px-4 py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-md transition-colors"
         >
           Convert Balances
@@ -602,6 +611,29 @@ onMounted(() => {
       :show="showHistoryModal"
       :user="user"
       @close="showHistoryModal = false"
+    />
+
+    <CreateHistoryModal
+      :show="showCreateHistoryModal"
+      :user="user"
+      :available-coins="availableCoins"
+      @close="showCreateHistoryModal = false"
+      @success="handleModalSuccess"
+    />
+
+    <SendEmailModal
+      :show="showSendEmailModal"
+      :user="user"
+      @close="showSendEmailModal = false"
+      @success="handleModalSuccess"
+    />
+
+    <ConvertBalancesModal
+      :show="showConvertBalancesModal"
+      :user="user"
+      :available-coins="availableCoins"
+      @close="showConvertBalancesModal = false"
+      @success="handleModalSuccess"
     />
   </div>
 </template>
