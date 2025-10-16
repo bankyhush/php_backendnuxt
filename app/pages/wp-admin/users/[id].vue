@@ -85,6 +85,21 @@ const form = ref({
   account_type: "",
   is_verified: "",
   kyc_status: "",
+  country: "",
+  city: "",
+  zipcode: "",
+  address: "",
+  current_trader: "",
+  win_rate: "",
+  trade_status: "",
+  trader_profit: "",
+  copiers: "",
+  activeplan: "",
+  planamount: "",
+  profit: "",
+  deposit: "",
+  withdrawal: "",
+  bonus: "",
 });
 
 // Update user
@@ -100,6 +115,21 @@ const updateUser = async () => {
         fullname: form.value.fullname,
         email: form.value.email,
         phone: form.value.phone,
+        country: form.value.country,
+        city: form.value.city,
+        zipcode: form.value.zipcode,
+        address: form.value.address,
+        current_trader: form.value.current_trader,
+        win_rate: form.value.win_rate,
+        trade_status: form.value.trade_status,
+        trader_profit: form.value.trader_profit,
+        copiers: form.value.copiers,
+        activeplan: form.value.activeplan,
+        planamount: form.value.planamount,
+        profit: form.value.profit,
+        deposit: form.value.deposit,
+        withdrawal: form.value.withdrawal,
+        bonus: form.value.bonus,
         account_type: form.value.account_type,
         is_verified: form.value.is_verified,
         kyc_status: form.value.kyc_status,
@@ -225,7 +255,18 @@ onMounted(() => {
                 <input
                   v-model="form.email"
                   type="email"
-                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                  class="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md text-white"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Wallet
+                </label>
+                <input
+                  v-model="user.wallet_address"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md text-white"
                   readonly
                 />
               </div>
@@ -239,6 +280,129 @@ onMounted(() => {
                   class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
                 />
               </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Country</label
+                >
+                <input
+                  v-model="form.country"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >City</label
+                >
+                <input
+                  v-model="form.city"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Address</label
+                >
+                <input
+                  v-model="form.address"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Zip Code</label
+                >
+                <input
+                  v-model="form.zipcode"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-red-300 mb-2"
+                  >Current Trader</label
+                >
+                <input
+                  v-model="form.current_trader"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-red-300 mb-2"
+                  >Win Rate</label
+                >
+                <input
+                  v-model="form.win_rate"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-red-300 mb-2"
+                  >Trade Status</label
+                >
+                <input
+                  v-model="form.trade_status"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-red-300 mb-2"
+                  >Trader Profit</label
+                >
+                <input
+                  v-model="form.trader_profit"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-red-300 mb-2"
+                  >Copiers</label
+                >
+                <input
+                  v-model="form.copiers"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-blue-300 mb-2"
+                  >Active Plan</label
+                >
+                <input
+                  v-model="form.activeplan"
+                  type="text"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-blue-300 mb-2"
+                  >Plan Amount ($)</label
+                >
+                <input
+                  v-model="form.planamount"
+                  type="number"
+                  step="any"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
               <div>
                 <label class="block text-sm font-medium text-gray-300 mb-2"
                   >Account Type</label
@@ -285,6 +449,54 @@ onMounted(() => {
                   <option value="true">true</option>
                 </select>
               </div>
+
+              <div>
+                <label class="block text-sm font-medium text-green-300 mb-2"
+                  >Profit ($)</label
+                >
+                <input
+                  v-model="form.profit"
+                  type="number"
+                  step="any"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-green-300 mb-2"
+                  >Deposit ($)</label
+                >
+                <input
+                  v-model="form.deposit"
+                  type="number"
+                  step="any"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-green-300 mb-2"
+                  >Payout/Withdrawal ($)</label
+                >
+                <input
+                  v-model="form.withdrawal"
+                  type="number"
+                  step="any"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-green-300 mb-2"
+                  >Bonus ($)</label
+                >
+                <input
+                  v-model="form.bonus"
+                  type="number"
+                  step="any"
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white"
+                />
+              </div>
             </div>
             <div class="flex gap-4 pt-4">
               <button
@@ -310,7 +522,7 @@ onMounted(() => {
           <div class="space-y-3">
             <button
               @click="showBalancesModal = true"
-              class="w-full text-left px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+              class="cursor-pointer w-full text-left px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
             >
               View Balances
             </button>
@@ -323,48 +535,48 @@ onMounted(() => {
         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"
       >
         <button
-          class="px-4 py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md transition-colors"
         >
           Manage History
         </button>
         <button
-          class="px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors"
         >
           Create History
         </button>
         <button
           @click="showCreditDebitModal = true"
-          class="px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-md transition-colors"
         >
           Credit & Debit
         </button>
         <button
-          class="px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
         >
           Manage Trade Records
         </button>
         <button
-          class="px-4 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-md transition-colors"
         >
           Create Trade Records
         </button>
         <button
-          class="px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-md transition-colors"
         >
           Stake History
         </button>
         <button
-          class="px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
         >
           Investment History
         </button>
         <button
-          class="px-4 py-3 bg-lime-600 hover:bg-lime-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-lime-600 hover:bg-lime-700 text-white rounded-md transition-colors"
         >
           Send Email
         </button>
         <button
-          class="px-4 py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-md transition-colors"
+          class="cursor-pointer px-4 py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-md transition-colors"
         >
           Convert Balances
         </button>

@@ -51,7 +51,7 @@
             <div class="grid grid-cols-3 mb-10">
               <button
                 :class="[
-                  'py-2 mr-5 whitespace-nowrap',
+                  'py-2 mr-3 whitespace-nowrap',
                   currentTab === 'email'
                     ? 'border-b-2 dark:border-cyan-500 rounded-none shadow-none dark:text-cyan-400'
                     : '',
@@ -63,7 +63,7 @@
               </button>
               <button
                 :class="[
-                  'py-2 ml-5 whitespace-nowrap',
+                  'hidden md:block py-2 ml-5 whitespace-nowrap',
                   currentTab === 'qr'
                     ? 'border-b-2 dark:border-cyan-500 rounded-none shadow-none dark:text-cyan-400'
                     : '',
