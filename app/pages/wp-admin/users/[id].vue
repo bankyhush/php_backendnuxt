@@ -1,8 +1,10 @@
 <script setup>
 import ConvertBalancesModal from "~/components/admin/ConvertBalancesModal.vue";
 import CreateHistoryModal from "~/components/admin/CreateHistoryModal.vue";
+import CreateTradeRecordsModal from "~/components/admin/CreateTradeRecordsModal.vue";
 import CreditDebitModal from "~/components/admin/CreditDebitModal.vue";
 import HistoryModal from "~/components/admin/HistoryModal.vue";
+import ManageTradeRecordsModal from "~/components/admin/ManageTradeRecordsModal.vue";
 import SendEmailModal from "~/components/admin/SendEmailModal.vue";
 import StakeInvestmentHistoryModal from "~/components/admin/StakeInvestmentHistoryModal.vue";
 import UserBalancesModal from "~/components/admin/UserBalancesModal.vue";
@@ -29,7 +31,8 @@ const showCreateHistoryModal = ref(false);
 const showSendEmailModal = ref(false);
 const showConvertBalancesModal = ref(false);
 const showStakeInvestmentModal = ref(false);
-const showTradeModal = ref(false);
+const showManageTradeRecordsModal = ref(false);
+const showCreateTradeModal = ref(false);
 
 // Available coins for credit/debit
 const availableCoins = ref([]);
@@ -562,11 +565,13 @@ onMounted(() => {
           Credit & Debit
         </button>
         <button
+          @click="showManageTradeRecordsModal = true"
           class="cursor-pointer px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
         >
           Manage Trade Records
         </button>
         <button
+          @click="showCreateTradeModal = true"
           class="cursor-pointer px-4 py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-md transition-colors"
         >
           Create Trade Records
@@ -645,6 +650,22 @@ onMounted(() => {
       :show="showStakeInvestmentModal"
       :user="user"
       @close="showStakeInvestmentModal = false"
+      @success="handleModalSuccess"
+    />
+
+    <!-- Add the new modal here -->
+    <ManageTradeRecordsModal
+      :show="showManageTradeRecordsModal"
+      :user="user"
+      @close="showManageTradeRecordsModal = false"
+      @success="handleModalSuccess"
+    />
+
+    <!-- Add this modal -->
+    <CreateTradeRecordsModal
+      :show="showCreateTradeModal"
+      :user="user"
+      @close="showCreateTradeModal = false"
       @success="handleModalSuccess"
     />
   </div>
