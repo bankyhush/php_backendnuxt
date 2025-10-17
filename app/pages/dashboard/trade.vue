@@ -399,7 +399,7 @@
                   'px-2 py-1 rounded text-xs font-medium',
                   trade.trade_result?.includes('PENDING')
                     ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
-                    : trade.trade_result?.includes('WIN')
+                    : trade.trade_result?.includes('WON')
                     ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
                     : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
                 ]"

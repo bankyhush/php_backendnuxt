@@ -227,10 +227,9 @@
             v-model="form.trade_result"
             class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
-            <option value="">Select Result</option>
+            <option value="PENDING">PENDING</option>
             <option value="WON">WON</option>
             <option value="LOST">LOST</option>
-            <option value="PENDING">PENDING</option>
           </select>
         </div>
 
@@ -352,8 +351,10 @@ const createTrade = async () => {
       message.value = { type: "error", text: response.message };
     }
   } catch (error) {
-    console.error("Failed to create trade:", error);
-    message.value = { type: "error", text: "Failed to create trade record" };
+    message.value = {
+      type: "error",
+      text: "Failed to create your trade record",
+    };
   }
 
   creating.value = false;
