@@ -4,6 +4,7 @@ import CreateHistoryModal from "~/components/admin/CreateHistoryModal.vue";
 import CreditDebitModal from "~/components/admin/CreditDebitModal.vue";
 import HistoryModal from "~/components/admin/HistoryModal.vue";
 import SendEmailModal from "~/components/admin/SendEmailModal.vue";
+import StakeInvestmentHistoryModal from "~/components/admin/StakeInvestmentHistoryModal.vue";
 import UserBalancesModal from "~/components/admin/UserBalancesModal.vue";
 
 definePageMeta({
@@ -27,6 +28,7 @@ const showHistoryModal = ref(false);
 const showCreateHistoryModal = ref(false);
 const showSendEmailModal = ref(false);
 const showConvertBalancesModal = ref(false);
+const showStakeInvestmentModal = ref(false);
 const showTradeModal = ref(false);
 
 // Available coins for credit/debit
@@ -570,11 +572,13 @@ onMounted(() => {
           Create Trade Records
         </button>
         <button
+          @click="showStakeInvestmentModal = true"
           class="cursor-pointer px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-md transition-colors"
         >
           Stake History
         </button>
         <button
+          @click="showStakeInvestmentModal = true"
           class="cursor-pointer px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
         >
           Investment History
@@ -633,6 +637,14 @@ onMounted(() => {
       :user="user"
       :available-coins="availableCoins"
       @close="showConvertBalancesModal = false"
+      @success="handleModalSuccess"
+    />
+
+    <!-- Add the modal component -->
+    <StakeInvestmentHistoryModal
+      :show="showStakeInvestmentModal"
+      :user="user"
+      @close="showStakeInvestmentModal = false"
       @success="handleModalSuccess"
     />
   </div>
