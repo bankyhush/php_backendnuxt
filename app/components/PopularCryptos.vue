@@ -38,14 +38,14 @@
 
   <div
     v-else
-    class="w-full max-w-4xl mx-auto p-6 bg-[#000000ee] rounded-tl-2xl rounded-tr-2xl"
+    class="w-full max-w-4xl mx-auto p-6 bg-white text-black dark:text-white dark:bg-[#000000ee] rounded-tl-2xl rounded-tr-2xl"
   >
     <div
       class="flex justify-between items-center border-b border-zinc-800 pb-4 mb-4"
     >
       <div class="flex space-x-6 text-sm font-medium">
         <span
-          class="text-white relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-yellow-500"
+          class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-yellow-500"
         >
           Popular
         </span>
@@ -59,7 +59,7 @@
       <div
         v-for="crypto in cryptos"
         :key="crypto.id"
-        class="flex items-center justify-between text-white"
+        class="flex items-center justify-between"
       >
         <!-- Left: Icon + Name -->
         <div class="flex items-center space-x-3 w-1/3">
@@ -72,7 +72,7 @@
           />
           <div>
             <div class="font-semibold uppercase">{{ crypto.symbol }}</div>
-            <div class="text-sm text-zinc-400">{{ crypto.name }}</div>
+            <div class="text-sm">{{ crypto.name }}</div>
           </div>
         </div>
 
@@ -109,7 +109,7 @@ const fetchCryptoData = async () => {
   try {
     loading.value = true;
     const res = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&sparkline=false&price_change_percentage=24h"
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h"
     );
     if (!res.ok) {
       throw new Error("Failed to fetch cryptocurrency data");
