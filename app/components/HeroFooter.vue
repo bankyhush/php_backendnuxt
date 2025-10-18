@@ -48,6 +48,11 @@
           to="/about"
           >About</NuxtLink
         >
+        <NuxtLink
+          class="text-muted-foreground hover:text-primary block duration-150"
+          to="/faq"
+          >FAQ</NuxtLink
+        >
       </div>
 
       <!-- Social Icons -->

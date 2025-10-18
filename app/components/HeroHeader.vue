@@ -5,10 +5,11 @@ const menuOpen = ref(false);
 const menuRef = ref(null);
 
 const menuItems = [
-  { name: "Features", href: "#features" },
-  { name: "Solution", href: "#solution" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "About", href: "/about" },
+  { name: "Features", href: "/features" },
+  { name: "Stocks", href: "/stocks" },
+  { name: "Cryptocurrency", href: "/crypto" },
+  { name: "Commodities", href: "/commodities" },
+  { name: "Support", href: "/contact" },
 ];
 
 const toggleMenu = () => {
