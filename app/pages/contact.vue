@@ -50,12 +50,12 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Send us an email and we'll respond within 24 hours
               </p>
-              <a
+              <NuxtLink
                 href="mailto:hello@company.com"
                 class="text-primary font-medium hover:underline"
               >
                 hello@company.com
-              </a>
+              </NuxtLink>
             </div>
 
             <!-- Phone -->
@@ -83,12 +83,12 @@
               <p class="text-gray-600 dark:text-gray-300 mb-4">
                 Available Monday to Friday, 9AM - 6PM EST
               </p>
-              <a
+              <NuxtLink
                 href="tel:+1-555-123-4567"
                 class="text-primary font-medium hover:underline"
               >
                 +1 (555) 123-4567
-              </a>
+              </NuxtLink>
             </div>
 
             <!-- Office -->
@@ -300,12 +300,12 @@
                 <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   For urgent technical issues affecting your account or trading.
                 </p>
-                <a
+                <NuxtLink
                   href="tel:+1-555-911-4567"
                   class="text-primary font-medium hover:underline"
                 >
                   +1 (555) 911-4567
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -322,7 +322,7 @@
             Check our FAQ section for quick answers to common questions about
             accounts, trading, security, and more.
           </p>
-          <a
+          <NuxtLink
             href="/faq"
             class="inline-flex items-center gap-2 text-primary font-medium hover:underline"
           >
@@ -340,7 +340,7 @@
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
       </section>
 
@@ -354,18 +354,18 @@
             Join millions of users who trust us with their crypto journey.
           </p>
           <div class="mt-10 flex flex-wrap justify-center gap-4">
-            <a
-              href="/signup"
+            <NuxtLink
+              href="/register"
               class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/80 transition font-medium"
             >
               Create Account
-            </a>
-            <a
-              href="/demo"
+            </NuxtLink>
+            <NuxtLink
+              href="/login"
               class="border border-gray-600 dark:border-white px-8 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition font-medium"
             >
               Request Demo
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </section>

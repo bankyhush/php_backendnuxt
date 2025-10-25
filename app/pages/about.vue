@@ -186,15 +186,10 @@
             shape the future of finance.
           </p>
           <div class="mt-10 flex flex-wrap justify-center gap-4">
-            <a
-              href="/careers"
-              class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/80 transition"
-              >View Careers</a
-            >
-            <a
+            <NuxtLink
               href="/contact"
               class="border border-gray-600 dark:border-white px-6 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-              >Contact Us</a
+              >Contact Us</NuxtLink
             >
           </div>
         </div>

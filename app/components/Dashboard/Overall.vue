@@ -149,15 +149,30 @@ const fetchBalances = async () => {
       }
     );
 
+    // ✅ Check login/auth status or response success
+    if (response?.unauthorized || response?.code === 401) {
+      // Redirect to login
+      return navigateTo("/login");
+    }
+
     if (response.success) {
       balances.value = response.data;
     } else {
       throw new Error(response.message);
     }
   } catch (err) {
+    // ✅ If the API returns a 401 (or fetch throws that)
+    if (
+      err?.status === 401 ||
+      err?.message?.toLowerCase().includes("unauthorized")
+    ) {
+      return navigateTo("/login");
+    }
+    // Set default values on error
+
     error.value =
       err?.data?.message || err?.message || "Failed to load balances";
-    // Set default values on error
+
     balances.value = {
       total_value: 0,
       available_value: 0,
