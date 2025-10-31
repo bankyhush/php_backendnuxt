@@ -140,6 +140,11 @@ const navItems = [
   { label: "Staking", icon: "hugeicons:stake", to: "/wp-admin/staking" },
   { label: "Plans", icon: "hugeicons:floor-plan", to: "/wp-admin/plans" },
   { label: "Settings", icon: "lucide:settings", to: "/wp-admin/settings" },
+  {
+    label: "User Dashboard Mode",
+    icon: "mdi:bank-transfer",
+    to: "/dashboard",
+  },
 ];
 
 const sidebar = ref(null);
