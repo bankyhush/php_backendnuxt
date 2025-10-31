@@ -38,7 +38,7 @@
                   <p class="text-gray-600 dark:text-gray-300">
                     Click the "Sign Up" button, provide your email address,
                     create a secure password, and complete the verification
-                    process. Account approval typically takes 1-2 business days.
+                    process. Account approval typically instantly.
                   </p>
                 </div>
 
@@ -100,7 +100,8 @@
                   </h3>
                   <p class="text-gray-600 dark:text-gray-300">
                     Yes, we offer free demo accounts with $10,000 in virtual
-                    funds to practice trading strategies risk-free.
+                    funds to practice trading strategies risk-free. Contact
+                    support for demo setup
                   </p>
                 </div>
               </div>
@@ -147,16 +148,13 @@
             Our support team is available 24/7 to assist you with any questions.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
-            <button
-              class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-            >
-              Contact Support
-            </button>
-            <button
-              class="border border-gray-600 dark:border-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-            >
-              Live Chat
-            </button>
+            <NuxtLink to="/contact">
+              <button
+                class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
+              >
+                Contact Support
+              </button>
+            </NuxtLink>
           </div>
         </div>
       </section>

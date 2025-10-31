@@ -28,16 +28,13 @@
               professional traders.
             </p>
             <div class="mt-12 flex flex-wrap justify-center gap-6">
-              <button
-                class="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/80 transition transform hover:scale-105 shadow-lg"
-              >
-                Start Trading Now
-              </button>
-              <button
-                class="border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition transform hover:scale-105"
-              >
-                Watch Platform Demo
-              </button>
+              <NuxtLink to="/login">
+                <button
+                  class="cursor-pointer bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/80 transition transform hover:scale-105 shadow-lg dark:text-black"
+                >
+                  Start Trading Now
+                </button>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -580,7 +577,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1563013541-2d0acd5b32b9?auto=format&fit=crop&w=1200&q=80"
+                src="https://cdn.dribbble.com/userupload/15243619/file/original-89ef331da672d452965da0938e3642ee.png?resize=2048x1536&vertical=center"
                 class="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
                 alt="Advanced security infrastructure"
               />
@@ -851,24 +848,9 @@
             Ready to Experience Professional Trading?
           </h2>
           <p class="text-2xl mb-12 opacity-90 max-w-3xl mx-auto">
-            Join millions of traders worldwide who trust Fotmob for their
+            Join millions of traders worldwide who trust Tradein247 for their
             trading needs. Get started today and unlock the full potential of
             our advanced trading platform.
-          </p>
-          <div class="flex flex-wrap justify-center gap-6">
-            <button
-              class="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-2xl text-lg"
-            >
-              Start Trading Now
-            </button>
-            <button
-              class="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold hover:bg-white/10 transition transform hover:scale-105 text-lg"
-            >
-              Schedule Demo
-            </button>
-          </div>
-          <p class="mt-8 text-blue-200">
-            No credit card required • 30-day free trial • Cancel anytime
           </p>
         </div>
       </section>
@@ -883,13 +865,13 @@ export default {
   name: "FeaturesPage",
   head() {
     return {
-      title: "Advanced Trading Features - Fotmob",
+      title: "Advanced Trading Features - Tradein247",
       meta: [
         {
           hid: "description",
           name: "description",
           content:
-            "Discover Fotmob's professional trading features including advanced charting, multi-platform access, enterprise security, and powerful trading tools.",
+            "Discover Tradein247's professional trading features including advanced charting, multi-platform access, enterprise security, and powerful trading tools.",
         },
       ],
     };

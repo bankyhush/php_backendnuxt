@@ -11,23 +11,18 @@
           <h1 class="text-5xl font-semibold tracking-tight md:text-6xl">
             Privacy Policy
           </h1>
-          <p
-            class="mt-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto"
-          >
-            Last updated: {{ new Date().toLocaleDateString() }}
-          </p>
         </div>
       </section>
 
       <!-- Content -->
-      <section class="py-16 bg-white dark:bg-black">
+      <section class="py-16 bg-white dark:bg-black -mt-20">
         <div class="container mx-auto max-w-4xl px-6">
           <div class="prose prose-lg dark:prose-invert max-w-none">
             <!-- Introduction -->
             <div class="mb-12">
               <h2 class="text-3xl font-semibold mb-6">1. Introduction</h2>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
-                At Fotmob, we are committed to protecting your privacy and
+                At Tradein247, we are committed to protecting your privacy and
                 ensuring the security of your personal information. This Privacy
                 Policy explains how we collect, use, disclose, and safeguard
                 your information when you use our Services.
@@ -270,9 +265,8 @@
               </p>
               <div class="bg-gray-50 dark:bg-[#1a1a1a] p-6 rounded-lg">
                 <p class="text-gray-700 dark:text-gray-300">
-                  <strong>Fotmob</strong><br />
-                  Email: privacy@fotmob.com<br />
-                  Address: [Your Company Address]
+                  <strong>Tradein247</strong><br />
+                  Email: privacy@tradein247.com<br />
                 </p>
               </div>
             </div>
@@ -291,13 +285,13 @@ export default {
   name: "PrivacyPolicy",
   head() {
     return {
-      title: "Privacy Policy - Fotmob",
+      title: "Privacy Policy - Tradein247",
       meta: [
         {
           hid: "description",
           name: "description",
           content:
-            "Learn how Fotmob collects, uses, and protects your personal information in our comprehensive Privacy Policy.",
+            "Learn how Tradein247 collects, uses, and protects your personal information in our comprehensive Privacy Policy.",
         },
       ],
     };

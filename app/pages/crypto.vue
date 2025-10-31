@@ -22,16 +22,18 @@
                 fees, and institutional-grade trading tools.
               </p>
               <div class="mt-8 flex flex-wrap gap-4">
-                <button
-                  class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-                >
-                  Trade Crypto
-                </button>
-                <button
-                  class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                >
-                  View All Coins
-                </button>
+                <NuxtLink to="/dashboard" class="flex gap-3">
+                  <button
+                    class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition dark:text-black"
+                  >
+                    Trade Crypto
+                  </button>
+                  <button
+                    class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                  >
+                    View All Coins
+                  </button>
+                </NuxtLink>
               </div>
             </div>
             <div class="relative">
@@ -129,11 +131,13 @@
           <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Start trading cryptocurrencies with confidence and security.
           </p>
-          <button
-            class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-          >
-            Get Started with Crypto
-          </button>
+          <NuxtLink to="/register">
+            <button
+              class="cursor-pointer bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition dark:text-black"
+            >
+              Get Started with Crypto
+            </button>
+          </NuxtLink>
         </div>
       </section>
 

@@ -51,10 +51,10 @@
                 Send us an email and we'll respond within 24 hours
               </p>
               <NuxtLink
-                href="mailto:hello@company.com"
+                href="mailto:support@tradein247.com"
                 class="text-primary font-medium hover:underline"
               >
-                hello@company.com
+                support@tradein247.com
               </NuxtLink>
             </div>
 
@@ -84,10 +84,10 @@
                 Available Monday to Friday, 9AM - 6PM EST
               </p>
               <NuxtLink
-                href="tel:+1-555-123-4567"
+                href="tel:+1-555-***-****"
                 class="text-primary font-medium hover:underline"
               >
-                +1 (555) 123-4567
+                +1 (555) ***- ****
               </NuxtLink>
             </div>
 
@@ -227,7 +227,8 @@
 
                 <button
                   type="submit"
-                  class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary/80 transition duration-200"
+                  disabled
+                  class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-primary/80 transition duration-200 dark:text-black"
                 >
                   Send Message
                 </button>
@@ -300,12 +301,6 @@
                 <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   For urgent technical issues affecting your account or trading.
                 </p>
-                <NuxtLink
-                  href="tel:+1-555-911-4567"
-                  class="text-primary font-medium hover:underline"
-                >
-                  +1 (555) 911-4567
-                </NuxtLink>
               </div>
             </div>
           </div>
@@ -356,7 +351,7 @@
           <div class="mt-10 flex flex-wrap justify-center gap-4">
             <NuxtLink
               href="/register"
-              class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/80 transition font-medium"
+              class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/80 transition font-medium dark:text-black"
             >
               Create Account
             </NuxtLink>

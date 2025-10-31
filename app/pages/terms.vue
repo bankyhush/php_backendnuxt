@@ -11,23 +11,18 @@
           <h1 class="text-5xl font-semibold tracking-tight md:text-6xl">
             Terms and Conditions
           </h1>
-          <p
-            class="mt-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto"
-          >
-            Last updated: {{ new Date().toLocaleDateString() }}
-          </p>
         </div>
       </section>
 
       <!-- Content -->
-      <section class="py-16 bg-white dark:bg-black">
+      <section class="py-16 bg-white dark:bg-black -mt-20">
         <div class="container mx-auto max-w-4xl px-6">
           <div class="prose prose-lg dark:prose-invert max-w-none">
             <!-- Introduction -->
             <div class="mb-12">
               <h2 class="text-3xl font-semibold mb-6">1. Agreement to Terms</h2>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
-                By accessing and using Fotmob's services, websites, and
+                By accessing and using Tradein247's services, websites, and
                 applications (collectively, the "Services"), you agree to be
                 bound by these Terms and Conditions and our Privacy Policy. If
                 you disagree with any part of these terms, you may not access
@@ -109,7 +104,7 @@
               </h2>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
                 The Services and their original content, features, and
-                functionality are owned by Fotmob and are protected by
+                functionality are owned by Tradein247 and are protected by
                 international copyright, trademark, patent, trade secret, and
                 other intellectual property laws.
               </p>
@@ -126,9 +121,9 @@
               <p class="text-gray-700 dark:text-gray-300 mb-4">
                 You retain ownership of any content you submit, post, or display
                 on or through the Services. By submitting content, you grant
-                Fotmob a worldwide, non-exclusive, royalty-free license to use,
-                reproduce, modify, and display such content in connection with
-                providing the Services.
+                Tradein247 a worldwide, non-exclusive, royalty-free license to
+                use, reproduce, modify, and display such content in connection
+                with providing the Services.
               </p>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
                 You are solely responsible for the content you submit and the
@@ -159,7 +154,7 @@
                 7. Limitation of Liability
               </h2>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
-                In no event shall Fotmob, nor its directors, employees,
+                In no event shall Tradein247, nor its directors, employees,
                 partners, agents, suppliers, or affiliates, be liable for any
                 indirect, incidental, special, consequential or punitive
                 damages, including without limitation, loss of profits, data,
@@ -229,9 +224,8 @@
               </p>
               <div class="bg-gray-50 dark:bg-[#1a1a1a] p-6 rounded-lg">
                 <p class="text-gray-700 dark:text-gray-300">
-                  <strong>Fotmob</strong><br />
-                  Email: legal@fotmob.com<br />
-                  Address: [Your Company Address]
+                  <strong>Tradein247</strong><br />
+                  Email: legal@Tradein247.com<br />
                 </p>
               </div>
             </div>
@@ -250,13 +244,13 @@ export default {
   name: "TermsAndConditions",
   head() {
     return {
-      title: "Terms and Conditions - Fotmob",
+      title: "Terms and Conditions - Tradein247",
       meta: [
         {
           hid: "description",
           name: "description",
           content:
-            "Read Fotmob's Terms and Conditions to understand our rules and guidelines for using our services.",
+            "Read Tradein247's Terms and Conditions to understand our rules and guidelines for using our services.",
         },
       ],
     };

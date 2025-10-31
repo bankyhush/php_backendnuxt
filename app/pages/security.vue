@@ -37,7 +37,7 @@
             </div>
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1563013541-2d0acd5b32b9?auto=format&fit=crop&w=1000&q=80"
+                src="https://cdn.dribbble.com/userupload/44200181/file/original-f572b80827c587e85b9ddc2a12160e31.png?resize=1504x1128&vertical=center"
                 class="rounded-2xl shadow-2xl w-full h-80 object-cover"
                 alt="Secure digital vault protection"
               />
@@ -486,21 +486,10 @@
         >
           <h2 class="text-4xl font-bold mb-6">Ready to Secure Your Assets?</h2>
           <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join millions of users who trust Fotmob's enterprise-grade security
-            infrastructure to protect their digital assets.
+            Join millions of users who trust Tradein247's enterprise-grade
+            security infrastructure to protect their digital assets.
           </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <button
-              class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-            >
-              Get Started Securely
-            </button>
-            <button
-              class="border border-white text-black dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-            >
-              Download Security Whitepaper
-            </button>
-          </div>
+          <div class="flex flex-wrap justify-center gap-4"></div>
         </div>
       </section>
 
@@ -515,13 +504,13 @@ export default {
   name: "WalletSecurity",
   head() {
     return {
-      title: "Wallet Security - Fotmob",
+      title: "Wallet Security - Tradein247",
       meta: [
         {
           hid: "description",
           name: "description",
           content:
-            "Learn how Fotmob protects your digital assets with enterprise-grade security, cold storage, multi-signature protection, and comprehensive insurance.",
+            "Learn how Tradein247 protects your digital assets with enterprise-grade security, cold storage, multi-signature protection, and comprehensive insurance.",
         },
       ],
     };

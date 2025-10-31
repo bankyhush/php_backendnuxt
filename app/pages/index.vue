@@ -32,7 +32,7 @@
                     size="lg"
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-10 rounded-md has-[&gt;svg]:px-4 px-5 text-base"
                   >
-                    <NuxtLink to="#link">
+                    <NuxtLink to="/login">
                       <span class="text-nowrap">Start Trading</span>
                     </NuxtLink>
                   </Button>
@@ -41,7 +41,7 @@
                     variant="outline"
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border-1 border-gray-500 text-black shadow-xs hover:bg-primary/30 h-10 rounded-md has-[&gt;svg]:px-4 px-5 text-base dark:text-white"
                   >
-                    <NuxtLink to="#link">
+                    <NuxtLink to="/register">
                       <span class="text-nowrap">Request a demo</span>
                     </NuxtLink>
                   </Button>
@@ -202,16 +202,7 @@
               </div>
 
               <div class="flex flex-wrap gap-4">
-                <button
-                  class="bg-gradient-to-r from-yellow-600 to-amber-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-yellow-700 hover:to-amber-700 transition-all transform hover:scale-105 shadow-lg"
-                >
-                  Trade Gold
-                </button>
-                <button
-                  class="border-2 border-yellow-600 text-yellow-600 dark:text-yellow-400 px-6 py-3 rounded-xl font-semibold hover:bg-yellow-50 dark:hover:bg-yellow-900/30 transition-all"
-                >
-                  Learn More
-                </button>
+                <!-- ANY BUTTON HERE -->
               </div>
             </div>
           </div>
@@ -361,11 +352,11 @@
           </div>
 
           <div class="text-center mt-12">
-            <button
+            <!-- <button
               class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg"
             >
               Explore All Stocks
-            </button>
+            </button> -->
           </div>
         </div>
       </section>

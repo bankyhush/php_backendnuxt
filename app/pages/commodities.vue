@@ -23,21 +23,23 @@
                 margins.
               </p>
               <div class="mt-8 flex flex-wrap gap-4">
-                <button
-                  class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-                >
-                  Trade Commodities
-                </button>
-                <button
-                  class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                >
-                  Market Analysis
-                </button>
+                <NuxtLink to="/dashboard/stocks" class="flex gap-3">
+                  <button
+                    class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition dark:text-black"
+                  >
+                    Trade Commodities
+                  </button>
+                  <button
+                    class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                  >
+                    Market Analysis
+                  </button>
+                </NuxtLink>
               </div>
             </div>
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1596436883447-4b4ce3e9a5e9?auto=format&fit=crop&w=1000&q=80"
+                src="https://cdn.dribbble.com/userupload/40438466/file/original-84533959f46fb86994aead949b6d56fa.png?resize=1504x1128&vertical=center"
                 class="rounded-2xl shadow-2xl w-full h-80 object-cover"
                 alt="Commodities trading gold and oil"
               />
@@ -150,11 +152,6 @@
             Hedge against inflation and market volatility with physical
             commodities.
           </p>
-          <button
-            class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-          >
-            Start Trading Commodities
-          </button>
         </div>
       </section>
 

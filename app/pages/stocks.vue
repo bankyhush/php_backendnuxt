@@ -23,16 +23,18 @@
                 portfolio with confidence.
               </p>
               <div class="mt-8 flex flex-wrap gap-4">
-                <button
-                  class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-                >
-                  Start Trading Stocks
-                </button>
-                <button
-                  class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                >
-                  Explore Markets
-                </button>
+                <NuxtLink to="/dashboard/trade" class="flex gap-3">
+                  <button
+                    class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition dark:text-black"
+                  >
+                    Start Trading Stocks
+                  </button>
+                  <button
+                    class="border border-gray-600 dark:border-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                  >
+                    Explore Markets
+                  </button>
+                </NuxtLink>
               </div>
             </div>
             <div class="relative">
@@ -179,11 +181,14 @@
             Join millions of investors building their wealth through stock
             trading.
           </p>
-          <button
-            class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition"
-          >
-            Open Trading Account
-          </button>
+
+          <NuxtLink to="/register">
+            <button
+              class="cursor-pointer bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/80 transition dark:text-black"
+            >
+              Open Trading Account
+            </button>
+          </NuxtLink>
         </div>
       </section>
 
