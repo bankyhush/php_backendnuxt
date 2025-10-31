@@ -355,6 +355,8 @@
             <th class="px-4 py-3">S/L</th>
             <th class="px-4 py-3">T/P</th>
             <th class="px-4 py-3">Market</th>
+            <th class="px-4 py-3">Buy (at)</th>
+            <th class="px-4 py-3">Sold (at)</th>
             <th class="px-4 py-3">Status</th>
             <th class="px-4 py-3">Date</th>
           </tr>
@@ -393,6 +395,8 @@
             <td class="px-4 py-3">{{ trade.sl || "-" }}</td>
             <td class="px-4 py-3">{{ trade.tp || "-" }}</td>
             <td class="px-4 py-3">{{ trade.status }}</td>
+            <td class="px-4 py-3">{{ trade.bgat }}</td>
+            <td class="px-4 py-3">{{ trade.sdat }}</td>
             <td class="px-4 py-3">
               <span
                 :class="[
