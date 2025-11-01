@@ -8,7 +8,7 @@
         class="bg-black text-white w-full md:w-1/2 p-8 md:p-16 flex flex-col"
       >
         <div
-          class="hidden max-w-md mx-auto md:mx-0 md:ml-auto flex-1 md:flex flex-col justify-center"
+          class="hidden max-w-3xl mx-auto md:mx-0 md:ml-auto flex-1 md:flex flex-col justify-center"
         >
           <h1 class="text-4xl md:text-3xl font-bold mb-6">Admin Portal</h1>
           <p class="text-lg text-gray-300 mb-12">
@@ -48,7 +48,7 @@
           <!-- Login Form -->
           <div>
             <form
-              class="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg dark:bg-zinc-800"
+              class="w-full mx-auto p-6 bg-white shadow-md rounded-lg dark:bg-zinc-800"
               @submit.prevent="loginHandler"
             >
               <!-- Success Message -->

@@ -95,6 +95,12 @@ onMounted(async () => {
       credentials: "include",
     });
 
+    // ✅ Check login/auth status or response success
+    if (res?.unauthorized || res?.code === 401) {
+      // Redirect to login
+      return navigateTo("/login");
+    }
+
     if (res.loggedIn) {
       user.value = res.user;
     } else {
